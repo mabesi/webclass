@@ -15,13 +15,13 @@ class UserController extends Controller
     public function index()
     {
         $users = User::where('type','<>','A')
-                      ->orderBy('id','desc')
+                      ->orderBy('id')
                       ->paginate(10);
         $data = [
           'users' => $users,
         ];
 
-        return view('user.users',$data);
+        return view('user.list',$data);
     }
 
     /**

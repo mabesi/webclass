@@ -55,8 +55,10 @@ class HomeController extends Controller
     public function categories()
     {
       $categories = getCategories();
+      $totalCategories = count($categories);
       $data = [
         'categories' => $categories,
+        'totalCategories' => $totalCategories
       ];
       return view('category.list',$data);
     }
