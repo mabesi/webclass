@@ -8,6 +8,9 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
+    <!-- Favicon -->
+    <link rel="icon" href="favicon.png">
+
     <title>{{ config('app.name', 'Laravel - CoreUI') }}</title>
 
     <!-- Bootstrap core CSS -->

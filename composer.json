@@ -24,7 +24,18 @@
         ],
         "psr-4": {
             "App\\": "app/"
-        }
+        },
+        "files": [
+          "app/Helpers/AppHelper.php",
+          "app/Helpers/ArrayHelper.php",
+          "app/Helpers/CurrencyHelper.php",
+          "app/Helpers/DateHelper.php",
+          "app/Helpers/EmailHelper.php",
+          "app/Helpers/FileHelper.php",
+          "app/Helpers/MessageHelper.php",
+          "app/Helpers/StringHelper.php",
+          "app/Helpers/UserHelper.php"
+        ]        
     },
     "autoload-dev": {
         "psr-4": {

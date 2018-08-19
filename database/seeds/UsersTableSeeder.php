@@ -15,12 +15,19 @@ class UsersTableSeeder extends Seeder
       User::truncate();
 
       DB::table('users')->insert([
-        'name' => "Laravel Core",
-        'email' => "laracore@domain.com",
-        'password' => bcrypt('123456'),
-        'remember_token' => str_random(10),
-        'created_at' => date("Y-m-d H:i:s"),
-        'updated_at' => date("Y-m-d H:i:s"),
+          'name' => 'Administrador',
+          'email' => 'admin@gmail.com',
+          'type' => 'A',
+          'password' => bcrypt('webclass'),
       ]);
+
+      DB::table('users')->insert([
+          'name' => 'Aluno Exemplo',
+          'email' => 'aluno@gmail.com',
+          'type' => 'U',
+          'password' => bcrypt('webclass'),
+      ]);
+
+      factory(App\User::class, 50)->create();
     }
 }

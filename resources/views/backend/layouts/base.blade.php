@@ -17,6 +17,9 @@
     <meta name="author" content="Łukasz Holeczek">
     <meta name="keyword" content="Laravel,Bootstrap,Admin,Template,Open,Source,jQuery,CSS,HTML,RWD,Dashboard">
 
+    <!-- Favicon -->
+    <link rel="icon" href="favicon.png">
+
     <title>{{ config('app.name', 'Laravel - CoreUI') }}</title>
 
     <!-- COREUI - Icons-->

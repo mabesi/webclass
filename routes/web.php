@@ -24,4 +24,12 @@ Route::get('/500', function () {
 Auth::routes();
 
 Route::get('/', 'HomeController@index')->name('home');
+
+//Frontend
 Route::get('/terms', 'HomeController@terms')->name('terms');
+
+//Backend
+Route::get('/category', 'HomeController@categories');
+
+Route::resource('user', 'UserController');
+Route::resource('course', 'CourseController');

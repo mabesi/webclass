@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use App\User;
+use App\Course;
 
 class HomeController extends Controller
 {
@@ -25,7 +27,16 @@ class HomeController extends Controller
     public function index()
     {
       if (Auth::check()){
-        return view('backend.layouts.panel');
+        $totalPupil = User::where('type','U')->count();
+        $totalCourses = User::count();
+        $totalCategories = count(getCategories());
+
+        $data = [
+          'totalPupil' => $totalPupil,
+          'totalCategories' => $totalCategories,
+          'totalCourses' => $totalCourses,
+        ];
+        return view('backend.home',$data);
       } else {
         return view('frontend.home');
       }
@@ -40,4 +51,14 @@ class HomeController extends Controller
     {
         return view('frontend.terms');
     }
+
+    public function categories()
+    {
+      $categories = getCategories();
+      $data = [
+        'categories' => $categories,
+      ];
+      return view('category.list',$data);
+    }
+
 }

@@ -1,10 +1,8 @@
 <footer class="app-footer">
   <div>
-    <a href="https://coreui.io">CoreUI</a>
-    <span>&copy; 2018 creativeLabs.</span>
+    <span class="text-muted">&copy; 2018 WebClass</span>
   </div>
   <div class="ml-auto">
-    <span>Powered by</span>
-    <a href="https://coreui.io">CoreUI</a>
+    <span class="text-muted">Sistema de treinamento online</span>
   </div>
 </footer>
