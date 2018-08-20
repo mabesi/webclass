@@ -21,7 +21,7 @@ class UserController extends Controller
           'users' => $users,
         ];
 
-        return view('user.list',$data);
+        return view('backend.user.list',$data);
     }
 
     /**
@@ -34,7 +34,7 @@ class UserController extends Controller
       $data = [
       ];
 
-      return view('user.edit', $data);
+      return view('backend.user.edit', $data);
     }
 
     /**
@@ -84,7 +84,7 @@ class UserController extends Controller
         'user' => $user,
       ];
 
-      return view('user.edit', $data);    }
+      return view('backend.user.edit', $data);    }
 
     /**
      * Update the specified resource in storage.

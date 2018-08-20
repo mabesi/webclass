@@ -1,28 +1,40 @@
-@extends('layouts.panel')
+@extends('backend.layouts.panel')
 
 @section('content')
 
-<h1 class="page-title">CURSOS</h1>
+<div class="card">
+  <div class="card-header">
+    <i class="fa fa-align-justify"></i> Cursos
 
-<div class="module message">
-  <div class="module-head">
-    <h3>Lista de Cursos</h3>
   </div>
-  <div class="module-option clearfix">
-    <form>
-      <div class="input-append pull-left">
-        <input class="span3" placeholder="Pesquisar pelo nome..." type="text" name="search"
-        value="{{ isset($user->password)?$user->password:Null }}">
-        <button type="submit" class="btn">
-          <i class="icon-search"></i>
-        </button>
+  <div class="card-body">
+
+    <form class="form-horizontal" action="{{ url($path) }}" method="get">
+
+      <div class="form-group row  mb-3">
+        <div class="input-group col-3">
+          <input id="title" name="title" class="form-control" placeholder="Nome do curso" type="text"
+            value="{{ isset($course->title)?$course->title:Null }}" >
+        </div>
+        <div class="input-group col-3">
+          <input id="category" name="category" class="form-control" placeholder="Categoria" type="text"
+            value="{{ isset($course->category)?$course->category:Null }}" >
+        </div>
+        <div class="input-group col-3">
+          <input id="instructor" name="instructor" class="form-control" placeholder="Instrutor" type="text"
+            value="{{ isset($course->instructor)?$course->instructor:Null }}" >
+        </div>
+        <div class="col-2">
+          <span class="input-group-append">
+            <button type="submit" class="btn btn-primary">
+              <i class="fa fa-search"></i> Pesquisar
+            </button>
+          </span>
+        </div>
       </div>
     </form>
-  </div>
 
-  <div class="module-body">
-
-    <table class="table table-striped">
+    <table class="table table-responsive-sm table-striped">
       <thead>
         <tr>
           <th>Título</th>
@@ -32,22 +44,20 @@
         </tr>
       </thead>
       <tbody>
-@foreach ($courses as $course)
+        @foreach ($courses as $course)
         <tr>
           <td><a href="{{ url('course/'.$course->id) }}">{{ $course->title }}</a></td>
           <td>{{ $course->category }}</td>
           <td>{{ $course->instructor }}</td>
-          <td>
-            {!! getItemAdminIcons($course,'course','False') !!}
+          <td>{!! getItemAdminIcons($course,'course','False') !!}</td>
         </tr>
-@endforeach
+        @endforeach
       </tbody>
     </table>
+    {{ $courses->links("pagination::bootstrap-4") }}
 
   </div>
-  <div class="module-foot pagination">
-      {{ $courses->links() }}
-  </div>
+
 </div>
 
 @endsection

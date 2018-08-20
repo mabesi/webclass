@@ -30,6 +30,7 @@ Route::get('/terms', 'HomeController@terms')->name('terms');
 
 //Backend
 Route::get('/category', 'HomeController@categories');
+Route::get('/category/{id}', 'HomeController@category');
 
 Route::resource('user', 'UserController');
 Route::resource('course', 'CourseController');

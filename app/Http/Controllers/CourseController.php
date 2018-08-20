@@ -12,15 +12,29 @@ class CourseController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
+      $path = $request->path();
+      $title = $request->query('title');
+      $category = $request->query('category');
+      $instructor = $request->query('instructor');
+
+      if ($request->has('sort')){
+        $sort = $request->query('sort');
+        $dir = $request->query('dir');
+      } else {
+        $sort = 'title';
+        $dir = 'asc';
+      }
+
       $courses = Course::orderBy('title')
                     ->paginate(10);
       $data = [
         'courses' => $courses,
+        'path' => $path,
       ];
 
-      return view('course.list',$data);
+      return view('backend.course.list',$data);
     }
 
     /**
@@ -56,7 +70,7 @@ class CourseController extends Controller
         'course' => $course,
       ];
 
-      return view('course.course',$data);
+      return view('backend.course.course',$data);
     }
 
     /**

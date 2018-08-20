@@ -1,41 +1,57 @@
-@extends('layouts.panel')
+@extends('backend.layouts.panel')
 
 @section('content')
 
-<h1 class="page-title">Usuários</h1>
-
-<div class="module message">
-  <div class="module-head">
-    <h3>{{ isset($user)?'Editar Aluno':'Novo Aluno' }}</h3>
+<div class="card">
+  <div class="card-header">
+    <strong>{{ isset($user)?'Editar Aluno':'Novo Aluno' }}</strong>
   </div>
-  <div class="module-option clearfix">
 
-    <form action="{{ url('/user'.(isset($user->id)?'/'.$user->id:'')) }}" method="POST" >
+  <form action="{{ url('/user'.(isset($user->id)?'/'.$user->id:'')) }}" method="POST" >
 
-      {{ csrf_field() }}
+    {{ csrf_field() }}
 
-      @if (isset($user))
-        <input type="hidden" name="_method" value="PUT">
-      @endif
+    @if (isset($user))
+    <input type="hidden" name="_method" value="PUT">
+    @endif
 
-      <div class="row-fluid">
-        <div class="span3">
-          <input class="span11" placeholder="Nome..." type="text" name="name"
-          value="{{ old('name',isset($user->name)?$user->name:Null) }}" >
+    <div class="card-body">
+      <div class="row">
+
+        <div class="col-sm-4">
+          <div class="form-group">
+            <label for="name">Nome</label>
+            <input class="form-control" id="name" type="text" name="name"
+              value="{{ old('name',isset($user->name)?$user->name:Null) }}">
+          </div>
         </div>
-        <div class="span4">
-          <input class="span11" placeholder="E-mail..." type="email" name="email"
-          value="{{ old('email',isset($user->email)?$user->email:Null) }}" >
+
+        <div class="col-sm-4">
+          <div class="form-group">
+            <label for="ccnumber">E-mail</label>
+            <input class="form-control" id="ccnumber" type="email" name="email"
+              value="{{ old('email',isset($user->email)?$user->email:Null) }}" >
+          </div>
         </div>
-        <div class="span3">
-          <input class="span11" placeholder="Senha..." type="password" name="password" >
+
+        <div class="col-sm-4">
+          <div class="form-group">
+            <label for="ccnumber">Senha</label>
+            <input class="form-control" id="password" type="password" name="password">
+          </div>
         </div>
-        <div class="span2">
-          <input type="submit" class="btn btn-primary pull-right" value="Salvar">
-        </div>
+
       </div>
-    </form>
-  </div>
+
+    </div>
+    <div class="card-footer">
+      <button type="submit" class="btn btn-primary">Salvar</button>
+    </div>
+
+
+  </form>
+
+</div>
 </div>
 
 @endsection

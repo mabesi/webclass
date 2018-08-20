@@ -52,6 +52,15 @@ class HomeController extends Controller
         return view('frontend.terms');
     }
 
+    public function category($id)
+    {
+      $category = getCategories($id);
+      $data = [
+        'category' => $category,
+      ];
+      return view('backend.category.category',$data);
+    }
+
     public function categories()
     {
       $categories = getCategories();
@@ -60,7 +69,7 @@ class HomeController extends Controller
         'categories' => $categories,
         'totalCategories' => $totalCategories
       ];
-      return view('category.list',$data);
+      return view('backend.category.list',$data);
     }
 
 }

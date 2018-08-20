@@ -17,7 +17,7 @@ function getItemAdminIcons($item,$itemType,$resource)
   return trim($icons);
 }
 
-function getCategories()
+function getCategories($id=Null)
 {
   $categories = [
     "Administração",
@@ -38,5 +38,9 @@ function getCategories()
     "Outros"
   ];
 
-  return $categories;
+  if ($id==Null){
+    return $categories;
+  } else {
+    return $categories[$id];
+  }
 }
