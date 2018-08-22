@@ -31,10 +31,7 @@ class UserController extends Controller
      */
     public function create()
     {
-      $data = [
-      ];
-
-      return view('backend.user.edit', $data);
+      return view('backend.user.edit');
     }
 
     /**
@@ -80,11 +77,8 @@ class UserController extends Controller
      */
     public function edit(User $user)
     {
-      $data = [
-        'user' => $user,
-      ];
-
-      return view('backend.user.edit', $data);    }
+      return view('backend.user.edit', compact('user'));
+    }
 
     /**
      * Update the specified resource in storage.

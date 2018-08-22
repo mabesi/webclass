@@ -17,6 +17,8 @@
     @include('backend.layouts.sidemenu')
 
     <main class="main">
+      
+      @include('backend.layouts.messages')
 
       @include('backend.layouts.breadcrumbs')
 

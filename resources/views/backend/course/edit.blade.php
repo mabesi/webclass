@@ -2,40 +2,89 @@
 
 @section('content')
 
-<h1 class="page-title">Usuários</h1>
-
-<div class="module message">
-  <div class="module-head">
-    <h3>{{ isset($user)?'Editar Aluno':'Novo Aluno' }}</h3>
+<div class="card">
+  <div class="card-header">
+    <strong>{{ isset($course)?'Editar Curso':'Novo Curso' }}</strong>
   </div>
-  <div class="module-option clearfix">
 
-    <form action="{{ url('/user'.(isset($user->id)?'/'.$user->id:'')) }}" method="POST" >
+  <form action="{{ url('/course'.(isset($course->id)?'/'.$course->id:'')) }}" method="POST" >
 
-      {{ csrf_field() }}
+    {{ csrf_field() }}
 
-      @if (isset($user))
-        <input type="hidden" name="_method" value="PUT">
-      @endif
+    @if (isset($course))
+    <input type="hidden" name="_method" value="PUT">
+    @endif
 
-      <div class="row-fluid">
-        <div class="span3">
-          <input class="span11" placeholder="Nome..." type="text" name="name"
-          value="{{ old('name',isset($user->name)?$user->name:Null) }}" >
+    <div class="card-body">
+      <div class="row">
+
+        <div class="col-sm-6">
+          <div class="form-group">
+            <label for="title">Título</label>
+            <input class="form-control" id="title" type="text" name="title"
+              value="{{ old('name',isset($course->title)?$course->title:Null) }}">
+          </div>
         </div>
-        <div class="span4">
-          <input class="span11" placeholder="E-mail..." type="email" name="email"
-          value="{{ old('email',isset($user->email)?$user->email:Null) }}" >
+
+        <div class="col-sm-6">
+          <div class="form-group">
+            <label for="name">Categoria</label>
+
+            <select class="form-control" name="category_id">
+              <option value=""></option>
+              @foreach ($categories as $category)
+              <option
+                 value="{{ $category->id }}"
+                 {{ ($category->id==(old('category_id',isset($course->category_id)?$course->category_id:''))?'selected':'') }} >
+                 {{ $category->name }}
+               </option>
+              @endforeach
+            </select>
+
+          </div>
         </div>
-        <div class="span3">
-          <input class="span11" placeholder="Senha..." type="password" name="password" >
+
         </div>
-        <div class="span2">
-          <input type="submit" class="btn btn-primary pull-right" value="Salvar">
+
+        <div class="row">
+
+        <div class="col-sm-6">
+          <div class="form-group">
+            <label for="name">Instrutor</label>
+
+            <select class="form-control" name="instructor_id">
+              <option value=""></option>
+              @foreach ($instructors as $instructor)
+              <option
+                 value="{{ $instructor->id }}"
+                 {{ ($instructor->id==(old('instructor_id',isset($course->instructor_id)?$course->instructor_id:''))?'selected':'') }} >
+                 {{ $instructor->name }}
+               </option>
+              @endforeach
+            </select>
+
+          </div>
         </div>
+
+        <div class="col-sm-6">
+          <div class="form-group">
+            <label for="keywords">Palavras-chave</label>
+            <input class="form-control" id="keywords" type="text" name="keywords"
+              value="{{ old('keywords',isset($course->keywords)?$course->keywords:Null) }}" >
+          </div>
+        </div>
+
       </div>
-    </form>
-  </div>
+
+    </div>
+    <div class="card-footer">
+      <button type="submit" class="btn btn-primary">Salvar</button>
+    </div>
+
+
+  </form>
+
+</div>
 </div>
 
 @endsection

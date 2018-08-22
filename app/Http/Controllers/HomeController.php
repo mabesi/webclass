@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\User;
 use App\Course;
+use App\Category;
+use App\Instructor;
 
 class HomeController extends Controller
 {
@@ -27,16 +29,14 @@ class HomeController extends Controller
     public function index()
     {
       if (Auth::check()){
+
         $totalPupil = User::where('type','U')->count();
         $totalCourses = User::count();
-        $totalCategories = count(getCategories());
+        $totalCategories = Category::count();
+        $totalInstructors = Instructor::count();
 
-        $data = [
-          'totalPupil' => $totalPupil,
-          'totalCategories' => $totalCategories,
-          'totalCourses' => $totalCourses,
-        ];
-        return view('backend.home',$data);
+        return view('backend.home',compact('totalPupil','totalCategories','totalCourses','totalInstructors'));
+
       } else {
         return view('frontend.home');
       }
@@ -50,26 +50,6 @@ class HomeController extends Controller
     public function terms()
     {
         return view('frontend.terms');
-    }
-
-    public function category($id)
-    {
-      $category = getCategories($id);
-      $data = [
-        'category' => $category,
-      ];
-      return view('backend.category.category',$data);
-    }
-
-    public function categories()
-    {
-      $categories = getCategories();
-      $totalCategories = count($categories);
-      $data = [
-        'categories' => $categories,
-        'totalCategories' => $totalCategories
-      ];
-      return view('backend.category.list',$data);
     }
 
 }

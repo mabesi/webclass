@@ -11,7 +11,7 @@
 <div class="row">
 
 
-  <div class="col-sm-4">
+  <div class="col-sm-6">
     <div class="card">
       <div class="card-body p-0 d-flex align-items-center">
         <a href="{{ url('user') }}" >
@@ -27,7 +27,23 @@
     </div>
   </div>
 
-  <div class="col-sm-4">
+  <div class="col-sm-6">
+    <div class="card">
+      <div class="card-body p-0 d-flex align-items-center">
+        <a href="{{ url('course') }}" >
+          <i class="fa fa-list bg-danger p-5 font-5xl mr-3"></i>
+        </a>
+        <div>
+          <div class="text-muted font-5xl font-weight-bold">{{ $totalCourses }}</div>
+          <div class="text-uppercase font-weight-bold font-xl" >
+            <a href="{{ url('course') }}" >Cursos</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-sm-6">
     <div class="card">
       <div class="card-body p-0 d-flex align-items-center">
         <a href="{{ url('category') }}" >
@@ -43,16 +59,16 @@
     </div>
   </div>
 
-  <div class="col-sm-4">
+  <div class="col-sm-6">
     <div class="card">
       <div class="card-body p-0 d-flex align-items-center">
-        <a href="{{ url('course') }}" >
-          <i class="fa fa-list bg-danger p-5 font-5xl mr-3"></i>
+        <a href="{{ url('instructor') }}" >
+          <i class="fa fa-graduation-cap bg-info p-5 font-5xl mr-3"></i>
         </a>
         <div>
-          <div class="text-muted font-5xl font-weight-bold">{{ $totalCourses }}</div>
+          <div class="text-muted font-5xl font-weight-bold">{{ $totalInstructors }}</div>
           <div class="text-uppercase font-weight-bold font-xl" >
-            <a href="{{ url('course') }}" >Cursos</a>
+            <a href="{{ url('instructor') }}" >Instrutores</a>
           </div>
         </div>
       </div>

@@ -4,7 +4,8 @@
 
 <div class="card">
   <div class="card-header">
-    <i class="fa fa-align-justify"></i> Alunos
+    <a href="{{ url('user/create') }}" class="btn btn-primary float-right" >Novo Aluno</a>
+    <h1><i class="fa fa-group"></i> ALUNOS</h1>
   </div>
   <div class="card-body">
     <table class="table table-responsive-sm table-striped">

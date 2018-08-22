@@ -11,6 +11,7 @@
 |
 */
 
+//Testes
 Route::get('/slider', function () {
     return view('frontend.slider');
 });
@@ -23,14 +24,18 @@ Route::get('/500', function () {
 
 Auth::routes();
 
+//Frontend and Backend
 Route::get('/', 'HomeController@index')->name('home');
 
 //Frontend
 Route::get('/terms', 'HomeController@terms')->name('terms');
 
 //Backend
-Route::get('/category', 'HomeController@categories');
-Route::get('/category/{id}', 'HomeController@category');
+Route::middleware(['auth'])->group(function(){
 
-Route::resource('user', 'UserController');
-Route::resource('course', 'CourseController');
+  Route::resource('instructor', 'InstructorController');
+  Route::resource('category', 'CategoryController');
+  Route::resource('user', 'UserController');
+  Route::resource('course', 'CourseController');
+
+});

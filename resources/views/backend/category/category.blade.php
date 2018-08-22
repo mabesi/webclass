@@ -4,13 +4,13 @@
 
 <div class="card">
   <div class="card-header">
-    <i class="fa fa-align-justify"></i> Categoria
+    <h1><i class="fa fa-file-text-o"></i> CATEGORIA</h1>
   </div>
   <div class="card-body">
 
     <div class="row">
       <div class="col-sm-12">
-        {{ $category }}
+        {{ $category->name }}
       </div>
     </div>
 

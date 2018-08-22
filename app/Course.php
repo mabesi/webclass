@@ -12,6 +12,17 @@ class Course extends Model
    * @var array
    */
   protected $fillable = [
-      'title', 'category', 'keywords', 'instructor'
+      'title', 'category_id', 'keywords', 'instructor_id'
   ];
+
+  public function category()
+  {
+    return $this->belongsTo('App\Category');
+  }
+
+  public function instructor()
+  {
+    return $this->belongsTo('App\Instructor');
+  }
+
 }
