@@ -59,7 +59,7 @@
         <tr>
           <td class="col-sm-5"><a href="{{ url('course/'.$course->id) }}">{{ $course->title }}</a></td>
           <td class="col-sm-3"><a href="{{ url('category/'.$course->category_id) }}">{{ $course->category->name }}</a></td>
-          <td class="col-sm-3">{{ $course->instructor->name }}</td>
+          <td class="col-sm-3"><a href="{{ url('instructor/'.$course->instructor_id) }}">{{ $course->instructor->name }}</a></td>
           <td class="col-sm-1">{!! getItemAdminIcons($course,'course','False') !!}</td>
         </tr>
         @endforeach

@@ -59,7 +59,7 @@ class InstructorController extends Controller
      */
     public function show(Instructor $instructor)
     {
-        //
+        return view('backend.instructor.instructor',compact('instructor'));
     }
 
     /**

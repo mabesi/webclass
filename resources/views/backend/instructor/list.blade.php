@@ -14,7 +14,7 @@
         <ul class="list-group">
           @foreach ($instructors as $instructor)
           <li class="list-group-item d-flex list-group-item-action justify-content-between align-items-center">
-            {{ $instructor->name }}
+            <a href="{{ url('instructor/'.$instructor->id) }}">{{ $instructor->name }}</a>
             <span class="float-right">{!! getItemAdminIcons($instructor,'instructor','False') !!}</span>
           </li>
           @endforeach
