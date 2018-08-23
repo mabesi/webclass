@@ -4,9 +4,11 @@
 
 <div class="card">
   <div class="card-header">
-    <a href="{{ url('course/create') }}" class="btn btn-primary float-right mx-1" >Novo Curso</a>
-    <a href="{{ url('course') }}" class="btn btn-secondary float-right mx-1" >Ver Todos</a>
-    <h1><i class="fa fa-list"></i> CURSOS</h1>
+    <span class="float-right">
+      <a href="{{ url('course') }}" class="btn btn-secondary mx-1" >Ver Todos</a>
+      <a href="{{ url('course/create') }}" class="btn btn-primary mx-1" >Novo Curso</a>
+    </span>
+    <h1><i class="fa fa-list"></i> Cursos</h1>
   </div>
   <div class="card-body">
 
@@ -15,7 +17,7 @@
       <div class="form-group row  mb-2">
 
         <div class="input-group col-sm-3 mb-1">
-          <input id="title" name="title" class="form-control" placeholder="Título" type="text"
+          <input id="title" name="title" class="form-control" placeholder="Curso" type="text"
             value="{{ isset($search['title'])?$search['title']:Null }}" >
         </div>
 
@@ -51,15 +53,17 @@
           </th>
           <th>Categoria</th>
           <th>Instrutor</th>
+          <th>Palavras Chave</th>
           <th>Ação</th>
         </tr>
       </thead>
       <tbody>
         @foreach ($courses as $course)
         <tr>
-          <td class="col-sm-5"><a href="{{ url('course/'.$course->id) }}">{{ $course->title }}</a></td>
-          <td class="col-sm-3"><a href="{{ url('category/'.$course->category_id) }}">{{ $course->category->name }}</a></td>
-          <td class="col-sm-3"><a href="{{ url('instructor/'.$course->instructor_id) }}">{{ $course->instructor->name }}</a></td>
+          <td class="col-sm-4"><a href="{{ url('course/'.$course->id) }}">{{ $course->title }}</a></td>
+          <td class="col-sm-2"><a href="{{ url('category/'.$course->category_id) }}">{{ $course->category->name }}</a></td>
+          <td class="col-sm-2"><a href="{{ url('instructor/'.$course->instructor_id) }}">{{ $course->instructor->name }}</a></td>
+          <td class="col-sm-2">{{ $course->keywords }}</td>
           <td class="col-sm-1">{!! getItemAdminIcons($course,'course','False') !!}</td>
         </tr>
         @endforeach

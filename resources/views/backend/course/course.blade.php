@@ -4,6 +4,10 @@
 
 <div class="card">
   <div class="card-header">
+    <span class="float-right">
+      <a href="{{ url('course/create') }}" class="btn btn-primary mx-1" >Incluir Unidade</a>
+      <a href="{{ url('course') }}" class="btn btn-primary mx-1" >Incluir Arquivo</a>
+    </span>
     <h1><i class="fa fa-align-justify"></i> Curso</h1>
   </div>
   <div class="card-body">

@@ -28,7 +28,8 @@ class CourseController extends Controller
     $courses = Course::query();
 
     if (isset($search['title'])){
-      $courses->where('title','like','%'.$search["title"].'%');
+      $courses->where('title','like','%'.$search["title"].'%')
+              ->orWhere('keywords','like','%'.$search["title"].'%');
     }
 
     if (isset($search['category'])){
