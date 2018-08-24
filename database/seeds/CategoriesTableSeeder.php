@@ -60,6 +60,6 @@ class CategoriesTableSeeder extends Seeder
           'name' => 'Turismo e Hotelaria',
       ]);
 
-      factory(App\Category::class, 10)->create();
+      //factory(App\Category::class, 10)->create();
     }
 }

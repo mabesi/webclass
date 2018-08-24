@@ -13,6 +13,6 @@ class UnitiesTableSeeder extends Seeder
     public function run()
     {
       Unity::truncate();
-      factory(App\Unity::class, 300)->create();
+      factory(App\Unity::class, 60)->create();
     }
 }

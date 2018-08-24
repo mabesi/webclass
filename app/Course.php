@@ -25,4 +25,14 @@ class Course extends Model
     return $this->belongsTo('App\Instructor');
   }
 
+  public function ratings()
+  {
+    return $this->hasMany('App\Rating');
+  }
+
+  public function raters()
+  {
+    return $this->belongsToMany('App\User','ratings');
+  }
+
 }

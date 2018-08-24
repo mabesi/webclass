@@ -15,6 +15,12 @@ class CreateRatingsTable extends Migration
     {
         Schema::create('ratings', function (Blueprint $table) {
             $table->increments('id');
+            $table->string('comment',255);
+            $table->tinyInteger('rate');
+            $table->integer('course_id')->unsigned();
+            $table->foreign('course_id')->references('id')->on('courses');
+            $table->integer('user_id')->unsigned();
+            $table->foreign('user_id')->references('id')->on('users');
             $table->timestamps();
         });
     }

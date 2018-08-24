@@ -41,4 +41,14 @@ class User extends Authenticatable
       'email.string' => 'O campo Conteúdo deve ser somente texto.',
     ];
 
+    public function ratings()
+    {
+      return $this->hasMany('App\Rating');
+    }
+
+    public function ratedCourses()
+    {
+      return $this->belongsToMany('App\Course','ratings');
+    }
+
 }

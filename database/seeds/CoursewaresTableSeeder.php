@@ -1,9 +1,9 @@
 <?php
 
 use Illuminate\Database\Seeder;
-use App\Instructor;
+use App\Courseware;
 
-class InstructorsTableSeeder extends Seeder
+class CoursewaresTableSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -12,7 +12,7 @@ class InstructorsTableSeeder extends Seeder
      */
     public function run()
     {
-        Instructor::truncate();
-        factory(App\Instructor::class, 15)->create();
+      Courseware::truncate();
+      factory(App\Courseware::class, 100)->create();
     }
 }

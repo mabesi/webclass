@@ -15,6 +15,9 @@ class CreateCoursewaresTable extends Migration
     {
         Schema::create('coursewares', function (Blueprint $table) {
             $table->increments('id');
+            $table->string('name',100);
+            $table->integer('course_id')->unsigned();
+            $table->foreign('course_id')->references('id')->on('courses');
             $table->timestamps();
         });
     }
