@@ -20,6 +20,7 @@ class DatabaseSeeder extends Seeder
       $this->call(UnitiesTableSeeder::class);
       $this->call(LessonsTableSeeder::class);
       $this->call(RatingsTableSeeder::class);
+      $this->call(CoursewaresTableSeeder::class);
 
       //DB::statement("SET foreign_key_checks=1");
     }

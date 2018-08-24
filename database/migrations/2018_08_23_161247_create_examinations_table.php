@@ -14,8 +14,12 @@ class CreateExaminationsTable extends Migration
     public function up()
     {
         Schema::create('examinations', function (Blueprint $table) {
-            $table->increments('id');
-            $table->timestamps();
+          $table->increments('id');
+          $table->string('title',100);
+          $table->tinyInteger('sequence')->unsigned(); //UNSIGNED TINYINTEGER: 1 A 255
+          $table->integer('unity_id')->unsigned()->unique();
+          $table->foreign('unity_id')->references('id')->on('unities');
+          $table->timestamps();
         });
     }
 

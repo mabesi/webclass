@@ -2,6 +2,8 @@
 
 use Illuminate\Database\Seeder;
 use App\Unity;
+use App\Examination;
+use App\Question;
 
 class UnitiesTableSeeder extends Seeder
 {
@@ -13,6 +15,15 @@ class UnitiesTableSeeder extends Seeder
     public function run()
     {
       Unity::truncate();
-      factory(App\Unity::class, 60)->create();
+      Examination::truncate();
+      Question::truncate();
+      factory(App\Unity::class, 60)
+                  ->create()
+                  ->each(function ($unity){
+                    $unity->examination()->save(factory(App\Examination::class)->make());
+                    $unity->examination()->each(function ($examination){
+                      $examination->questions()->saveMany(factory(App\Question::class,5)->make());
+                    });
+                  });
     }
 }

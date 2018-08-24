@@ -25,6 +25,16 @@ class Course extends Model
     return $this->belongsTo('App\Instructor');
   }
 
+  public function unities()
+  {
+    return $this->hasMany('App\Unity');
+  }
+
+  public function coursewares()
+  {
+    return $this->hasMany('App\Courseware');
+  }
+
   public function ratings()
   {
     return $this->hasMany('App\Rating');
