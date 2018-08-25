@@ -5,14 +5,19 @@
 <div class="card">
   <div class="card-header">
     <span class="float-right">
-      <a href="{{ url('course/create') }}" class="btn btn-primary mx-1" >Incluir Unidade</a>
-      <a href="{{ url('course') }}" class="btn btn-primary mx-1" >Incluir Arquivo</a>
+      <a href="{{ url('course/create') }}" class="btn btn-primary btn-sm mr-1" >Incluir Unidade</a>
+      <a href="{{ url('course') }}" class="btn btn-primary btn-sm mr-1" >Incluir Arquivo</a>
       {!! getItemAdminIcons($course,'course','True') !!}
     </span>
     <h1><i class="fa fa-dot-circle-o"></i> {{ $course->title }}</h1>
   </div>
   <div class="card-body">
 
+    <div class="row my-1">
+      <div class="col-sm-12">
+        <p class="text-justify">{{ $course->description }}</p>
+      </div>
+    </div>
     <div class="row">
       <div class="col-sm-3">
         Categoria: <a href="{{ url('category/'.$course->category_id) }}">{{ $course->category->name }}</a>
@@ -27,16 +32,6 @@
 
   </div>
 
-  <div class="card-footer">
-    <div class="row">
-      <div class="col-sm-4">
-        Teste
-      </div>
-      <div class="col-sm-8">
-
-      </div>
-    </div>
-  </div>
 </div>
 
 <div class="card">
@@ -59,11 +54,11 @@
         @foreach ($course->unities()->orderBy('sequence')->get() as $unity)
         <tr>
           <td class="col-sm-1 font-weight-bold">{{ $unity->sequence }}</a></td>
-          <td class="col-sm-6"><a href="{{ url('unity/'.$unity->id) }}">{{ $unity->title }}</a></td>
-          <td class="col-sm-5">
-            <a href="{{ url('course/create') }}" class="btn btn-primary btn-sm mx-1" >Incluir Videoaula</a>
-            <a href="{{ url('course') }}" class="btn btn-primary btn-sm mx-1" >Incluir Avaliação</a>
+          <td class="col-sm-7"><a href="{{ url('unity/'.$unity->id) }}">{{ $unity->title }}</a></td>
+          <td class="col-sm-4">
             <span class="float-right">{!! getItemAdminIcons($unity,'unity','False') !!}</span>
+            <a href="{{ url('course/create') }}" class="btn btn-primary btn-sm mr-1" >Incluir Videoaula</a>
+            <a href="{{ url('course') }}" class="btn btn-primary btn-sm mr-1" >Incluir Avaliação</a>
           </td>
         </tr>
         @endforeach

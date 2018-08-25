@@ -19,7 +19,7 @@ class CourseController extends Controller
   {
     $path = $request->path();
 
-    $search = $request->only('title','category','instructor');
+    $search = $request->query('search');
 
     //dd($search);
 

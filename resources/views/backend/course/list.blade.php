@@ -17,18 +17,8 @@
       <div class="form-group row  mb-2">
 
         <div class="input-group col-sm-3 mb-1">
-          <input id="title" name="title" class="form-control" placeholder="Curso" type="text"
-            value="{{ isset($search['title'])?$search['title']:Null }}" >
-        </div>
-
-        <div class="input-group col-sm-3 mb-1">
-          <input id="title" name="category" class="form-control" placeholder="Categoria" type="text"
-            value="{{ isset($search['category'])?$search['category']:Null }}" >
-        </div>
-
-        <div class="input-group col-sm-3 mb-1">
-          <input id="instructor" name="instructor" class="form-control" placeholder="Instrutor" type="text"
-            value="{{ isset($search['instructor'])?$search['instructor']:Null }}" >
+          <input id="search" name="search" class="form-control" type="text"
+            value="{{ isset($search)?$search:Null }}" >
         </div>
 
         <div class="col-sm-3 mb-1">

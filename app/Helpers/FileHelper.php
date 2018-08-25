@@ -2,6 +2,29 @@
 
 use Illuminate\Support\Facades\Storage;
 
+function saveFile($request,$fieldName,$dir,$fileName,$oldName=Null,$default=Null)
+{
+  if ($request->hasFile($fieldName)){
+
+    if ($request->file($fieldName)->isValid()) {
+
+      $file = $request->file($fieldName);
+      $fileName = strtolower($fileName.'.'.$file->getClientOriginalExtension());
+      $pathImage = $file->storeAs($dir, $imageName, 'public');
+
+      if ($oldName != Null){
+        $oldPath = $dir.'/'.$oldName;
+        $defaultPath = $dir.'/'.$default;
+        if ($pathImage != $oldPath && $oldPath != $defaultPath){
+          Storage::disk('public')->delete($oldPath);
+        }
+      }
+      return $fileName;
+    }
+  }
+  return false;
+}
+
 function saveImage($request,$fieldName,$dir,$imageName,$oldName=Null,$default=Null)
 {
   if ($request->hasFile($fieldName)){
@@ -32,14 +55,10 @@ function deleteAvatar($avatar)
 
 function deleteFile($file)
 {
-  if ($file!='avatar/default.png' && $file!='operations/loading.gif' && $file!='indicators/loading.gif'){
-    Storage::disk('public')->delete($file);
-  }
+  Storage::disk('public')->delete($file);
 }
 
 function deleteDir($dir)
 {
-  if ($dir!='avatar' && $dir!='operations' && $dir!='indicators'){
-    Storage::disk('public')->deleteDirectory($dir);
-  }
+  Storage::disk('public')->deleteDirectory($dir);
 }

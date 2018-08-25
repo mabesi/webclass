@@ -21,6 +21,7 @@ class DatabaseSeeder extends Seeder
       $this->call(LessonsTableSeeder::class);
       $this->call(RatingsTableSeeder::class);
       $this->call(CoursewaresTableSeeder::class);
+      $this->call(TrailsTableSeeder::class);
 
       //DB::statement("SET foreign_key_checks=1");
     }

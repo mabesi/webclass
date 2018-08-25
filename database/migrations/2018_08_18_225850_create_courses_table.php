@@ -16,6 +16,7 @@ class CreateCoursesTable extends Migration
         Schema::create('courses', function (Blueprint $table) {
           $table->increments('id');
           $table->string('title',100);
+          $table->text('description');
           $table->integer('category_id')->unsigned();
           $table->foreign('category_id')->references('id')->on('categories');
           $table->string('keywords',60);

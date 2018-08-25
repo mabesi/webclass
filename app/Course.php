@@ -45,4 +45,9 @@ class Course extends Model
     return $this->belongsToMany('App\User','ratings');
   }
 
+  public function trails()
+  {
+    return $this->belongsToMany('App\Trail');
+  }
+
 }

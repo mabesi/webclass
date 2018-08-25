@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateCoursewaresTable extends Migration
+class CreateTrailsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,12 +13,10 @@ class CreateCoursewaresTable extends Migration
      */
     public function up()
     {
-        Schema::create('coursewares', function (Blueprint $table) {
+        Schema::create('trails', function (Blueprint $table) {
             $table->increments('id');
             $table->string('title',100);
-            $table->string('name',100);
-            $table->integer('course_id')->unsigned();
-            $table->foreign('course_id')->references('id')->on('courses');
+            $table->text('description');
             $table->timestamps();
         });
     }
@@ -30,6 +28,6 @@ class CreateCoursewaresTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('coursewares');
+        Schema::dropIfExists('trails');
     }
 }
