@@ -60,10 +60,10 @@
       <tbody>
         @foreach ($courses as $course)
         <tr>
-          <td class="col-sm-4"><a href="{{ url('course/'.$course->id) }}">{{ $course->title }}</a></td>
+          <td class="col-sm-3"><a href="{{ url('course/'.$course->id) }}">{{ $course->title }}</a></td>
           <td class="col-sm-2"><a href="{{ url('category/'.$course->category_id) }}">{{ $course->category->name }}</a></td>
           <td class="col-sm-2"><a href="{{ url('instructor/'.$course->instructor_id) }}">{{ $course->instructor->name }}</a></td>
-          <td class="col-sm-2">{{ $course->keywords }}</td>
+          <td class="col-sm-3">{!! getKeywordsLinks($course->keywords) !!}</td>
           <td class="col-sm-1">{!! getItemAdminIcons($course,'course','False') !!}</td>
         </tr>
         @endforeach

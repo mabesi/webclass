@@ -102,7 +102,12 @@ class CourseController extends Controller
       'course' => $course,
     ];
 
-    return view('backend.course.course',$data);
+    $breadcrumbs = [
+      'Cursos' => 'course',
+      $course->title => '#'
+    ];
+
+    return view('backend.course.course',compact('course','breadcrumbs'));
   }
 
   /**
