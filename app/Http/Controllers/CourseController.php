@@ -27,19 +27,21 @@ class CourseController extends Controller
 
     $courses = Course::query();
 
-    if (isset($search['title'])){
-      $courses->where('title','like','%'.$search["title"].'%')
-              ->orWhere('keywords','like','%'.$search["title"].'%');
-    }
+    if ($search!=Null){
 
-    if (isset($search['category'])){
-      $categoriesId = Category::getCategoriesId($search['category']);
-      $courses->whereIn('category_id',$categoriesId);
-    }
+      //dd($search);
 
-    if (isset($search['instructor'])){
-      $instructorsId = Instructor::getInstructorsId($search['instructor']);
-      $courses->whereIn('instructor_id',$instructorsId);
+      $categoriesId = Category::getCategoriesId($search);
+      $instructorsId = Instructor::getInstructorsId($search);
+
+      $courses->where('title','like','%'.$search.'%')
+              ->orWhere('keywords','like','%'.$search.'%')
+              ->orWhere(function ($query) use ($categoriesId) {
+                $query->whereIn('category_id',$categoriesId);
+              })
+              ->orWhere(function ($query) use ($instructorsId) {
+                $query->whereIn('instructor_id',$instructorsId);
+              });
     }
 
     $sort = $request->query('sort','title');
@@ -47,7 +49,7 @@ class CourseController extends Controller
     $newDir = ($dir=='asc'?'desc':'asc');
 
     $courses = $courses->orderBy($sort,$dir)
-    ->paginate(10);
+                        ->paginate(10);
 
     //dd($courses);
 

@@ -41,7 +41,7 @@ function getKeywordsLinks($keywords)
 
   foreach ($keywords as $keyword){
     $links .= '<a class="badge badge-light ml-1" href="'
-            .url('course?title='.str_replace(' ','+',$keyword))
+            .url('course?search='.str_replace(' ','+',$keyword))
             .'">'.$keyword
             .'</a>';
   }
