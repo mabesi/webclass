@@ -157,15 +157,20 @@ class CourseController extends Controller
   */
   public function destroy(Course $course)
   {
-    if (isAdmin()){
-      if ($course->delete()){
-        $message = getMsgDeleteSuccess();
-      } else {
-        $message = getMsgDeleteError();
-      }
+    if ($course->unities->count()>0 || $course->coursewares->count()>0){
+      $message = getMsgDeleteErrorVinculated();
     } else {
-      $message = getMsgDeleteAccessForbidden();
+      if (isAdmin()){
+        if ($course->delete()){
+          $message = getMsgDeleteSuccess();
+        } else {
+          $message = getMsgDeleteError();
+        }
+      } else {
+        $message = getMsgDeleteAccessForbidden();
+      }
     }
     return response()->json($message);
   }
+  
 }

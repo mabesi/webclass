@@ -13,27 +13,38 @@
   </div>
 
   <div class="card-body">
-<h2 class="p-2 bg-dark"><i class="fa fa-youtube-play"></i> Videoaulas</h2>
 
-        <ul class="list-group">
+    <h2 class="p-2 bg-light"><i class="fa fa-youtube-play"></i> Videoaulas</h2>
+    <ul class="list-group">
+      @foreach ($unity->lessons()->orderBy('sequence')->get() as $lesson)
+      <li class="list-group-item d-flex list-group-item-action justify-content-between align-items-center">
+        <span>
+          <b>{{ $lesson->sequence }}</b> -
+          <a data-toggle="modal" href="#" data-target="#largeModal" data-target-id="{{ url('lesson/'.$lesson->id) }}">
+            {{ $lesson->title }}
+          </a>
+        </span>
+        <span>{!! getItemAdminIcons($lesson,'lesson','False') !!}</span>
+      </li>
+      @endforeach
+    </ul>
 
-          @foreach ($unity->lessons()->orderBy('sequence')->get() as $lesson)
-          <li class="list-group-item d-flex list-group-item-action justify-content-between align-items-center">
-            <span>
-              <b>{{ $lesson->sequence }}</b> -
-              <a data-toggle="modal" href="#" data-target="#largeModal" data-target-id="{{ url('lesson/'.$lesson->id) }}">
-                {{ $lesson->title }}
-              </a>
-            </span>
-            <span>{!! getItemAdminIcons($lesson,'lesson','False') !!}</span>
-          </li>
-          @endforeach
-
-        </ul>
-
-    </div>
+    <h2 class="p-2 bg-light mt-3"><i class="fa fa-clipboard"></i> Avaliação</h2>
+    <ul class="list-group">
+      <li class="list-group-item d-flex list-group-item-action justify-content-between align-items-center">
+        <span>
+          <b>{{ $unity->examination->sequence }}</b> -
+          <a data-toggle="modal" href="#" data-target="#largeModal" data-target-id="{{ url('lesson/'.$lesson->id) }}">
+            {{ $unity->examination->title }}
+          </a>
+        </span>
+        <span>{!! getItemAdminIcons($unity->examination,'examination','False') !!}</span>
+      </li>
+    </ul>
 
   </div>
+
+</div>
 
 </div>
 

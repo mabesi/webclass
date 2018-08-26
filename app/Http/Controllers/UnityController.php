@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Unity;
+use App\Course;
 use Illuminate\Http\Request;
 
 class UnityController extends Controller
@@ -22,9 +23,15 @@ class UnityController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create($courseId)
     {
-        //
+        $course = Course::find($courseId);
+        $breadcrumbs = [
+          'Cursos' => 'course',
+          $course->title => 'course/'.$course->id,
+          'Nova Unidade' => '#',
+        ];
+        return view('backend.unity.edit',compact('course','breadcrumbs'));
     }
 
     /**
@@ -35,7 +42,18 @@ class UnityController extends Controller
      */
     public function store(Request $request)
     {
-        //
+      $unity = new Unity;
+      //$request->validate($user->rules,$user->messages);
+
+      $unity->title = $request->title;
+      $unity->course_id = $request->course_id;
+      $unity->sequence = $request->sequence;
+
+      if ($unity->save()){
+        return redirect('course/'.$unity->course_id)->with('informations',['Os dados da unidade foram salvos com sucesso!']);
+      } else {
+        return back()->with('problems',['Ocorreu um erro ao salvar os dados da unidade!']);
+      }
     }
 
     /**
@@ -63,7 +81,15 @@ class UnityController extends Controller
      */
     public function edit(Unity $unity)
     {
-        //
+      $course = $unity->course;
+
+      $breadcrumbs = [
+        'Cursos' => 'course',
+        $course->title => 'course/'.$course->id,
+        $unity->title => 'unity/'.$unity->id,
+        'Editar Unidade' => '#',
+      ];
+      return view('backend.unity.edit',compact('course','unity','breadcrumbs'));
     }
 
     /**
@@ -75,7 +101,17 @@ class UnityController extends Controller
      */
     public function update(Request $request, Unity $unity)
     {
-        //
+      //$request->validate($user->rules,$user->messages);
+
+      $unity->title = $request->title;
+      $unity->course_id = $request->course_id;
+      $unity->sequence = $request->sequence;
+
+      if ($unity->save()){
+        return redirect('course/'.$unity->course_id)->with('informations',['Os dados da unidade foram salvos com sucesso!']);
+      } else {
+        return back()->with('problems',['Ocorreu um erro ao salvar os dados da unidade!']);
+      }
     }
 
     /**
@@ -86,6 +122,19 @@ class UnityController extends Controller
      */
     public function destroy(Unity $unity)
     {
-        //
+      if ($unity->lessons->count()>0){
+        $message = getMsgDeleteErrorVinculated();
+      } else {
+        if (isAdmin()){
+          if ($unity->delete()){
+            $message = getMsgDeleteSuccess();
+          } else {
+            $message = getMsgDeleteError();
+          }
+        } else {
+          $message = getMsgDeleteAccessForbidden();
+        }
+      }
+      return response()->json($message);
     }
 }

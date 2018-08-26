@@ -39,5 +39,6 @@ Route::middleware(['auth'])->group(function(){
   Route::resource('course', 'CourseController');
   Route::resource('unity', 'UnityController');
   Route::resource('lesson', 'LessonController');
+  Route::get('/course/{id}/unity/create','UnityController@create');
 
 });
