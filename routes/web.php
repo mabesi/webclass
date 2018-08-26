@@ -37,5 +37,7 @@ Route::middleware(['auth'])->group(function(){
   Route::resource('category', 'CategoryController');
   Route::resource('user', 'UserController');
   Route::resource('course', 'CourseController');
+  Route::resource('unity', 'UnityController');
+  Route::resource('lesson', 'LessonController');
 
 });

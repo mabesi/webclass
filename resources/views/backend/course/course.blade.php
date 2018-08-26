@@ -11,63 +11,52 @@
     </span>
     <h1><i class="fa fa-dot-circle-o"></i> {{ $course->title }}</h1>
   </div>
+
   <div class="card-body">
 
-    <div class="row my-1">
-      <div class="col-sm-12">
-        <p class="text-justify">{{ $course->description }}</p>
-      </div>
-    </div>
     <div class="row">
-      <div class="col-sm-3">
-        Categoria: <a href="{{ url('category/'.$course->category_id) }}">{{ $course->category->name }}</a>
+      <div class="col-sm-5">
+        <p class="text-justify">{{ $course->description }}</p>
+        <div>
+          Categoria: <a href="{{ url('category/'.$course->category_id) }}">{{ $course->category->name }}</a>
+        </div>
+        <div>
+          Instrutor: <a href="{{ url('instructor/'.$course->instructor_id) }}">{{ $course->instructor->name }}</a>
+        </div>
+        <div>
+          Palavras-chave:{!! getKeywordsLinks($course->keywords) !!}
+        </div>
       </div>
-      <div class="col-sm-3">
-        Instrutor: <a href="{{ url('instructor/'.$course->instructor_id) }}">{{ $course->instructor->name }}</a>
-      </div>
-      <div class="col-sm-6">
-        Palavras-chave:{!! getKeywordsLinks($course->keywords) !!}
+
+      <div class="col-sm-7">
+
+        <h2 class="p-2 bg-dark"><i class="fa fa-list"></i> Unidades</h2>
+
+        <ul class="list-group">
+
+          @foreach ($course->unities()->orderBy('sequence')->get() as $unity)
+          <li class="list-group-item d-flex list-group-item-action justify-content-between align-items-center">
+            <span>
+              <b>{{ $unity->sequence }}</b> -
+              <a href="{{ url('unity/'.$unity->id) }}">{{ $unity->title }}</a>
+            </span>
+            <span>{!! getItemAdminIcons($unity,'unity','False') !!}</span>
+          </li>
+          @endforeach
+
+        </ul>
       </div>
     </div>
 
   </div>
 
+  <div class="card-footer">
+    <div class="progress my-2">
+      <div class="progress-bar" role="progressbar" style="width: 25%;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">25%
+      </div>
+    </div>
+  </div>
+
 </div>
 
-<div class="card">
-  <div class="card-header">
-    <h2>
-      <i class="fa fa-align-justify"></i> Unidades
-    </h2>
-  </div>
-  <div class="card-body">
-
-    <table class="table table-responsive-sm table-striped">
-      <thead>
-        <tr>
-          <th>Ordem</th>
-          <th>Título</th>
-          <th>Ação</th>
-        </tr>
-      </thead>
-      <tbody>
-        @foreach ($course->unities()->orderBy('sequence')->get() as $unity)
-        <tr>
-          <td class="col-sm-1 font-weight-bold">{{ $unity->sequence }}</a></td>
-          <td class="col-sm-7"><a href="{{ url('unity/'.$unity->id) }}">{{ $unity->title }}</a></td>
-          <td class="col-sm-4">
-            <span class="float-right">{!! getItemAdminIcons($unity,'unity','False') !!}</span>
-            <a href="{{ url('course/create') }}" class="btn btn-primary btn-sm mr-1" >Incluir Videoaula</a>
-            <a href="{{ url('course') }}" class="btn btn-primary btn-sm mr-1" >Incluir Avaliação</a>
-          </td>
-        </tr>
-        @endforeach
-      </tbody>
-    </table>
-
-  </div>
-</div>
-
-<br><br>
-<iframe width="100%" height="400" src="https://www.youtube.com/embed/FWQN8DD11oY?rel=0&amp;showinfo=0" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
 @endsection

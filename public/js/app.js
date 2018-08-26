@@ -4,7 +4,14 @@ $( document ).ready(function() {
     return deleteItem(this);
   });
 
-});
+  $("#largeModal").on("show.bs.modal", function(e) {
+      var link = $(e.relatedTarget).data('target-id');
+      $.get(link, function (data) {
+          $(".modal-content").html(data);
+      });
+  });
+
+}); //End document.ready
 
 function deleteItem(e) {
 

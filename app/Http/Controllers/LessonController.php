@@ -14,7 +14,7 @@ class LessonController extends Controller
      */
     public function index()
     {
-        //
+
     }
 
     /**
@@ -46,7 +46,7 @@ class LessonController extends Controller
      */
     public function show(Lesson $lesson)
     {
-        //
+      return view('backend.lesson.modal',compact('lesson'));
     }
 
     /**

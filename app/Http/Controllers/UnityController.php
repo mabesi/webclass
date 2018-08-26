@@ -46,7 +46,13 @@ class UnityController extends Controller
      */
     public function show(Unity $unity)
     {
-        //
+      $breadcrumbs = [
+        'Cursos' => 'course',
+        $unity->course->title => 'course/'.$unity->course->id,
+        $unity->title => '#'
+      ];
+
+      return view('backend.unity.unity',compact('unity','breadcrumbs'));
     }
 
     /**
