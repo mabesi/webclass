@@ -27,7 +27,9 @@ class UnityController extends Controller
     {
         $course = Course::find($courseId);
         $breadcrumbs = [
+          'Categorias' => 'category',
           'Cursos' => 'course',
+          $course->category->name => 'category/'.$course->category_id,
           $course->title => 'course/'.$course->id,
           'Nova Unidade' => '#',
         ];
@@ -65,7 +67,9 @@ class UnityController extends Controller
     public function show(Unity $unity)
     {
       $breadcrumbs = [
+        'Categorias' => 'category',
         'Cursos' => 'course',
+        $unity->course->category->name => 'category/'.$unity->course->category_id,
         $unity->course->title => 'course/'.$unity->course->id,
         $unity->title => '#'
       ];
@@ -84,7 +88,9 @@ class UnityController extends Controller
       $course = $unity->course;
 
       $breadcrumbs = [
+        'Categorias' => 'category',
         'Cursos' => 'course',
+        $course->category->name => 'category/'.$course->category_id,
         $course->title => 'course/'.$course->id,
         $unity->title => 'unity/'.$unity->id,
         'Editar Unidade' => '#',

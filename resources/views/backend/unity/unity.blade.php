@@ -4,11 +4,15 @@
 
 <div class="card">
   <div class="card-header">
+    @if (isAdmin())
     <span class="float-right">
-      <a href="{{ url('course/create') }}" class="btn btn-primary btn-sm mr-1" >Incluir Videoaula</a>
-      <a href="{{ url('course') }}" class="btn btn-primary btn-sm mr-1" >Incluir Avaliação</a>
+      <a href="{{ url('unity/'.$unity->id.'/lesson/create') }}" class="btn btn-primary btn-sm mr-1" >Incluir Videoaula</a>
+      @if ($unity->examination==Null)
+      <a href="{{ url('unity/'.$unity->id.'/examination/create') }}" class="btn btn-primary btn-sm mr-1" >Incluir Avaliação</a>
+      @endif
       {!! getItemAdminIcons($unity,'unity','True') !!}
     </span>
+    @endif
     <h1><i class="fa fa-dot-circle-o"></i> {{ $unity->title }}</h1>
   </div>
 
@@ -20,11 +24,11 @@
       <li class="list-group-item d-flex list-group-item-action justify-content-between align-items-center">
         <span>
           <b>{{ $lesson->sequence }}</b> -
-          <a data-toggle="modal" href="#" data-target="#largeModal" data-target-id="{{ url('lesson/'.$lesson->id) }}">
+          <a data-toggle="modal" href="#" data-target="#largeModal" data-target-id="{{ url('lesson-modal/'.$lesson->id) }}">
             {{ $lesson->title }}
           </a>
         </span>
-        <span>{!! getItemAdminIcons($lesson,'lesson','False') !!}</span>
+        <span>{!! getItemAdminIcons($lesson,'lesson',False) !!}</span>
       </li>
       @endforeach
     </ul>
@@ -34,7 +38,7 @@
       <li class="list-group-item d-flex list-group-item-action justify-content-between align-items-center">
         <span>
           <b>{{ $unity->examination->sequence }}</b> -
-          <a data-toggle="modal" href="#" data-target="#largeModal" data-target-id="{{ url('lesson/'.$lesson->id) }}">
+          <a href="{{ url('examination/'.$unity->examination->id) }}" >
             {{ $unity->examination->title }}
           </a>
         </span>
@@ -49,7 +53,7 @@
 </div>
 
 <div class="modal fade" id="largeModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" style="display: none;" aria-hidden="true">
-  <div class="modal-dialog modal-lg" role="document">
+  <div class="modal-dialog modal-dark modal-lg" role="document">
     <div class="modal-content"></div>
   </div>
 </div>

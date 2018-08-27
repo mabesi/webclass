@@ -30,6 +30,11 @@ Route::get('/', 'HomeController@index')->name('home');
 //Frontend
 Route::get('/terms', 'HomeController@terms')->name('terms');
 
+Route::get('/youtubeid',function(){
+  $url = 'https://www.youtube.com/watch?v=2aOtt-g2i_M';
+  return getYoutubeEmbedLink($url);
+});
+
 //Backend
 Route::middleware(['auth'])->group(function(){
 
@@ -39,6 +44,11 @@ Route::middleware(['auth'])->group(function(){
   Route::resource('course', 'CourseController');
   Route::resource('unity', 'UnityController');
   Route::resource('lesson', 'LessonController');
+  Route::resource('examination', 'ExaminationController');
+
+  Route::get('/lesson-modal/{id}', 'LessonController@modal');
   Route::get('/course/{id}/unity/create','UnityController@create');
+  Route::get('/unity/{id}/lesson/create','LessonController@create');
+  Route::get('/examination/{id}/question/create','QuestionController@create');
 
 });

@@ -4,11 +4,13 @@
 
 <div class="card">
   <div class="card-header">
+    @if (isAdmin())
     <span class="float-right">
       <a href="{{ url('course/'.$course->id.'/unity/create') }}" class="btn btn-primary btn-sm mr-1" >Incluir Unidade</a>
       <a href="{{ url('course/'.$course->id.'/courseware/create') }}" class="btn btn-primary btn-sm mr-1" >Incluir Arquivo</a>
       {!! getItemAdminIcons($course,'course','True') !!}
     </span>
+    @endif
     <h1><i class="fa fa-dot-circle-o"></i> {{ $course->title }}</h1>
   </div>
 

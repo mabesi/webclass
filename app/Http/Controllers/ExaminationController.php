@@ -46,7 +46,16 @@ class ExaminationController extends Controller
      */
     public function show(Examination $examination)
     {
-        //
+      $unity = $examination->unity;
+      $breadcrumbs = [
+        'Categorias' => 'category',
+        'Cursos' => 'course',
+        $unity->course->category->name => 'category/'.$unity->course->category_id,
+        $unity->course->title => 'course/'.$unity->course->id,
+        $unity->title => 'unity/'.$unity->id,
+        $examination->title => '#',
+      ];
+      return view('backend.examination.examination',compact('breadcrumbs','examination'));
     }
 
     /**

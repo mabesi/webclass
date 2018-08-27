@@ -4,20 +4,17 @@
 
 <div class="card">
   <div class="card-header">
-    <h1><i class="fa fa-file-text-o"></i> CATEGORIA</h1>
+    <span class="float-right">
+      {!! getItemAdminIcons($category,'category','True') !!}
+    </span>
+    <h1><i class="fa fa-file-text-o"></i> {{ $category->name }}</h1>
   </div>
   <div class="card-body">
-
-    <div class="row">
-      <div class="col-sm-12">
-        <h2>{{ $category->name }}</h2>
-      </div>
-    </div>
 
     <table class="table table-responsive-sm table-striped">
       <thead>
         <tr>
-          <th>Título</th>
+          <th>Curso</th>
           <th>Instrutor</th>
           <th>Ação</th>
         </tr>

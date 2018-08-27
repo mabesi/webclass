@@ -51,9 +51,21 @@ class CourseController extends Controller
     $courses = $courses->orderBy($sort,$dir)
                         ->paginate(10);
 
-    //dd($courses);
+    $breadcrumbs = [
+      'Categorias' => 'category',
+      'Cursos' => '#',
+    ];
 
-    return view('backend.course.list',compact('courses','search','sort','dir','newDir','path','queryLink'));
+    return view('backend.course.list',
+                compact(
+                  'courses',
+                  'search',
+                  'sort',
+                  'dir',
+                  'newDir',
+                  'path',
+                  'queryLink',
+                  'breadcrumbs'));
   }
 
   /**
@@ -66,7 +78,13 @@ class CourseController extends Controller
     $categories = Category::get()->sortBy('name',SORT_NATURAL|SORT_FLAG_CASE);
     $instructors = Instructor::get()->sortBy('name',SORT_NATURAL|SORT_FLAG_CASE);;
 
-    return view('backend.course.edit',compact('categories','instructors'));
+    $breadcrumbs = [
+      'Categorias' => 'category',
+      'Cursos' => 'course',
+      'Novo Curso' => '#'
+    ];
+
+    return view('backend.course.edit',compact('breadcrumbs','categories','instructors'));
   }
 
   /**
@@ -105,7 +123,9 @@ class CourseController extends Controller
     ];
 
     $breadcrumbs = [
+      'Categorias' => 'category',
       'Cursos' => 'course',
+      $course->category->name => 'category/'.$course->category->id,
       $course->title => '#'
     ];
 
@@ -123,7 +143,16 @@ class CourseController extends Controller
     $categories = Category::get()->sortBy('name',SORT_NATURAL|SORT_FLAG_CASE);
     $instructors = Instructor::get()->sortBy('name',SORT_NATURAL|SORT_FLAG_CASE);;
 
-    return view('backend.course.edit', compact('course','categories','instructors'));
+    $breadcrumbs = [
+      'Categorias' => 'category',
+      'Cursos' => 'course',
+      $course->category->name => 'category/'.$course->category->id,
+      $course->title => 'course/'.$course->id,
+      'Editar Curso' => '#'
+    ];
+
+    return view('backend.course.edit',
+                 compact('breadcrumbs','course','categories','instructors'));
   }
 
   /**
@@ -172,5 +201,5 @@ class CourseController extends Controller
     }
     return response()->json($message);
   }
-  
+
 }

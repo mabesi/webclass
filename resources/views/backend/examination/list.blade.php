@@ -5,12 +5,8 @@
 <div class="card">
   <div class="card-header">
     <span class="float-right">
-      @if (isset($search))
-      <a href="{{ url('course') }}" class="btn btn-warning mx-1" >Ver Todos</a>
-      @endif
-      @if (isAdmin())
+      <a href="{{ url('course') }}" class="btn btn-secondary mx-1" >Ver Todos</a>
       <a href="{{ url('course/create') }}" class="btn btn-primary mx-1" >Novo Curso</a>
-      @endif
     </span>
     <h1><i class="fa fa-list"></i> Cursos</h1>
   </div>

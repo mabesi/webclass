@@ -17,7 +17,11 @@ class CategoryController extends Controller
       $categories = Category::orderBy('name')
                     ->paginate(10);
 
-      return view('backend.category.list',compact('categories'));
+      $breadcrumbs = [
+        'Categorias' => '#',
+      ];
+
+      return view('backend.category.list',compact('breadcrumbs','categories'));
     }
 
     /**
@@ -27,7 +31,13 @@ class CategoryController extends Controller
      */
     public function create()
     {
-        return view('backend.category.edit');
+
+      $breadcrumbs = [
+        'Categorias' => 'category',
+        'Nova Categoria' => '#'
+      ];
+
+      return view('backend.category.edit',compact('breadcrumbs'));
     }
 
     /**
@@ -59,7 +69,13 @@ class CategoryController extends Controller
      */
     public function show(Category $category)
     {
-      return view('backend.category.category',compact('category'));
+      $breadcrumbs = [
+        'Categorias' => 'category',
+        $category->name => '#'
+      ];
+
+      return view('backend.category.category',
+                compact('breadcrumbs','category'));
     }
 
     /**
@@ -70,7 +86,13 @@ class CategoryController extends Controller
      */
     public function edit(Category $category)
     {
-        return view('backend.category.edit',compact('category'));
+      $breadcrumbs = [
+        'Categorias' => 'category',
+        $category->name => 'category/'.$category->id,
+        'Editar Categoria' => '#'
+      ];
+
+      return view('backend.category.edit',compact('breadcrumbs','category'));
     }
 
     /**
