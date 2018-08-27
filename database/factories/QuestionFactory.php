@@ -4,6 +4,7 @@ use Faker\Generator as Faker;
 
 $factory->define(App\Question::class, function (Faker $faker) {
   return [
+    'sequence' => rand(1,15),
     'statement' => $faker->text(500),
     'answer1' => $faker->text(100),
     'answer2' => $faker->text(100),

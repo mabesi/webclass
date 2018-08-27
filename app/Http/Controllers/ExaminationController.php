@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Examination;
+use App\Unity;
 use Illuminate\Http\Request;
 
 class ExaminationController extends Controller
@@ -22,9 +23,16 @@ class ExaminationController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create($unityId)
     {
-        //
+      $unity = Unity::find($unityId);
+      $breadcrumbs = [
+        'Cursos' => 'course',
+        $unity->course->title => 'course/'.$unity->course->id,
+        $unity->title => 'unity/'.$unity->id,
+        'Nova Avaliação' => '#',
+      ];
+      return view('backend.examination.edit',compact('unity','breadcrumbs'));
     }
 
     /**
@@ -35,7 +43,27 @@ class ExaminationController extends Controller
      */
     public function store(Request $request)
     {
-        //
+      $examination = new Examination;
+
+      $unity = Unity::find($request->unity_id);
+      $course = $unity->course;
+
+      foreach($course->unities as $unity){
+        if (isset($unity->examination->sequence)){
+          if ($unity->examination->sequence==$request->sequence && $examination->id!=$unity->examination->id){
+            return back()->with('problems',['O número de sequência de avaliação ( '.$request->sequence.' ) já existe neste curso!']);
+          }
+        }
+      }
+
+      $examination->sequence = $request->sequence;
+      $examination->unity_id = $request->unity_id;
+
+      if ($examination->save()){
+        return redirect('unity/'.$examination->unity_id)->with('informations',['Os dados da avaliação foram salvos com sucesso!']);
+      } else {
+        return back()->with('problems',['Ocorreu um erro ao salvar os dados da avaliação!']);
+      }
     }
 
     /**
@@ -48,12 +76,10 @@ class ExaminationController extends Controller
     {
       $unity = $examination->unity;
       $breadcrumbs = [
-        'Categorias' => 'category',
         'Cursos' => 'course',
-        $unity->course->category->name => 'category/'.$unity->course->category_id,
         $unity->course->title => 'course/'.$unity->course->id,
         $unity->title => 'unity/'.$unity->id,
-        $examination->title => '#',
+        'Avaliação '.$examination->sequence => '#',
       ];
       return view('backend.examination.examination',compact('breadcrumbs','examination'));
     }
@@ -66,7 +92,15 @@ class ExaminationController extends Controller
      */
     public function edit(Examination $examination)
     {
-        //
+      $unity = $examination->unity;
+      $breadcrumbs = [
+        'Cursos' => 'course',
+        $unity->course->title => 'course/'.$unity->course->id,
+        $unity->title => 'unity/'.$unity->id,
+        'Avaliação '.$examination->sequence => 'examination/'.$examination->id,
+        'Editar Avaliação' => '#',
+      ];
+      return view('backend.examination.edit',compact('unity','examination','breadcrumbs'));
     }
 
     /**
@@ -78,7 +112,24 @@ class ExaminationController extends Controller
      */
     public function update(Request $request, Examination $examination)
     {
-        //
+      $course = $examination->unity->course;
+
+      foreach($course->unities as $unity){
+        if (isset($unity->examination->sequence)){
+          if ($unity->examination->sequence==$request->sequence && $examination->id!=$unity->examination->id){
+            return back()->with('problems',['O número de sequência de avaliação ( '.$request->sequence.' ) já existe neste curso!']);
+          }
+        }
+      }
+
+      $examination->sequence = $request->sequence;
+      $examination->unity_id = $request->unity_id;
+
+      if ($examination->save()){
+        return redirect('unity/'.$examination->unity_id)->with('informations',['Os dados da avaliação foram salvos com sucesso!']);
+      } else {
+        return back()->with('problems',['Ocorreu um erro ao salvar os dados da avaliação!']);
+      }
     }
 
     /**
@@ -89,6 +140,19 @@ class ExaminationController extends Controller
      */
     public function destroy(Examination $examination)
     {
-        //
+      if ($examination->questions->count()>0){
+        $message = getMsgDeleteErrorVinculated('Questões');
+      } else {
+        if (isAdmin()){
+          if ($examination->delete()){
+            $message = getMsgDeleteSuccess();
+          } else {
+            $message = getMsgDeleteError();
+          }
+        } else {
+          $message = getMsgDeleteAccessForbidden();
+        }
+      }
+      return response()->json($message);
     }
 }

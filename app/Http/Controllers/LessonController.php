@@ -27,9 +27,7 @@ class LessonController extends Controller
     {
       $unity = Unity::find($unityId);
       $breadcrumbs = [
-        'Categorias' => 'category',
         'Cursos' => 'course',
-        $unity->course->category->name => 'category/'.$unity->course->category_id,
         $unity->course->title => 'course/'.$unity->course->id,
         $unity->title => 'unity/'.$unity->id,
         'Nova Videoaula' => '#',
@@ -54,6 +52,14 @@ class LessonController extends Controller
         return back()->with('problems',['O link do vídeo fornecido não é válido!']);
       }
 
+      $unity = Unity::find($request->unity_id);
+
+      foreach($unity->lessons as $ulesson){
+        if ($ulesson->sequence==$request->sequence){
+          return back()->with('problems',['O número de sequência de videoaula ( '.$request->sequence.' ) já existe nesta unidade!']);
+        }
+      }
+
       $lesson->sequence = $request->sequence;
       $lesson->title = $request->title;
       $lesson->link = $request->link;
@@ -76,9 +82,7 @@ class LessonController extends Controller
     {
       $unity = $lesson->unity;
       $breadcrumbs = [
-        'Categorias' => 'category',
         'Cursos' => 'course',
-        $unity->course->category->name => 'category/'.$unity->course->category_id,
         $unity->course->title => 'course/'.$unity->course->id,
         $unity->title => 'unity/'.$unity->id,
         $lesson->title => '#',
@@ -101,10 +105,9 @@ class LessonController extends Controller
     public function edit(Lesson $lesson)
     {
       $unity = $lesson->unity;
+
       $breadcrumbs = [
-        'Categorias' => 'category',
         'Cursos' => 'course',
-        $unity->course->category->name => 'category/'.$unity->course->category_id,
         $unity->course->title => 'course/'.$unity->course->id,
         $unity->title => 'unity/'.$unity->id,
         $lesson->title => 'lesson/'.$lesson->id,
@@ -124,10 +127,18 @@ class LessonController extends Controller
     {
       //$request->validate($user->rules,$user->messages);
 
+      $unity = $lesson->unity;
+
       $id = getYoutubeId($request->link);
 
       if (!$id){
         return back()->with('problems',['O link do vídeo fornecido não é válido!']);
+      }
+
+      foreach($unity->lessons as $ulesson){
+        if ($ulesson->sequence==$request->sequence && $ulesson->id != $lesson->id){
+          return back()->with('problems',['O número de sequência de videoaula ( '.$request->sequence.' ) já existe nesta unidade!']);
+        }
       }
 
       $lesson->sequence = $request->sequence;
@@ -150,6 +161,15 @@ class LessonController extends Controller
      */
     public function destroy(Lesson $lesson)
     {
-        //
+      if (isAdmin()){
+        if ($lesson->delete()){
+          $message = getMsgDeleteSuccess();
+        } else {
+          $message = getMsgDeleteError();
+        }
+      } else {
+        $message = getMsgDeleteAccessForbidden();
+      }
+      return response()->json($message);
     }
 }

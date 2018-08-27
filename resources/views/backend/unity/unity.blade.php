@@ -36,13 +36,15 @@
     <h2 class="p-2 bg-light mt-3"><i class="fa fa-clipboard"></i> Avaliação</h2>
     <ul class="list-group">
       <li class="list-group-item d-flex list-group-item-action justify-content-between align-items-center">
+        @if (isset($unity->examination->id))
         <span>
-          <b>{{ $unity->examination->sequence }}</b> -
-          <a href="{{ url('examination/'.$unity->examination->id) }}" >
-            {{ $unity->examination->title }}
-          </a>
+          <b><a href="{{ url('examination/'.$unity->examination->id) }}" >
+            Avaliação {{ $unity->examination->sequence }}</a></b>
         </span>
         <span>{!! getItemAdminIcons($unity->examination,'examination','False') !!}</span>
+        @else
+        <span>Esta unidade ainda não possui avaliação.</span>
+        @endif
       </li>
     </ul>
 

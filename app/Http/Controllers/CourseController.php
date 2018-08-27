@@ -52,7 +52,6 @@ class CourseController extends Controller
                         ->paginate(10);
 
     $breadcrumbs = [
-      'Categorias' => 'category',
       'Cursos' => '#',
     ];
 
@@ -79,7 +78,6 @@ class CourseController extends Controller
     $instructors = Instructor::get()->sortBy('name',SORT_NATURAL|SORT_FLAG_CASE);;
 
     $breadcrumbs = [
-      'Categorias' => 'category',
       'Cursos' => 'course',
       'Novo Curso' => '#'
     ];
@@ -118,14 +116,8 @@ class CourseController extends Controller
   */
   public function show(Course $course)
   {
-    $data = [
-      'course' => $course,
-    ];
-
     $breadcrumbs = [
-      'Categorias' => 'category',
       'Cursos' => 'course',
-      $course->category->name => 'category/'.$course->category->id,
       $course->title => '#'
     ];
 
@@ -144,9 +136,7 @@ class CourseController extends Controller
     $instructors = Instructor::get()->sortBy('name',SORT_NATURAL|SORT_FLAG_CASE);;
 
     $breadcrumbs = [
-      'Categorias' => 'category',
       'Cursos' => 'course',
-      $course->category->name => 'category/'.$course->category->id,
       $course->title => 'course/'.$course->id,
       'Editar Curso' => '#'
     ];

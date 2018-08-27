@@ -17,7 +17,11 @@ class InstructorController extends Controller
       $instructors = Instructor::orderBy('name')
                     ->paginate(10);
 
-      return view('backend.instructor.list',compact('instructors'));
+      $breadcrumbs = [
+        'Instrutores' => '#',
+      ];
+
+      return view('backend.instructor.list',compact('instructors','breadcrumbs'));
     }
 
     /**
@@ -27,7 +31,11 @@ class InstructorController extends Controller
      */
     public function create()
     {
-        return view('backend.instructor.edit');
+      $breadcrumbs = [
+        'Instrutores' => 'instructor',
+        'Novo Instrutor' => '#',
+      ];
+      return view('backend.instructor.edit',compact('breadcrumbs'));
     }
 
     /**
@@ -59,7 +67,12 @@ class InstructorController extends Controller
      */
     public function show(Instructor $instructor)
     {
-        return view('backend.instructor.instructor',compact('instructor'));
+      $breadcrumbs = [
+        'Instrutores' => 'instructor',
+        $instructor->name => '#',
+      ];
+
+      return view('backend.instructor.instructor',compact('instructor','breadcrumbs'));
     }
 
     /**
@@ -70,7 +83,12 @@ class InstructorController extends Controller
      */
     public function edit(Instructor $instructor)
     {
-        return view('backend.instructor.edit', compact('instructor'));
+      $breadcrumbs = [
+        'Instrutores' => 'instructor',
+        $instructor->name => 'instructor/'.$instructor->id,
+        'Editar Instrutor' => '#',
+      ];
+      return view('backend.instructor.edit', compact('instructor','breadcrumbs'));
     }
 
     /**

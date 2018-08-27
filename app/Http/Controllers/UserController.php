@@ -17,11 +17,12 @@ class UserController extends Controller
         $users = User::where('type','<>','A')
                       ->orderBy('id')
                       ->paginate(10);
-        $data = [
-          'users' => $users,
+
+        $breadcrumbs = [
+          'Alunos' => '#',
         ];
 
-        return view('backend.user.list',$data);
+        return view('backend.user.list',compact('users','breadcrumbs'));
     }
 
     /**
@@ -31,7 +32,11 @@ class UserController extends Controller
      */
     public function create()
     {
-      return view('backend.user.edit');
+      $breadcrumbs = [
+        'Alunos' => 'user',
+        'Novo Aluno' => '#',
+      ];
+      return view('backend.user.edit',compact('breadcrumbs'));
     }
 
     /**
@@ -66,7 +71,11 @@ class UserController extends Controller
      */
     public function show(User $user)
     {
-        //
+      $breadcrumbs = [
+        'Alunos' => 'user',
+        $user->name => '#',
+      ];
+      return view('backend.user.user', compact('user','breadcrumbs'));
     }
 
     /**
@@ -77,7 +86,12 @@ class UserController extends Controller
      */
     public function edit(User $user)
     {
-      return view('backend.user.edit', compact('user'));
+      $breadcrumbs = [
+        'Alunos' => 'user',
+        $user->name => 'user/'.$user->id,
+        'Editar Aluno' => '#',
+      ];
+      return view('backend.user.edit', compact('user','breadcrumbs'));
     }
 
     /**

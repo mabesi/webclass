@@ -5,7 +5,7 @@
 <div class="card">
   <div class="card-header">
     <a href="{{ url('category/create') }}" class="btn btn-primary float-right" >Nova Categoria</a>
-    <h1><i class="fa fa-graduation-cap"></i> CATEGORIAS</h1>
+    <h1><i class="fa fa-graduation-cap"></i> Categorias</h1>
   </div>
   <div class="card-body">
 

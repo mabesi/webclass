@@ -63,6 +63,9 @@
             <span>
               <b>{{ $unity->sequence }}</b> -
               <a href="{{ url('unity/'.$unity->id) }}">{{ $unity->title }}</a>
+              @if (isset($unity->examination->id))
+              <br><small> <a href="{{ url('examination/'.$unity->examination->id) }}" ><i class="fa fa-caret-right ml-2"></i> Avaliação {{ $unity->examination->sequence }}</a></small>
+              @endif
             </span>
             <span>{!! getItemAdminIcons($unity,'unity','False') !!}</span>
           </li>

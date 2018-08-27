@@ -15,12 +15,13 @@ class CreateQuestionsTable extends Migration
     {
         Schema::create('questions', function (Blueprint $table) {
             $table->increments('id');
+            $table->tinyInteger('sequence')->unsigned();
             $table->text('statement');
             $table->text('answer1');
             $table->text('answer2');
             $table->text('answer3');
             $table->text('answer4');
-            $table->tinyInteger('right_answer')->unsigned(); //UNSIGNED TINYINTEGER: 1 A 255
+            $table->tinyInteger('right_answer')->unsigned();
             $table->integer('examination_id')->unsigned();
             $table->foreign('examination_id')->references('id')->on('examinations');
             $table->timestamps();

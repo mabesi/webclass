@@ -1,7 +1,3 @@
-@php
-$i=1;
-@endphp
-
 @extends('backend.layouts.panel')
 
 @section('content')
@@ -14,7 +10,15 @@ $i=1;
       {!! getItemAdminIcons($examination,'examination','True') !!}
     </span>
     @endif
-    <h1><i class="fa fa-clipboard"></i> {{ $examination->sequence.' - '.$examination->title }}</h1>
+    <h1><i class="fa fa-clipboard"></i> Avaliação {{ $examination->sequence }}</h1>
+    <div class="row">
+      <div class="col-sm-6">
+        Curso: <a href="{{ url('course/'.$examination->unity->course->id) }}">{{$examination->unity->course->title}}</a>
+      </div>
+      <div class="col-sm-6">
+        Unidade: <a href="{{ url('unity/'.$examination->unity->id) }}">{{$examination->unity->title}}</a>
+      </div>
+    </div>
   </div>
 
   <div class="card-body">
@@ -30,18 +34,41 @@ $i=1;
       <input type="hidden" name="examination_id" value="{{ $examination->id }}">
       <input type="hidden" name="user_id" value="{{ getUserId() }}">
 
-      @foreach ($examination->questions as $question)
-      <p class="p-1 bg-light"><strong>{{ $i }})</strong> {{ $question->statement }} {!! getItemAdminIcons($question,'question','False') !!}</p>
+      @foreach ($examination->questions()->orderBy('sequence')->get() as $question)
+      <p class="p-1 bg-light text-justify"><strong>{{ $question->sequence }})</strong> {{ $question->statement }} {!! getItemAdminIcons($question,'question','False') !!}</p>
       <div class="p-2">
-        <p>a) {{$question->answer1}}</p>
-        <p>b) {{$question->answer2}}</p>
-        <p>c) {{$question->answer3}}</p>
-        <p>d) {{$question->answer4}}</p>
+
+        <div class="col-form-label">
+          <div class="form-check mb-1">
+            <input class="form-check-input" value="1" id="answer-1-{{ $question->id }}" name="question-{{ $question->id }}" type="radio">
+            <label class="form-check-label" for="answer-1-{{ $question->id }}">
+              a) {{$question->answer1}}
+            </label>
+          </div>
+          <div class="form-check mb-1">
+            <input class="form-check-input" value="2" id="answer-2-{{ $question->id }}" name="question-{{ $question->id }}" type="radio">
+            <label class="form-check-label" for="answer-2-{{ $question->id }}">
+              b) {{$question->answer2}}
+            </label>
+          </div>
+          <div class="form-check mb-1">
+            <input class="form-check-input" value="3" id="answer-3-{{ $question->id }}" name="question-{{ $question->id }}" type="radio">
+            <label class="form-check-label" for="answer-3-{{ $question->id }}">
+              c) {{$question->answer3}}
+            </label>
+          </div>
+          <div class="form-check">
+            <input class="form-check-input" value="4" id="answer-4-{{ $question->id }}" name="question-{{ $question->id }}" type="radio">
+            <label class="form-check-label" for="answer-4-{{ $question->id }}">
+              d) {{$question->answer4}}
+            </label>
+          </div>
+        </div>
+
         @if(isAdmin())
         <p>Resposta correta: {{$question->right_answer}}</p>
         @endif
       </div>
-      <span hidden>{{ $i++ }}</span>
       @endforeach
 
     </form>

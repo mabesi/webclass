@@ -5,7 +5,7 @@
 <div class="card">
   <div class="card-header">
     <a href="{{ url('user/create') }}" class="btn btn-primary float-right" >Novo Aluno</a>
-    <h1><i class="fa fa-group"></i> ALUNOS</h1>
+    <h1><i class="fa fa-group"></i> Alunos</h1>
   </div>
   <div class="card-body">
     <table class="table table-responsive-sm table-striped">

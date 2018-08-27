@@ -5,7 +5,7 @@
 <div class="card">
   <div class="card-header">
     <a href="{{ url('instructor/create') }}" class="btn btn-primary float-right" >Novo Instrutor</a>
-    <h1><i class="fa fa-graduation-cap"></i> INSTRUTORES</h1>
+    <h1><i class="fa fa-graduation-cap"></i> Instrutores</h1>
   </div>
   <div class="card-body">
 

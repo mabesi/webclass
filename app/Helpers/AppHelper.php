@@ -49,15 +49,21 @@ function getItemAdminIcons($item,$itemType,$resource)
    return false;
  }
 
-function getYoutubeEmbedLink($url,$width=560,$height=315,$rel=False,$controls=True,$showinfo=True)
+function getYoutubeEmbedLink($url,$width=560,$height=420,$rel=False,$controls=True,$showinfo=False)
 {
   $id = getYoutubeId($url);
   $embed = '';
   $options = Array();
 
-  $options[] = $rel?'':'rel=0';
-  $options[] = $controls?'':'controls=0';
-  $options[] = $showinfo?'':'showinfo=0';
+  if (!$rel){
+    $options[] = 'rel=0';
+  }
+  if (!$controls){
+    $options[] = 'controls=0';
+  }
+  if (!$showinfo){
+    $options[] = 'showinfo=0';
+  }
 
   if ($id==False){
     return False;

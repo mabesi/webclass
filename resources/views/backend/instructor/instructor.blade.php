@@ -4,20 +4,19 @@
 
 <div class="card">
   <div class="card-header">
-    <h1><i class="fa fa-file-text-o"></i> INSTRUTOR</h1>
+    @if (isAdmin())
+    <span class="float-right">
+      {!! getItemAdminIcons($instructor,'instructor','True') !!}
+    </span>
+    @endif
+    <h1><i class="fa fa-file-text-o"></i> {{ $instructor->name }}</h1>
   </div>
   <div class="card-body">
-
-    <div class="row">
-      <div class="col-sm-12">
-        <h2>{{ $instructor->name }}</h2>
-      </div>
-    </div>
 
     <table class="table table-responsive-sm table-striped">
       <thead>
         <tr>
-          <th>Título</th>
+          <th>Curso</th>
           <th>Categoria</th>
           <th>Ação</th>
         </tr>
