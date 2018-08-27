@@ -18,7 +18,7 @@ class CreateUnitiesTable extends Migration
             $table->string('title',100);
             $table->tinyInteger('sequence')->unsigned(); //UNSIGNED TINYINTEGER: 1 A 255
             $table->integer('course_id')->unsigned();
-            $table->foreign('course_id')->references('id')->on('courses');
+            $table->foreign('course_id')->references('id')->on('courses')->onDelete('cascade');
             $table->timestamps();
         });
     }

@@ -176,11 +176,15 @@ class CourseController extends Controller
   */
   public function destroy(Course $course)
   {
-    if ($course->unities->count()>0 || $course->coursewares->count()>0){
-      $message = getMsgDeleteErrorVinculated();
+    if ($course->unities->count()>0){
+      $message = getMsgDeleteErrorVinculated('Unidades');
+    } elseif ($course->coursewares->count()>0){
+      $message = getMsgDeleteErrorVinculated('Unidades');
     } else {
       if (isAdmin()){
+        $courseDir = 'courseware/'.$course->id;
         if ($course->delete()){
+          deleteLocalDir($courseDir);
           $message = getMsgDeleteSuccess();
         } else {
           $message = getMsgDeleteError();

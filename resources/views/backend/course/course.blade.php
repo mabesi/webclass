@@ -78,7 +78,7 @@
           @foreach ($course->coursewares as $courseware)
           <li class="list-group-item d-flex list-group-item-action justify-content-between align-items-center">
             <span>
-              <a href="{{ url('courseware/'.$courseware->name) }}">{{ $courseware->title }}</a>
+              <a href="{{ url('courseware/'.$courseware->id) }}">{{ $courseware->title }}</a>
             </span>
             <span>{!! getItemAdminIcons($courseware,'courseware','False') !!}</span>
           </li>

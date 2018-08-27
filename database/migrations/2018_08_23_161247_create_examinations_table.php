@@ -17,7 +17,7 @@ class CreateExaminationsTable extends Migration
           $table->increments('id');
           $table->tinyInteger('sequence')->unsigned(); //UNSIGNED TINYINTEGER: 1 A 255
           $table->integer('unity_id')->unsigned()->unique();
-          $table->foreign('unity_id')->references('id')->on('unities');
+          $table->foreign('unity_id')->references('id')->on('unities')->onDelete('cascade');
           $table->timestamps();
         });
     }

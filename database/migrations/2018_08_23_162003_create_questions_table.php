@@ -23,7 +23,7 @@ class CreateQuestionsTable extends Migration
             $table->text('answer4');
             $table->tinyInteger('right_answer')->unsigned();
             $table->integer('examination_id')->unsigned();
-            $table->foreign('examination_id')->references('id')->on('examinations');
+            $table->foreign('examination_id')->references('id')->on('examinations')->onDelete('cascade');
             $table->timestamps();
         });
     }
