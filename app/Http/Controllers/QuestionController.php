@@ -51,12 +51,20 @@ class QuestionController extends Controller
 
       //$request->validate($user->rules,$user->messages);
 
+      $examination = Examination::find($request->examination_id);
+
+      foreach($examination->questions as $uquestion){
+        if ($uquestion->sequence==$request->sequence){
+          return back()->with('problems',['O número de sequência de questão ( '.$request->sequence.' ) já existe nesta avaliação!']);
+        }
+      }
+
       $question->sequence = $request->sequence;
-      $question->statement = $request->statement;
-      $question->answer1 = $request->answer1;
-      $question->answer2 = $request->answer2;
-      $question->answer3 = $request->answer3;
-      $question->answer4 = $request->answer4;
+      $question->statement = clean($request->statement);
+      $question->answer1 = strip_tags($request->answer1);
+      $question->answer2 = strip_tags($request->answer2);
+      $question->answer3 = strip_tags($request->answer3);
+      $question->answer4 = strip_tags($request->answer4);
       $question->right_answer = $request->right_answer;
       $question->examination_id = $request->examination_id;
 
@@ -111,12 +119,20 @@ class QuestionController extends Controller
     {
       //$request->validate($user->rules,$user->messages);
 
+      $examination = $question->examination;
+
+      foreach($examination->questions as $uquestion){
+        if ($uquestion->sequence==$request->sequence && $uquestion->id != $question->id){
+          return back()->with('problems',['O número de sequência de questão ( '.$request->sequence.' ) já existe nesta avaliação!']);
+        }
+      }
+
       $question->sequence = $request->sequence;
-      $question->statement = $request->statement;
-      $question->answer1 = $request->answer1;
-      $question->answer2 = $request->answer2;
-      $question->answer3 = $request->answer3;
-      $question->answer4 = $request->answer4;
+      $question->statement = clean($request->statement);
+      $question->answer1 = strip_tags($request->answer1);
+      $question->answer2 = strip_tags($request->answer2);
+      $question->answer3 = strip_tags($request->answer3);
+      $question->answer4 = strip_tags($request->answer4);
       $question->right_answer = $request->right_answer;
       $question->examination_id = $request->examination_id;
 

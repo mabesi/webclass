@@ -35,7 +35,9 @@
       <input type="hidden" name="user_id" value="{{ getUserId() }}">
 
       @foreach ($examination->questions()->orderBy('sequence')->get() as $question)
-      <p class="p-1 bg-light text-justify"><strong>{{ $question->sequence }})</strong> {{ $question->statement }} {!! getItemAdminIcons($question,'question','False') !!}</p>
+      <h2 class="bg-light p-2">Questão {{ $question->sequence }} {!! getItemAdminIcons($question,'question','False') !!}</h2>
+      <div class="p-1">{!! $question->statement !!}</div>
+
       <div class="p-2">
 
         <div class="col-form-label">
@@ -66,7 +68,7 @@
         </div>
 
         @if(isAdmin())
-        <p>Resposta correta: {{$question->right_answer}}</p>
+        <p class="text-muted">Resposta correta: {{$question->right_answer}}</p>
         @endif
       </div>
       @endforeach

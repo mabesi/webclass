@@ -1,5 +1,9 @@
 @extends('backend.layouts.panel')
 
+@push('css')
+  <link href="{{ asset('summernote/summernote-bs4.css') }}" rel="stylesheet">
+@endpush
+
 @section('content')
 
 <div class="card">
@@ -21,38 +25,45 @@
 
       <div class="row">
 
-        <div class="col-sm-6">
+        <div class="col-sm-7">
           <div class="form-group">
             <label for="course">Unidade</label>
             <span class="form-control bg-light" id="course">{{ $examination->unity->title }}</span>
           </div>
         </div>
 
-        <div class="col-sm-6">
+        <div class="col-sm-2">
           <div class="form-group">
             <label for="category">Avaliação</label>
-            <span class="form-control bg-light" id="category">{{ $examination->title }}</span>
+            <span class="form-control bg-light" id="category">{{ $examination->sequence }}</span>
+          </div>
+        </div>
+
+        <div class="col-sm-2">
+          <div class="form-group">
+            <label for="sequence">Número da Questão</label>
+
+            <input class="form-control" id="sequence" type="number" name="sequence"
+            value="{{ old('sequence',isset($question->sequence)?$question->sequence:Null) }}"
+            min="1" max="255" step="1" required>
+
+          </div>
+        </div>
+
+        <div class="col-sm-1">
+          <div class="form-group">
+            <label for="save-up" class="btn btn-primary" title="Salvar"><i class="fa fa-save" ></i></label>
+            <input id="save-up"  type="submit" value="" hidden />
           </div>
         </div>
 
       </div>
       <div class="row">
 
-        <div class="col-sm-2">
-          <div class="form-group">
-            <label for="sequence">Sequência</label>
-
-            <input class="form-control" id="sequence" type="number" name="sequence"
-            value="{{ old('sequence',isset($question->sequence)?$question->sequence:Null) }}"
-            min="1" max="4" step="1" required>
-
-          </div>
-        </div>
-
-        <div class="col-sm-10">
+        <div class="col-sm-12">
           <div class="form-group">
             <label for="title">Enunciado</label>
-            <textarea id="statement" name="statement" rows="5" class="form-control"
+            <textarea id="statement" name="statement" rows="6" class="form-control"
             required>{{ old('statement',isset($question->statement)?$question->statement:Null) }}</textarea>
           </div>
         </div>
@@ -63,7 +74,7 @@
         <div class="col-sm-12">
           <div class="form-group">
             <label for="sequence">Resposta 1</label>
-            <textarea id="answer1" name="answer1" rows="2" class="form-control"
+            <textarea id="answer1" name="answer1" rows="2" class="form-control summernote"
             required>{{ old('answer1',isset($question->answer1)?$question->answer1:'') }}</textarea>
           </div>
         </div>
@@ -73,7 +84,7 @@
         <div class="col-sm-12">
           <div class="form-group">
             <label for="sequence">Resposta 2</label>
-            <textarea id="answer2" name="answer2" rows="2" class="form-control"
+            <textarea id="answer2" name="answer2" rows="2" class="form-control summernote"
             required>{{ old('answer2',isset($question->answer2)?$question->answer2:'') }}</textarea>
           </div>
         </div>
@@ -83,7 +94,7 @@
         <div class="col-sm-12">
           <div class="form-group">
             <label for="sequence">Resposta 3</label>
-            <textarea id="answer3" name="answer3" rows="2" class="form-control"
+            <textarea id="answer3" name="answer3" rows="2" class="form-control summernote"
             required>{{ old('answer3',isset($question->answer3)?$question->answer3:'') }}</textarea>
           </div>
         </div>
@@ -93,7 +104,7 @@
         <div class="col-sm-12">
           <div class="form-group">
             <label for="sequence">Resposta 4</label>
-            <textarea id="answer4" name="answer4" rows="2" class="form-control"
+            <textarea id="answer4" name="answer4" rows="2" class="form-control summernote"
             required>{{ old('answer4',isset($question->answer4)?$question->answer4:'') }}</textarea>
           </div>
         </div>
@@ -141,3 +152,29 @@
 </div>
 
 @endsection
+
+@push('scripts')
+<script src="{{ asset('summernote/summernote-bs4.js') }}"></script>
+<script src="{{ asset('summernote/lang/summernote-pt-BR.js') }}"></script>
+<script>
+  $(document).ready(function () {
+
+    var toolbar = [
+      ['screen', ['fullscreen','codeview']],
+      ['history', ['undo', 'redo']],
+      ['style', ['bold', 'italic', 'underline', 'clear']],
+      ['font', ['strikethrough', 'superscript', 'subscript']],
+      ['color', ['color']],
+      ['para', ['paragraph','ul', 'ol','table','hr']],
+      ['media', ['link','picture','video']],
+      ['help', ['help']],
+    ];
+
+    $('#statement').summernote({
+      minHeight: 220,
+      lang: 'pt-BR',
+      toolbar: toolbar
+    });
+  });
+</script>
+@endpush
