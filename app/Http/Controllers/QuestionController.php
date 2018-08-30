@@ -61,10 +61,10 @@ class QuestionController extends Controller
 
       $question->sequence = $request->sequence;
       $question->statement = clean($request->statement);
-      $question->answer1 = strip_tags($request->answer1);
-      $question->answer2 = strip_tags($request->answer2);
-      $question->answer3 = strip_tags($request->answer3);
-      $question->answer4 = strip_tags($request->answer4);
+      $question->answer1 = clean($request->answer1);
+      $question->answer2 = clean($request->answer2);
+      $question->answer3 = clean($request->answer3);
+      $question->answer4 = clean($request->answer4);
       $question->right_answer = $request->right_answer;
       $question->examination_id = $request->examination_id;
 
@@ -129,10 +129,10 @@ class QuestionController extends Controller
 
       $question->sequence = $request->sequence;
       $question->statement = clean($request->statement);
-      $question->answer1 = strip_tags($request->answer1);
-      $question->answer2 = strip_tags($request->answer2);
-      $question->answer3 = strip_tags($request->answer3);
-      $question->answer4 = strip_tags($request->answer4);
+      $question->answer1 = clean($request->answer1);
+      $question->answer2 = clean($request->answer2);
+      $question->answer3 = clean($request->answer3);
+      $question->answer4 = clean($request->answer4);
       $question->right_answer = $request->right_answer;
       $question->examination_id = $request->examination_id;
 

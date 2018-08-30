@@ -19,3 +19,12 @@ div.card-body h2 i {
 div.card-body h3 i {
   color: #f86c6b;
 }
+
+div.w-5 {
+  width: 5% !important;
+  min-width: 40px;
+}
+
+div.w-90 {
+  width: 90% !important;
+}

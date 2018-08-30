@@ -175,6 +175,11 @@
       lang: 'pt-BR',
       toolbar: toolbar
     });
+    $('textarea.summernote').summernote({
+      minHeight: 100,
+      lang: 'pt-BR',
+      toolbar: toolbar
+    });
   });
 </script>
 @endpush
