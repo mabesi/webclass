@@ -47,6 +47,7 @@ Route::middleware(['auth'])->group(function(){
   Route::resource('examination', 'ExaminationController');
   Route::resource('question', 'QuestionController');
   Route::resource('courseware', 'CoursewareController');
+  Route::resource('trail', 'TrailController');
 
   Route::get('/lesson-modal/{id}', 'LessonController@modal');
   Route::get('/course/{id}/unity/create','UnityController@create');

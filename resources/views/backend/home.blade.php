@@ -75,6 +75,22 @@
     </div>
   </div>
 
+  <div class="col-sm-6">
+    <div class="card">
+      <div class="card-body p-0 d-flex align-items-center">
+        <a href="{{ url('trail') }}" >
+          <i class="fa fa-map bg-dark p-5 font-5xl mr-3"></i>
+        </a>
+        <div>
+          <div class="text-muted font-5xl font-weight-bold">{{ $totalTrails }}</div>
+          <div class="text-uppercase font-weight-bold font-xl" >
+            <a href="{{ url('trail') }}" >Trilhas de Formação</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
 </div>
 
 

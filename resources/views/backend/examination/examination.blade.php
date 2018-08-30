@@ -40,24 +40,24 @@
 
       <div class="p-2">
 
-        <table class="table-responsive-sm table-sm">
+        <table class="table-responsive-sm table-sm mb-2">
           <tbody>
-            <tr class="mb-1">
+            <tr>
               <td class="align-top"><input value="1" id="answer-1-{{ $question->id }}" name="question-{{ $question->id }}" type="radio"></td>
               <td class="align-top">A)</td>
               <td>{!! $question->answer1 !!}</td>
             </tr>
-            <tr class="mb-1">
+            <tr>
               <td class="align-top"><input value="2" id="answer-2-{{ $question->id }}" name="question-{{ $question->id }}" type="radio"></td>
               <td class="align-top">B)</td>
               <td>{!! $question->answer2 !!}</td>
             </tr>
-            <tr class="mb-1">
+            <tr>
               <td class="align-top"><input value="3" id="answer-3-{{ $question->id }}" name="question-{{ $question->id }}" type="radio"></td>
               <td class="align-top">C)</td>
               <td>{!! $question->answer3 !!}</td>
             </tr>
-            <tr class="mb-1">
+            <tr>
               <td class="align-top"><input value="4" id="answer-4-{{ $question->id }}" name="question-{{ $question->id }}" type="radio"></td>
               <td class="align-top">D)</td>
               <td>{!! $question->answer4 !!}</td>

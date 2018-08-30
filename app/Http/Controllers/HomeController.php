@@ -8,6 +8,7 @@ use App\User;
 use App\Course;
 use App\Category;
 use App\Instructor;
+use App\Trail;
 
 class HomeController extends Controller
 {
@@ -34,8 +35,10 @@ class HomeController extends Controller
         $totalCourses = User::count();
         $totalCategories = Category::count();
         $totalInstructors = Instructor::count();
+        $totalInstructors = Instructor::count();
+        $totalTrails = Trail::count();
 
-        return view('backend.home',compact('totalPupil','totalCategories','totalCourses','totalInstructors'));
+        return view('backend.home',compact('totalPupil','totalCategories','totalCourses','totalInstructors','totalTrails'));
 
       } else {
         return view('frontend.home');
