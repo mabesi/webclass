@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Trail;
+use App\Course;
 use Illuminate\Http\Request;
 
 class TrailController extends Controller
@@ -68,12 +69,14 @@ class TrailController extends Controller
      */
     public function show(Trail $trail)
     {
+      $courses = Course::orderBy('title')->get();
+
       $breadcrumbs = [
         'Trilhas de Formação' => 'trail',
         $trail->title => '#'
       ];
 
-      return view('backend.trail.trail',compact('trail','breadcrumbs'));
+      return view('backend.trail.trail',compact('trail','breadcrumbs','courses'));
     }
 
     /**
@@ -135,6 +138,45 @@ class TrailController extends Controller
           $message = getMsgDeleteAccessForbidden();
         }
       }
+      return response()->json($message);
+    }
+
+    public function includeCourse(Request $request, $trailId)
+    {
+      $trail = Trail::find($trailId);
+
+      $sequence = $request->sequence;
+      $courseId = $request->course_id;
+
+      if ($trail->courses()->find($courseId)!=Null){
+        return back()->with('warnings',['Este curso já está na trilha!']);
+      }
+
+      if ($trail->courses()->where('pivot_sequence',$sequence)->get()->count()>0){
+        return back()->with('warnings',['Outro curso já ocupa este número de ordem na trilha!']);
+      }
+
+      $trail->courses()->attach($courseId, ['sequence' => $sequence]);
+
+      if ($trail->courses()->find($courseId)->count()>0){
+        return back()->with('informations',['O curso foi incluído com sucesso!']);
+      } else {
+        return back()->with('problems',['Ocorreu um erro ao incluir o curso!']);
+      }
+    }
+
+    public function removeCourse($trailId,$courseId)
+    {
+      $trail = Trail::find($trailId);
+
+      $trail->courses()->detach($courseId);
+
+      if ($trail->courses()->find($courseId)==Null){
+        $message = getMsgRemoveSuccess();
+      } else {
+        $message = getMsgRemoveError();
+      }
+
       return response()->json($message);
     }
 }

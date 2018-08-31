@@ -44,7 +44,7 @@ function getMsgDeleteErrorVinculated($resource='')
 {
   if ($resource!='')
   $resource = "\n\nRecurso vinculado: ".$resource."\n\n";
-  
+
   $data = [
     'success' => false,
     'msg' => "Este recurso possui registros vinculados, por isso não pode ser deletado.".$resource,
@@ -88,6 +88,26 @@ function getMsgAddError()
   $data = [
     'success' => false,
     'msg' => 'Ocorreu um erro ao incluir o recurso.',
+  ];
+
+  return $data;
+}
+
+function getMsgRemoveSuccess()
+{
+  $data = [
+    'success' => true,
+    'msg' => 'O recurso foi removido com sucesso.',
+  ];
+
+  return $data;
+}
+
+function getMsgRemoveError()
+{
+  $data = [
+    'success' => false,
+    'msg' => 'Ocorreu um erro ao remover o recurso.',
   ];
 
   return $data;
