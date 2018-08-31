@@ -11,7 +11,7 @@
       {!! getItemAdminIcons($course,'course','True') !!}
     </span>
     @endif
-    <h1><i class="fa fa-dot-circle-o"></i> {{ $course->title }}</h1>
+    <h1><i class="fa fa-dot-circle-o"></i> {{ $course->title }} {!! getStarIcon($course->ratings()->avg('rate'),'warning') !!}</h1>
   </div>
 
   <div class="card-body">

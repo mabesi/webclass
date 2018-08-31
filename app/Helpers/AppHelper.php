@@ -75,3 +75,24 @@ function getYoutubeEmbedLink($url,$width=560,$height=420,$rel=False,$controls=Tr
     return $embed;
   }
 }
+
+function getStarIcon($level,$color="warning",$title="")
+{
+  if ($title==""){
+      $title = "Classificação: ".round($level,1);
+  }
+
+  $stars = '';
+
+  for ($i=1;$i<=5;$i++){
+    if ($level>=$i){
+      $stars .= '<i class="fa fa-star text-'.$color.'" title="'.$title.'"></i>';
+    } elseif ($level<$i && $level>($i-1)){
+      $stars .= '<i class="fa fa-star-half-empty text-'.$color.'" title="'.$title.'"></i>';
+    } else {
+      $stars .= '<i class="fa fa-star-o text-'.$color.'" title="'.$title.'"></i>';
+    }
+  }
+
+  return '<span>'.$stars.'</span>';
+}

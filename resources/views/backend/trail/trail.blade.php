@@ -74,7 +74,7 @@
         <span>
           <b>{{ $course->pivot->sequence }}</b> -
           <a href="{{ url('course/'.$course->id) }}">
-            {{ $course->title }}
+            {{ $course->title }} {!! getStarIcon($course->ratings()->avg('rate'),'warning') !!}
           </a>
         </span>
         <span>
