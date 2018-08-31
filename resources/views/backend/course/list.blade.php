@@ -54,7 +54,7 @@
       <tbody>
         @foreach ($courses as $course)
         <tr>
-          <td class="col-sm-3"><a href="{{ url('course/'.$course->id) }}">{{ $course->title }}</a> {!! getStarIcon($course->ratings()->avg('rate'),'warning') !!}</td>
+          <td class="col-sm-3"><a href="{{ url('course/'.$course->id) }}">{{ $course->title }}</a> {!! getCourseStarIcon($course,'warning') !!}</td>
           <td class="col-sm-2"><a href="{{ url('category/'.$course->category_id) }}">{{ $course->category->name }}</a></td>
           <td class="col-sm-2"><a href="{{ url('instructor/'.$course->instructor_id) }}">{{ $course->instructor->name }}</a></td>
           <td class="col-sm-3">{!! getKeywordsLinks($course->keywords) !!}</td>

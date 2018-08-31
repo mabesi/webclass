@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Rating;
+use App\Course;
 use Illuminate\Http\Request;
 
 class RatingController extends Controller
@@ -15,6 +16,19 @@ class RatingController extends Controller
     public function index()
     {
         //
+    }
+
+    public function course($courseId)
+    {
+      $course = Course::find($courseId);
+
+      $breadcrumbs = [
+        'Cursos' => 'course',
+        $course->title => 'course/'.$course->id,
+        'Avaliações' => '#'
+      ];
+
+      return view('backend.rating.list',compact('breadcrumbs','course'));
     }
 
     /**

@@ -22,7 +22,7 @@
       <tbody>
         @foreach ($category->courses as $course)
         <tr>
-          <td class="col-sm-6"><a href="{{ url('course/'.$course->id) }}">{{ $course->title }}</a> {!! getStarIcon($course->ratings()->avg('rate'),'warning') !!}</td>
+          <td class="col-sm-6"><a href="{{ url('course/'.$course->id) }}">{{ $course->title }}</a> {!! getCourseStarIcon($course,True,'warning') !!}</td>
           <td class="col-sm-5"><a href="{{ url('instructor/'.$course->instructor_id) }}">{{ $course->instructor->name }}</a></td>
           <td class="col-sm-1">{!! getItemAdminIcons($course,'course','False') !!}</td>
         </tr>

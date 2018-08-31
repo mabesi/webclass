@@ -76,10 +76,22 @@ function getYoutubeEmbedLink($url,$width=560,$height=420,$rel=False,$controls=Tr
   }
 }
 
-function getStarIcon($level,$color="warning",$title="")
+function getStars($level,$color="",$title="")
 {
+  $level = round($level,1);
+
   if ($title==""){
-      $title = "Classificação: ".round($level,1);
+      $title = "Classificação: ".$level;
+  }
+
+  if ($color == ""){
+    if ($level <= 2){
+      $color = 'danger';
+    } elseif ($level <= 4){
+      $color = 'warning';
+    } else {
+      $color = 'success';
+    }
   }
 
   $stars = '';
@@ -94,5 +106,18 @@ function getStarIcon($level,$color="warning",$title="")
     }
   }
 
-  return '<span>'.$stars.'</span>';
+  return $stars;
+}
+
+function getCourseStarIcon($course,$includeLink=True,$color="",$title="")
+{
+  $level = round($course->ratings()->avg('rate'),1);
+
+  $stars = getStars($level);
+
+  if ($includeLink){
+    $stars = '<a href="'.url('course/'.$course->id.'/ratings').'">'.$stars.'</a>';
+  }
+
+  return $stars;
 }
