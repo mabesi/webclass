@@ -116,12 +116,14 @@ class CourseController extends Controller
   */
   public function show(Course $course)
   {
+    $userRating = $course->ratings()->where('user_id',getUserId())->first();
+
     $breadcrumbs = [
       'Cursos' => 'course',
       $course->title => '#'
     ];
 
-    return view('backend.course.course',compact('course','breadcrumbs'));
+    return view('backend.course.course',compact('course','breadcrumbs','userRating'));
   }
 
   /**

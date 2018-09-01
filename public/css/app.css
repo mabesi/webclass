@@ -23,3 +23,24 @@ div.card-body h3 i {
 td p {
   margin-bottom: 0.4em !important;
 }
+
+form label {
+  color: gray;
+}
+
+.stars input[type=radio]{
+  display: none;
+}
+
+.stars label i.fa:before{
+  content: '\f005';
+  color: #FFC107;
+  font-size: 3em;
+  margin: 0 5px;
+  cursor: pointer;  
+}
+
+.stars input[type=radio]:checked ~ label i.fa:before{
+  color: #CCC;
+  cursor: pointer;
+}

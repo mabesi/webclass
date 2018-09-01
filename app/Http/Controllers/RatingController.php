@@ -49,7 +49,19 @@ class RatingController extends Controller
      */
     public function store(Request $request)
     {
-        //
+      $rating = new Rating;
+      //$request->validate($user->rules,$user->messages);
+
+      $rating->comment = $request->comment;
+      $rating->rate = $request->rate;
+      $rating->course_id = $request->course_id;
+      $rating->user_id = getUserId();
+
+      if ($rating->save()){
+        return back()->with('informations',['Os dados da avaliação foram salvos com sucesso!']);
+      } else {
+        return back()->with('problems',['Ocorreu um erro ao salvar os dados da avaliação!']);
+      }
     }
 
     /**

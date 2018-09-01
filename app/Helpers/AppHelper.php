@@ -81,17 +81,13 @@ function getStars($level,$color="",$title="")
   $level = round($level,1);
 
   if ($title==""){
-      $title = "Classificação: ".$level;
+      $title = "Avaliação: ".$level;
+  } else {
+    $title .= ' ('.$level.')';
   }
 
   if ($color == ""){
-    if ($level <= 2){
-      $color = 'danger';
-    } elseif ($level <= 4){
-      $color = 'warning';
-    } else {
-      $color = 'success';
-    }
+    $color = 'warning';
   }
 
   $stars = '';
@@ -109,11 +105,11 @@ function getStars($level,$color="",$title="")
   return $stars;
 }
 
-function getCourseStarIcon($course,$includeLink=True,$color="",$title="")
+function getCourseStarIcon($course,$includeLink=True,$color="",$title="Avaliação Geral")
 {
   $level = round($course->ratings()->avg('rate'),1);
 
-  $stars = getStars($level);
+  $stars = getStars($level,'warning',$title);
 
   if ($includeLink){
     $stars = '<a href="'.url('course/'.$course->id.'/ratings').'">'.$stars.'</a>';
