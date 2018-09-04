@@ -38,7 +38,11 @@ class HomeController extends Controller
         $totalInstructors = Instructor::count();
         $totalTrails = Trail::count();
 
-        return view('backend.home',compact('totalPupil','totalCategories','totalCourses','totalInstructors','totalTrails'));
+        if (isAdmin()){
+          return view('backend.admin-home',compact('totalPupil','totalCategories','totalCourses','totalInstructors','totalTrails'));
+        } else {
+          return view('backend.home',compact('totalPupil','totalCategories','totalCourses','totalInstructors','totalTrails'));
+        }
 
       } else {
         return view('frontend.home');

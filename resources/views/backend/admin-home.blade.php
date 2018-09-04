@@ -10,35 +10,21 @@
 
 <div class="row">
 
-  <div class="col-sm-6">
 
-    <div class="row">
-      <div class="col-sm-12">
-        <h2 class="text-muted">Pesquisar Cursos</h2>
+  <div class="col-sm-6">
+    <div class="card">
+      <div class="card-body p-0 d-flex align-items-center">
+        <a href="{{ url('user') }}" >
+          <i class="fa fa-group bg-success p-5 font-5xl mr-3"></i>
+        </a>
+        <div>
+          <div class="text-muted font-5xl font-weight-bold">{{ $totalPupil }}</div>
+          <div class="text-uppercase font-weight-bold font-xl">
+            <a href="{{ url('user') }}" >Alunos</a>
+          </div>
+        </div>
       </div>
     </div>
-
-    <form class="form-horizontal" action="{{ url('course') }}" method="get">
-
-      <div class="form-group row  mb-2">
-
-        <div class="input-group col-sm-8 mb-1">
-          <input id="search" name="search" class="form-control" type="text"
-            value="{{ isset($search)?$search:Null }}" >
-        </div>
-
-        <div class="col-sm-4 mb-1">
-          <span class="input-group-append">
-            <button type="submit" class="btn btn-primary">
-              <i class="fa fa-search"></i> Pesquisar
-            </button>
-          </span>
-        </div>
-
-      </div>
-
-    </form>
-
   </div>
 
   <div class="col-sm-6">
@@ -76,6 +62,22 @@
   <div class="col-sm-6">
     <div class="card">
       <div class="card-body p-0 d-flex align-items-center">
+        <a href="{{ url('instructor') }}" >
+          <i class="fa fa-graduation-cap bg-info p-5 font-5xl mr-3"></i>
+        </a>
+        <div>
+          <div class="text-muted font-5xl font-weight-bold">{{ $totalInstructors }}</div>
+          <div class="text-uppercase font-weight-bold font-xl" >
+            <a href="{{ url('instructor') }}" >Instrutores</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-sm-6">
+    <div class="card">
+      <div class="card-body p-0 d-flex align-items-center">
         <a href="{{ url('trail') }}" >
           <i class="fa fa-map bg-dark p-5 font-5xl mr-3"></i>
         </a>
@@ -89,18 +91,6 @@
     </div>
   </div>
 
-</div>
-
-<div class="row">
-  <div class="col-sm-4">
-    <a href="#" class="btn btn-lg btn-primary btn-block">Meus Cursos</a>
-  </div>
-  <div class="col-sm-4">
-    <a href="#" class="btn btn-lg btn-warning btn-block">Meus Certificados</a>
-  </div>
-  <div class="col-sm-4">
-    <a href="#" class="btn btn-lg btn-success btn-block">Meus Arquivos</a>
-  </div>
 </div>
 
 
