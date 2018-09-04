@@ -50,4 +50,15 @@ class Course extends Model
     return $this->belongsToMany('App\Trail');
   }
 
+  public function users()
+  {
+    return $this->belongsToMany('App\User');
+  }
+
+  public function registered($userId)
+  {
+    $user = $this->users()->where('id',$userId)->first();
+    return ($user != Null);
+  }
+
 }

@@ -9,100 +9,79 @@
 @section('content')
 
 <div class="row">
-
-  <div class="col-sm-6">
-
-    <div class="row">
-      <div class="col-sm-12">
-        <h2 class="text-muted">Pesquisar Cursos</h2>
-      </div>
-    </div>
-
-    <form class="form-horizontal" action="{{ url('course') }}" method="get">
-
-      <div class="form-group row  mb-2">
-
-        <div class="input-group col-sm-8 mb-1">
-          <input id="search" name="search" class="form-control" type="text"
-            value="{{ isset($search)?$search:Null }}" >
-        </div>
-
-        <div class="col-sm-4 mb-1">
-          <span class="input-group-append">
-            <button type="submit" class="btn btn-primary">
-              <i class="fa fa-search"></i> Pesquisar
-            </button>
-          </span>
-        </div>
-
-      </div>
-
-    </form>
-
+  <div class="col-sm-12">
+    <h2 class="text-muted">Pesquisar Cursos</h2>
   </div>
-
-  <div class="col-sm-6">
-    <div class="card">
-      <div class="card-body p-0 d-flex align-items-center">
-        <a href="{{ url('course') }}" >
-          <i class="fa fa-list bg-danger p-5 font-5xl mr-3"></i>
-        </a>
-        <div>
-          <div class="text-muted font-5xl font-weight-bold">{{ $totalCourses }}</div>
-          <div class="text-uppercase font-weight-bold font-xl" >
-            <a href="{{ url('course') }}" >Cursos</a>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <div class="col-sm-6">
-    <div class="card">
-      <div class="card-body p-0 d-flex align-items-center">
-        <a href="{{ url('category') }}" >
-          <i class="fa fa-th-large bg-warning p-5 font-5xl mr-3"></i>
-        </a>
-        <div>
-          <div class="text-muted font-5xl font-weight-bold">{{ $totalCategories }}</div>
-          <div class="text-uppercase font-weight-bold font-xl" >
-            <a href="{{ url('category') }}" >Categorias</a>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <div class="col-sm-6">
-    <div class="card">
-      <div class="card-body p-0 d-flex align-items-center">
-        <a href="{{ url('trail') }}" >
-          <i class="fa fa-map bg-dark p-5 font-5xl mr-3"></i>
-        </a>
-        <div>
-          <div class="text-muted font-5xl font-weight-bold">{{ $totalTrails }}</div>
-          <div class="text-uppercase font-weight-bold font-xl" >
-            <a href="{{ url('trail') }}" >Trilhas de Formação</a>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-
 </div>
+
+<form class="form-horizontal" action="{{ url('course') }}" method="get">
+
+  <div class="form-group row mb-4">
+
+    <div class="input-group col-sm-9 mb-1">
+      <input id="search" name="search" class="form-control font-3xl" type="text"
+        value="{{ isset($search)?$search:Null }}" >
+    </div>
+
+    <div class="col-sm-3 mb-1">
+      <span class="input-group-append">
+        <button type="submit" class="btn btn-primary form-control font-3xl">
+          <i class="fa fa-search"></i> Pesquisar
+        </button>
+      </span>
+    </div>
+
+  </div>
+
+</form>
 
 <div class="row">
-  <div class="col-sm-4">
-    <a href="#" class="btn btn-lg btn-primary btn-block">Meus Cursos</a>
-  </div>
-  <div class="col-sm-4">
-    <a href="#" class="btn btn-lg btn-warning btn-block">Meus Certificados</a>
-  </div>
-  <div class="col-sm-4">
-    <a href="#" class="btn btn-lg btn-success btn-block">Meus Arquivos</a>
-  </div>
-</div>
 
+  <div class="col-sm-3">
+    <div class="card">
+      <div class="card-body bg-primary text-center">
+        <i class="fa fa-tasks super-icon"></i>
+      </div>
+      <div class="card-footer text-center">
+        <a href="{{ url('mycourses') }}" class="font-2xl" >Meus Cursos</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-sm-3">
+    <div class="card">
+      <div class="card-body bg-danger text-center">
+        <i class="fa fa-list super-icon"></i>
+      </div>
+      <div class="card-footer text-center">
+        <a href="{{ url('course') }}" class="font-2xl">Todos os Cursos</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-sm-3">
+    <div class="card">
+      <div class="card-body bg-warning text-center">
+        <i class="fa fa-th-large super-icon"></i>
+      </div>
+      <div class="card-footer text-center">
+        <a href="{{ url('category') }}" class="font-2xl" >Categorias</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-sm-3">
+    <div class="card">
+      <div class="card-body bg-dark text-center">
+        <i class="fa fa-map super-icon"></i>
+      </div>
+      <div class="card-footer text-center">
+        <a href="{{ url('trail') }}" class="font-2xl" >Trilhas de Formação</a>
+      </div>
+    </div>
+  </div>
+
+</div>
 
 @push('all_scripts')
 

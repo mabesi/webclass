@@ -37,10 +37,14 @@ form label {
   color: #FFC107;
   font-size: 3em;
   margin: 0 5px;
-  cursor: pointer;  
+  cursor: pointer;
 }
 
 .stars input[type=radio]:checked ~ label i.fa:before{
   color: #CCC;
   cursor: pointer;
+}
+
+.super-icon {
+  font-size: 10em;
 }

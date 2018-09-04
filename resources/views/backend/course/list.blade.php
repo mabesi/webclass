@@ -58,7 +58,17 @@
           <td class="col-sm-2"><a href="{{ url('category/'.$course->category_id) }}">{{ $course->category->name }}</a></td>
           <td class="col-sm-2"><a href="{{ url('instructor/'.$course->instructor_id) }}">{{ $course->instructor->name }}</a></td>
           <td class="col-sm-3">{!! getKeywordsLinks($course->keywords) !!}</td>
-          <td class="col-sm-1">{!! getItemAdminIcons($course,'course','False') !!}</td>
+          <td class="col-sm-1">
+            @if (isAdmin())
+            {!! getItemAdminIcons($course,'course','False') !!}
+            @else
+              @if ($course->registered(getUserId()))
+              <span class="badge badge-warning font-sm">Inscrito</span>    
+              @else
+              <a href="#" title="Inscrever"><i class="fa fa-sign-in text-success font-xl"></i></a>
+              @endif
+            @endif
+          </td>
         </tr>
         @endforeach
       </tbody>
