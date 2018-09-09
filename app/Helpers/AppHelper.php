@@ -18,6 +18,26 @@ function getItemAdminIcons($item,$itemType,$resource)
   return trim($icons);
 }
 
+function getInscriptionButton($course)
+{
+  $button = '';
+
+  if ($course->registered(getUserId())){
+    $button = "<span class='badge badge-warning font-sm'>Inscrito</span>";
+  } else {
+    $button = "<a href='".url('course/'.$course->id.'/register')."' title='Inscrever'><i class='fa fa-sign-in text-success font-xl'></i></a>";
+  }
+
+  return $button;
+}
+
+function onlyRegistered($course)
+{
+  if (!$course->registered(getUserId()) && isNotAdmin()){
+    die(redirect('course/'.$course->id));
+  }
+}
+
 /*
  * get youtube video ID from URL
  *

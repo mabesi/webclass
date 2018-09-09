@@ -50,10 +50,11 @@ Route::middleware(['auth'])->group(function(){
   Route::resource('trail', 'TrailController');
   Route::resource('rating', 'RatingController');
 
-  Route::get('/lesson-modal/{id}', 'LessonController@modal');
+  Route::get('/lesson/{id}/modal', 'LessonController@modal');
   Route::get('/course/{id}/unity/create','UnityController@create');
   Route::get('/course/{id}/courseware/create','CoursewareController@create');
   Route::get('/course/{id}/ratings','RatingController@course');
+  Route::get('/course/{id}/register','CourseController@register');
   Route::get('/rating/{id}/remove','RatingController@remove');
   Route::get('/unity/{id}/lesson/create','LessonController@create');
   Route::get('/unity/{id}/examination/create','ExaminationController@create');

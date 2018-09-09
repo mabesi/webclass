@@ -8,6 +8,12 @@ use Illuminate\Http\Request;
 
 class UnityController extends Controller
 {
+    public function __construct()
+    {
+      $this->middleware('OnlyAdmin')->except('show');
+      $this->middleware('OnlyRegistered')->only('show');
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -64,6 +70,8 @@ class UnityController extends Controller
      */
     public function show(Unity $unity)
     {
+      onlyRegistered($unity->course);
+
       $breadcrumbs = [
         'Cursos' => 'course',
         $unity->course->title => 'course/'.$unity->course->id,

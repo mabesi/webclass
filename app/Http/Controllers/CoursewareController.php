@@ -8,6 +8,12 @@ use Illuminate\Http\Request;
 
 class CoursewareController extends Controller
 {
+    public function __construct()
+    {
+      $this->middleware('OnlyAdmin')->except('show');
+      $this->middleware('OnlyRegistered')->only('show');
+    }
+
     /**
      * Display a listing of the resource.
      *

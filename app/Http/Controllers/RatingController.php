@@ -8,6 +8,12 @@ use Illuminate\Http\Request;
 
 class RatingController extends Controller
 {
+    public function __construct()
+    {
+      $this->middleware('OnlyAdmin')->except('store','course');
+      $this->middleware('OnlyRegistered')->only('store');
+    }
+
     /**
      * Display a listing of the resource.
      *

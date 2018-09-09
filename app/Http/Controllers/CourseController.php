@@ -10,6 +10,12 @@ use App\Instructor;
 
 class CourseController extends Controller
 {
+
+  public function __construct()
+  {
+    $this->middleware('OnlyAdmin')->except('index','show','register');
+  }
+
   /**
   * Display a listing of the resource.
   *
@@ -67,6 +73,18 @@ class CourseController extends Controller
                   'breadcrumbs'));
   }
 
+  public function register($courseId)
+  {
+    $course = Course::find($courseId);
+
+    if ($course != Null){
+      $course->users()->attach(getUserId());
+      return redirect('course/'.$course->id)->with('informations',['A inscrição foi realizada com sucesso!']);
+    } else {
+      return back()->with('problems',['Inscrição não realizada. O curso solicitado não foi encontrado!']);
+    }
+  }
+
   /**
   * Show the form for creating a new resource.
   *
@@ -116,6 +134,8 @@ class CourseController extends Controller
   */
   public function show(Course $course)
   {
+
+    //dd(url()->current());
     $userRating = $course->ratings()->where('user_id',getUserId())->first();
 
     $breadcrumbs = [

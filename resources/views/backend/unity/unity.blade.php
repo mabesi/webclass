@@ -24,7 +24,7 @@
       <li class="list-group-item d-flex list-group-item-action justify-content-between align-items-center">
         <span>
           <b>{{ $lesson->sequence }}</b> -
-          <a data-toggle="modal" href="#" data-target="#largeModal" data-target-id="{{ url('lesson-modal/'.$lesson->id) }}">
+          <a data-toggle="modal" href="#" data-target="#largeModal" data-target-id="{{ url('lesson/'.$lesson->id.'/modal') }}">
             {{ $lesson->title }}
           </a>
         </span>

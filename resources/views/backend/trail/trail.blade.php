@@ -29,6 +29,7 @@
 
     <h2 class="p-2 bg-light"><i class="fa fa-graduation-cap"></i> Cursos Integrantes da Trilha</h2>
 
+    @if (isAdmin())
     <form action="{{ url('/trail/'.$trail->id.'/course/include') }}" method="POST" >
 
       {{ csrf_field() }}
@@ -67,6 +68,7 @@
 
       </div>
     </form>
+    @endif
 
     <ul class="list-group">
       @foreach ($trail->courses()->orderBy('pivot_sequence')->get() as $course)
@@ -78,11 +80,15 @@
           </a>
         </span>
         <span>
-          <a class="btn btn-sm delete-button btn-outline-danger" title="Remover Curso da Trilha"
-             href="{{ url('trail/'.$trail->id.'/course/'.$course->id.'/remove') }}"
-             data-token="{{ csrf_token() }}" data-resource="False" data-previous="{{ URL::previous() }}">
-            <i class="fa fa-minus-square"></i>
-          </a>
+          @if (isAdmin())
+            <a class="btn btn-sm delete-button btn-outline-danger" title="Remover Curso da Trilha"
+              href="{{ url('trail/'.$trail->id.'/course/'.$course->id.'/remove') }}"
+              data-token="{{ csrf_token() }}" data-resource="False" data-previous="{{ URL::previous() }}">
+              <i class="fa fa-minus-square"></i>
+            </a>
+          @else
+            {!! getInscriptionButton($course) !!}
+          @endif
       </span>
       </li>
       @endforeach

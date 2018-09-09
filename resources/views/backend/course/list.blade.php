@@ -54,19 +54,15 @@
       <tbody>
         @foreach ($courses as $course)
         <tr>
-          <td class="col-sm-3"><a href="{{ url('course/'.$course->id) }}">{{ $course->title }}</a> {!! getCourseStarIcon($course,'warning') !!}</td>
+          <td class="col-sm-4"><a href="{{ url('course/'.$course->id) }}">{{ $course->title }}</a><br>{!! getCourseStarIcon($course,'warning') !!}</td>
           <td class="col-sm-2"><a href="{{ url('category/'.$course->category_id) }}">{{ $course->category->name }}</a></td>
           <td class="col-sm-2"><a href="{{ url('instructor/'.$course->instructor_id) }}">{{ $course->instructor->name }}</a></td>
-          <td class="col-sm-3">{!! getKeywordsLinks($course->keywords) !!}</td>
+          <td class="col-sm-2">{!! getKeywordsLinks($course->keywords) !!}</td>
           <td class="col-sm-1">
             @if (isAdmin())
-            {!! getItemAdminIcons($course,'course','False') !!}
+              {!! getItemAdminIcons($course,'course','False') !!}
             @else
-              @if ($course->registered(getUserId()))
-              <span class="badge badge-warning font-sm">Inscrito</span>    
-              @else
-              <a href="#" title="Inscrever"><i class="fa fa-sign-in text-success font-xl"></i></a>
-              @endif
+              {!! getInscriptionButton($course) !!}
             @endif
           </td>
         </tr>

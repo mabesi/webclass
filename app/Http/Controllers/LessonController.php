@@ -8,6 +8,12 @@ use Illuminate\Http\Request;
 
 class LessonController extends Controller
 {
+    public function __construct()
+    {
+      $this->middleware('OnlyAdmin')->except('show','modal');
+      $this->middleware('OnlyRegistered')->only('show','modal');
+    }
+
     /**
      * Display a listing of the resource.
      *
