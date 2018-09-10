@@ -11,7 +11,7 @@
       <span class='badge badge-success font-sm'>Assistida</span>
     @else
       <a href="{{ url('lesson/'.$lesson->id.'/completed') }}"
-        class="btn btn-primary btn-sm" onclick="confirmLink()">Encerrar Aula</a>
+        class="btn btn-primary btn-sm" onclick="return confirmLink()">Encerrar Aula</a>
     @endif
     <button type="button" class="btn btn-secondary btn-sm ml-2" data-dismiss="modal">Fechar</button>
   </span>
