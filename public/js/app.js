@@ -4,6 +4,10 @@ $( document ).ready(function() {
     return deleteItem(this);
   });
 
+  $(".confirm-link").on("click", function() {
+    return confirmAction(this);
+  });
+
   $("#largeModal").on("show.bs.modal", function(e) {
       var link = $(e.relatedTarget).data('target-id');
       $.get(link, function (data) {
@@ -12,6 +16,11 @@ $( document ).ready(function() {
   });
 
 }); //End document.ready
+
+function confirmAction(e) {
+  var msg = $(e).data('message');
+  return confirm(msg);
+}
 
 function deleteItem(e) {
 

@@ -11,7 +11,7 @@ function getItemAdminIcons($item,$itemType,$resource)
                 "' data-token='".csrf_token()."' data-resource='".$resource."' data-previous='".URL::previous()."'>
               <i class='fa fa-trash'></i></a>";
   } elseif (!$resource) {
-    $icons .= "<a title='Ver Registro' class='btn btn-outline-success btn-sm' href='".url($itemType.'/'.$item->id)."'>
+    $icons .= "<a title='Ver Recurso' class='btn btn-outline-success btn-sm' href='".url($itemType.'/'.$item->id)."'>
     <i class='fa fa-arrow-circle-right'></i></a>";
   }
 
@@ -25,7 +25,9 @@ function getInscriptionButton($course)
   if ($course->registered(getUserId())){
     $button = "<span class='badge badge-warning font-sm'>Inscrito</span>";
   } else {
-    $button = "<a href='".url('course/'.$course->id.'/register')."' title='Inscrever'><i class='fa fa-sign-in text-success font-xl'></i></a>";
+    $button = "<a href='".url('course/'.$course->id.'/register').
+              "' title='Inscreva-se' class='confirm-link' data-message='Confirma a inscrição no curso?'>".
+              "<i class='fa fa-sign-in text-success font-2xl'></i></a>";
   }
 
   return $button;

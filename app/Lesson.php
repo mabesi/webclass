@@ -11,5 +11,19 @@ class Lesson extends Model
   {
     return $this->belongsTo('App\Unity');
   }
-  
+
+  public function users()
+  {
+    return $this->belongsToMany('App\User');
+  }
+
+  public function completed($userId=Null)
+  {
+    if ($userId==Null){
+      $userId = getUserId();
+    }
+    $user = $this->users()->where('id',$userId)->first();
+    return ($user != Null);
+  }
+
 }

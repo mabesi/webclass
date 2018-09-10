@@ -113,3 +113,81 @@ function getExtension($fileName)
 {
   return end(explode(".",$fileName));
 }
+
+function getFileIcon($fileName,$color=Null,$size=Null)
+{
+  $arrayName = explode(".",$fileName);
+  $reverse = array_reverse($arrayName);
+  $extension = $reverse[0];
+  $icon = "";
+
+  switch ($extension) {
+    case 'zip':
+    case 'rar':
+      $icon = "file-zip-o";
+      if ($color==Null){
+        $icon .= " text-dark";
+      }else{
+        $icon .= " text-$color";
+      }
+      break;
+    case 'doc':
+    case 'odt':
+      $icon = "file-word-o";
+      if ($color==Null){
+        $icon .= " text-info";
+      }else{
+        $icon .= " text-$color";
+      }
+      break;
+    case 'xls':
+    case 'xlsx':
+    case 'ods':
+      $icon = "file-excel-o";
+      if ($color==Null){
+        $icon .= " text-success";
+      }else{
+        $icon .= " text-$color";
+      }
+      break;
+    case 'ppt':
+    case 'pptx':
+    case 'odp':
+      $icon = "file-powerpoint-o";
+      if ($color==Null){
+        $icon .= " text-warning";
+      }else{
+        $icon .= " text-$color";
+      }
+      break;
+    case 'jpg':
+    case 'jpeg':
+    case 'png':
+    case 'bmp':
+      $icon = "file-image-o";
+      if ($color==Null){
+        $icon .= " text-warning";
+      }else{
+        $icon .= " text-$color";
+      }
+      break;
+    case 'pdf':
+      $icon = "file-pdf-o";
+      if ($color==Null){
+        $icon .= " text-danger";
+      }else{
+        $icon .= " text-$color";
+      }
+      break;
+
+    default:
+      $icon = "file text-secondary";
+      break;
+  }
+
+  if ($size!=Null){
+    $icon .= " font-$size";
+  }
+
+  return "<i class='fa fa-$icon'></i>";
+}

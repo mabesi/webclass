@@ -10,8 +10,8 @@ class LessonController extends Controller
 {
     public function __construct()
     {
-      $this->middleware('OnlyAdmin')->except('show','modal');
-      $this->middleware('OnlyRegistered')->only('show','modal');
+      $this->middleware('OnlyAdmin')->except('show','modal','completed');
+      $this->middleware('OnlyRegistered')->only('show','modal','completed');
     }
 
     /**
@@ -22,6 +22,14 @@ class LessonController extends Controller
     public function index()
     {
 
+    }
+
+    public function completed($lessonId)
+    {
+      $lesson = Lesson::find($lessonId);
+      //dd($lesson);
+      //$lesson->users()->attach(getUserId());
+      return redirect('unity/'.$lesson->unity->id);
     }
 
     /**

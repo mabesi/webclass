@@ -8,6 +8,15 @@
     <span class="float-right">
       {!! getItemAdminIcons($lesson,'lesson','True') !!}
     </span>
+    @else
+      <span class="float-right">
+        @if ($lesson->completed())
+          <span class='badge badge-success font-sm'>Assistida</span>
+        @else
+          <a href="{{ url('lesson/'.$lesson->id.'/completed') }}"
+            class="btn btn-primary btn-sm confirm-link" data-message="Deseja marcar a aula como assitida?">Encerrar Aula</a>
+        @endif
+      </span>
     @endif
     <h1><i class="fa fa-dot-circle-o"></i> {{ $lesson->title }}</h1>
   </div>

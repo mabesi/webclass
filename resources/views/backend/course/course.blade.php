@@ -10,8 +10,19 @@
       <a href="{{ url('course/'.$course->id.'/courseware/create') }}" class="btn btn-primary btn-sm mr-1" >Incluir Arquivo</a>
       {!! getItemAdminIcons($course,'course','True') !!}
     </span>
+    @elseif(!$course->registered(getUserId()))
+    <span class="float-right">
+      <a href="{{ url('course/') }}" class="btn btn-primary btn-lg confirm-link"
+         data-message="Confirma a inscrição no curso?">Inscreva-se</a>
+    </span>
     @endif
-    <h1><i class="fa fa-dot-circle-o"></i> {{ $course->title }} {!! getCourseStarIcon($course,True,'warning') !!}</h1>
+    <h1>
+      <i class="fa fa-dot-circle-o"></i> {{ $course->title }} {!! getCourseStarIcon($course,True,'warning') !!}
+      @if(!$course->registered(getUserId()))
+      <a tabindex="0" role="button" data-toggle="popover" data-trigger="focus" title="Avaliação do Curso"
+       data-content="Clique nas estrelas para ver os comentários e avaliações!"></a>
+      @endif
+    </h1>
   </div>
 
   <div class="card-body">
@@ -35,8 +46,12 @@
 
 
   </div>
+</div>
 
-  <div class="card-footer">
+@if($course->registered(getUserId()))
+<div class="card">
+
+  <div class="card-header">
     <h3>Progresso de Estudos</h3>
     <div class="progress my-2">
       <div class="progress-bar" role="progressbar" style="width: 25%;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">25%
@@ -46,8 +61,8 @@
 
   <div class="card-body">
 
-  @if ($userRating!=Null)
-  <h3 class="bg-light p-2">Sua Avaliação do Curso</h3>
+    @if ($userRating!=Null)
+    <h3 class="bg-light p-2">Sua Avaliação do Curso</h3>
     <div class="list-group">
       <div class="list-group-item flex-column align-items-start">
         <div class="d-flex w-100 justify-content-between">
@@ -57,7 +72,7 @@
         <p class="mb-1">{{ $userRating->comment }}</p>
       </div>
     </div>
-@else
+    @else
 
 
     <h3 class="bg-light p-2">Avaliação do Curso</h3>
@@ -114,7 +129,7 @@
 
       </div>
     </form>
-@endif
+    @endif
 
   </div>
 
@@ -136,8 +151,8 @@
           @foreach ($course->unities()->orderBy('sequence')->get() as $unity)
           <li class="list-group-item d-flex list-group-item-action justify-content-between align-items-center">
             <span>
-              <b>{{ $unity->sequence }}</b> -
-              <a href="{{ url('unity/'.$unity->id) }}">{{ $unity->title }}</a>
+              <b class="font-xl">{{ $unity->sequence }}</b> -
+              <a href="{{ url('unity/'.$unity->id) }}" class="font-xl">{{ $unity->title }}</a>
               @if (isset($unity->examination->id))
               <br><small> <a href="{{ url('examination/'.$unity->examination->id) }}" ><i class="fa fa-caret-right ml-2"></i> Avaliação {{ $unity->examination->sequence }}</a></small>
               @endif
@@ -148,12 +163,13 @@
         </ul>
       </div>
       <div class="col-sm-6">
-        <h3 class="p-2 bg-light"><i class="fa fa-folder-open"></i> Arquivos</h3>
+        <h3 class="p-2 bg-light"><i class="fa fa-folder-open"></i> Material Didático</h3>
         <ul class="list-group">
           @foreach ($course->coursewares as $courseware)
           <li class="list-group-item d-flex list-group-item-action justify-content-between align-items-center">
             <span>
-              <a href="{{ url('courseware/'.$courseware->id) }}">{{ $courseware->title }}</a>
+              {!! getFileIcon($courseware->name) !!} <a href="{{ url('courseware/'.$courseware->id) }}">{{ $courseware->title }}</a><br>
+              <small>{{ getDownloadName($courseware->name) }}</small>
             </span>
             <span>{!! getItemAdminIcons($courseware,'courseware','False') !!}</span>
           </li>
@@ -163,5 +179,18 @@
     </div>
   </div>
 </div>
+@endif
 
 @endsection
+
+@push('scripts')
+<script src="{{ asset("coreui/js/popover.js") }}"></script>
+<script type="text/javascript">
+  $(document).ready(function(){
+      $('[data-toggle="popover"]').popover('show');
+      setTimeout(function(){
+        $('[data-toggle="popover"]').popover('hide');
+      },8000);
+  });
+</script>
+@endpush

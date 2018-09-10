@@ -14,6 +14,7 @@ class UnitiesTableSeeder extends Seeder
      */
     public function run()
     {
+      DB::table('examination_user')->truncate();
       Unity::truncate();
       Examination::truncate();
       Question::truncate();

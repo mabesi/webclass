@@ -28,7 +28,12 @@
             {{ $lesson->title }}
           </a>
         </span>
-        <span>{!! getItemAdminIcons($lesson,'lesson',False) !!}</span>
+        <span>
+          @if ($lesson->completed())
+            <span class='badge badge-success font-sm'>Assistida</span>
+          @endif
+          {!! getItemAdminIcons($lesson,'lesson',False) !!}
+        </span>
       </li>
       @endforeach
     </ul>

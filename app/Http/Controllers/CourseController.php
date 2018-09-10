@@ -13,7 +13,7 @@ class CourseController extends Controller
 
   public function __construct()
   {
-    $this->middleware('OnlyAdmin')->except('index','show','register');
+    $this->middleware('OnlyAdmin')->except('index','show','register','myCourses');
   }
 
   /**
@@ -83,6 +83,23 @@ class CourseController extends Controller
     } else {
       return back()->with('problems',['Inscrição não realizada. O curso solicitado não foi encontrado!']);
     }
+  }
+
+  public function myCourses()
+  {
+    $user = getUser();
+    $courses = $user->courses()
+                    ->orderBy("title")
+                    ->paginate(16);
+
+    $breadcrumbs = [
+      'Meus Cursos' => '#',
+    ];
+
+    return view('backend.course.mycourses',
+                compact(
+                  'courses',
+                  'breadcrumbs'));
   }
 
   /**

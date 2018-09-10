@@ -12,6 +12,7 @@ class LessonsTableSeeder extends Seeder
      */
     public function run()
     {
+      DB::table('lesson_user')->truncate();
       Lesson::truncate();
       factory(App\Lesson::class, 240)->create();
     }
