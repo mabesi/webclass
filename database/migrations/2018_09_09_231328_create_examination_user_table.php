@@ -19,6 +19,7 @@ class CreateExaminationUserTable extends Migration
           $table->integer('examination_id')->unsigned();
           $table->foreign('examination_id')->references('id')->on('examinations')->onDelete('cascade');
           $table->text('result');
+          $table->decimal('grade',10,2);
         });
     }
 
