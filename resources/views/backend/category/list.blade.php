@@ -4,7 +4,9 @@
 
 <div class="card">
   <div class="card-header">
+    @if (isAdmin())
     <a href="{{ url('category/create') }}" class="btn btn-primary float-right" >Nova Categoria</a>
+    @endif
     <h1><i class="fa fa-graduation-cap"></i> Categorias</h1>
   </div>
   <div class="card-body">

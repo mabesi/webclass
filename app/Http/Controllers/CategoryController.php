@@ -19,14 +19,23 @@ class CategoryController extends Controller
      */
     public function index()
     {
-      $categories = Category::orderBy('name')
-                    ->paginate(10);
+      if (isAdmin()){
+        $paginate = 10;
+        $view = 'backend.category.list';
+      }else{
+        $paginate = 12;
+        $view = 'backend.category.categories';
+      }
+
+      $categories = Category::has('courses')
+                    ->orderBy('name')
+                    ->paginate($paginate);
 
       $breadcrumbs = [
         'Categorias' => '#',
       ];
 
-      return view('backend.category.list',compact('breadcrumbs','categories'));
+      return view($view,compact('breadcrumbs','categories'));
     }
 
     /**
