@@ -62,6 +62,7 @@
   <div class="card-body">
 
     @if ($userRating!=Null)
+
     <h3 class="bg-light p-2">Sua Avaliação do Curso</h3>
     <div class="list-group">
       <div class="list-group-item flex-column align-items-start">
@@ -72,8 +73,8 @@
         <p class="mb-1">{{ $userRating->comment }}</p>
       </div>
     </div>
-    @else
 
+    @else
 
     <h3 class="bg-light p-2">Avaliação do Curso</h3>
 
@@ -134,9 +135,9 @@
   </div>
 
 </div>
+@endif
 
-</div>
-
+@if($course->registered(getUserId()) || isAdmin())
 <div class="card mt-3">
   <div class="bg-light card-header">
     <h2>Conteúdo do Curso</h2>
@@ -145,7 +146,7 @@
 
     <div class="row">
 
-      <div class="col-sm-6">
+      <div class="col-sm-7">
         <h3 class="p-2 bg-light"><i class="fa fa-list"></i> Unidades</h3>
         <ul class="list-group">
           @foreach ($course->unities()->orderBy('sequence')->get() as $unity)
@@ -162,7 +163,7 @@
           @endforeach
         </ul>
       </div>
-      <div class="col-sm-6">
+      <div class="col-sm-5">
         <h3 class="p-2 bg-light"><i class="fa fa-folder-open"></i> Material Didático</h3>
         <ul class="list-group">
           @foreach ($course->coursewares as $courseware)
