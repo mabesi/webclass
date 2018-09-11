@@ -8,6 +8,10 @@ $( document ).ready(function() {
     return confirmAction(this);
   });
 
+  $(".confirm-submition").submit(function() {
+    return confirmAction(this);
+  });
+
   $("#largeModal").on("show.bs.modal", function(e) {
       var link = $(e.relatedTarget).data('target-id');
       $.get(link, function (data) {

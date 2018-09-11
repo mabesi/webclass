@@ -61,4 +61,9 @@ class User extends Authenticatable
       return $this->belongsToMany('App\Lesson');
     }
 
+    public function examinations()
+    {
+      return $this->belongsToMany('App\Examination')->withPivot('result','grade');
+    }
+
 }

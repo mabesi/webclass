@@ -23,16 +23,9 @@
 
   <div class="card-body">
 
-    <form action="{{ url('/user/'.getUserId().'/examination/'.$examination->id) }}" method="POST" >
+    <form action="{{ url('/examination/'.$examination->id.'/attempt') }}" method="POST" class="confirm-submition" data-message="Confirma o envio da avaliação?" >
 
       {{ csrf_field() }}
-
-      @if (isset($examination))
-      <input type="hidden" name="_method" value="PUT">
-      @endif
-
-      <input type="hidden" name="examination_id" value="{{ $examination->id }}">
-      <input type="hidden" name="user_id" value="{{ getUserId() }}">
 
       @foreach ($examination->questions()->orderBy('sequence')->get() as $question)
       <h2 class="bg-light p-2">Questão {{ $question->sequence }} {!! getItemAdminIcons($question,'question','False') !!}</h2>
@@ -43,7 +36,7 @@
         <table class="table-responsive-sm table-sm mb-2">
           <tbody>
             <tr>
-              <td class="align-top"><input value="1" id="answer-1-{{ $question->id }}" name="question-{{ $question->id }}" type="radio"></td>
+              <td class="align-top"><input value="1" id="answer-1-{{ $question->id }}" name="question-{{ $question->id }}" type="radio" required></td>
               <td class="align-top">A)</td>
               <td>{!! $question->answer1 !!}</td>
             </tr>
@@ -71,9 +64,16 @@
     </div>
     @endforeach
 
-  </form>
+
 
 </div>
+<div class="card-footer">
+  <div class="">
+    <input type="submit" class="btn btn-primary" value="Enviar Respostas">
+  </div>
+</div>
+
+</form>
 
 </div>
 

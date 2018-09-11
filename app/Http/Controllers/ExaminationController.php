@@ -10,8 +10,8 @@ class ExaminationController extends Controller
 {
     public function __construct()
     {
-      $this->middleware('OnlyAdmin')->except('show');
-      $this->middleware('OnlyRegistered')->only('show');
+      $this->middleware('OnlyAdmin')->except('show','attempt');
+      $this->middleware('OnlyRegistered')->only('show','attempt');
     }
 
     /**
@@ -22,6 +22,11 @@ class ExaminationController extends Controller
     public function index()
     {
         //
+    }
+
+    public function attempt(Request $request, $examinationId)
+    {
+      dd($request);
     }
 
     /**
