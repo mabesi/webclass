@@ -1,6 +1,6 @@
 <script type="text/javascript">
   function confirmLink(){
-    return confirm("Deseja marcar a aula como assitida?");
+    return confirm("Deseja marcar a aula como assistida?");
   }
 </script>
 
@@ -10,8 +10,8 @@
     @if ($lesson->completed())
       <span class='badge badge-success font-sm'>Assistida</span>
     @else
-      <a href="{{ url('lesson/'.$lesson->id.'/completed') }}"
-        class="btn btn-primary btn-sm" onclick="return confirmLink()">Encerrar Aula</a>
+      <a href="{{ url('lesson/'.$lesson->id.'/completed') }}" title="Clique para marcar a aula como Assistida"
+        class="btn btn-primary btn-sm" onclick="return confirmLink()">Finalizar Aula</a>
     @endif
     <button type="button" class="btn btn-secondary btn-sm ml-2" data-dismiss="modal">Fechar</button>
   </span>

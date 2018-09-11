@@ -13,8 +13,8 @@
         @if ($lesson->completed())
           <span class='badge badge-success font-sm'>Assistida</span>
         @else
-          <a href="{{ url('lesson/'.$lesson->id.'/completed') }}"
-            class="btn btn-primary btn-sm confirm-link" data-message="Deseja marcar a aula como assitida?">Encerrar Aula</a>
+          <a href="{{ url('lesson/'.$lesson->id.'/completed') }}" title="Clique para marcar a aula como Assistida"
+            class="btn btn-primary btn-sm confirm-link" data-message="Deseja marcar a aula como Assistida?">Finalizar Aula</a>
         @endif
       </span>
     @endif

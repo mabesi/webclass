@@ -17,9 +17,9 @@
           @foreach ($trails as $trail)
           <li class="list-group-item d-flex list-group-item-action justify-content-between align-items-center mb-2">
             <span>
-              <a href="{{ url('trail/'.$trail->id) }}" class="text-uppercase">{{ $trail->title }}</a><br>
-              <span class="text-muted">{{ strlen($trail->description)>300?substr($trail->description,0,300).'...':$trail->description }}</span><br>
-              <span class="font-weight-bold">{{ $trail->courses()->count() }} Cursos</span>
+              <a href="{{ url('trail/'.$trail->id) }}" class="text-uppercase font-weight-bold">{{ $trail->title }}</a><br>
+              <span class="font-weight-bold text-muted">{{ $trail->courses()->count() }} Cursos</span><br><br>
+              <span class="text-muted">{{ strlen($trail->description)>300?substr($trail->description,0,300).'...':$trail->description }}</span>
             </span>
             <span class="float-right">{!! getItemAdminIcons($trail,'trail','False') !!}</span>
           </li>
