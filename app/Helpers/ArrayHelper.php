@@ -1,17 +1,17 @@
 <?php
 
-function getQueryLink(Array $items)
+function getQueryLink(Array $items,$keySeparator='=',$itemSeparator='&',$spaceReplace='+')
 {
   $link = Array();
 
   foreach($items as $key => $value){
     if ($value!=Null){
-      $link[] .= $key.'='.$value;
+      $link[] .= $key.$keySeparator.$value;
     }
   }
 
-  $queryLink = implode('&',$link);
-  $queryLink = str_replace(" ","+",$queryLink);
+  $queryLink = implode($itemSeparator,$link);
+  $queryLink = str_replace(" ",$spaceReplace,$queryLink);
 
   return $queryLink;
 }

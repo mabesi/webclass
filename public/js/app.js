@@ -23,7 +23,8 @@ $( document ).ready(function() {
 
 function confirmAction(e) {
   var msg = $(e).data('message');
-  return confirm(msg);
+  var message = msg.replace(/\\n/g,'\n');
+  return confirm(message);
 }
 
 function deleteItem(e) {

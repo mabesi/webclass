@@ -62,6 +62,8 @@ Route::middleware(['auth'])->group(function(){
   Route::get('/unity/{id}/examination/create','ExaminationController@create');
   Route::get('/examination/{id}/question/create','QuestionController@create');
   Route::post('/examination/{id}/attempt','ExaminationController@attempt');
+  Route::get('/examination/{id}/verification','ExaminationController@verification');
+  Route::get('/examination/{id}/retry','ExaminationController@retry');
   Route::post('/trail/{id}/course/include','TrailController@includeCourse');
   Route::delete('/trail/{trailId}/course/{courseId}/remove','TrailController@removeCourse');
 

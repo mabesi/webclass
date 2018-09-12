@@ -27,8 +27,7 @@ class LessonController extends Controller
     public function completed($lessonId)
     {
       $lesson = Lesson::find($lessonId);
-      //dd($lesson);
-      //$lesson->users()->attach(getUserId());
+      $lesson->users()->attach(getUserId());
       return redirect('unity/'.$lesson->unity->id);
     }
 

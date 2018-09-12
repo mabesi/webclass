@@ -139,3 +139,22 @@ function getCourseStarIcon($course,$includeLink=True,$color="",$title="Avalia√ß√
 
   return $stars;
 }
+
+function getAnswerIcon($currentAnswer,$userAnswer,$rightAnswer,$fontSize='xl')
+{
+
+  if ($currentAnswer == $userAnswer){
+
+    if ($userAnswer == $rightAnswer){
+      $simbol = 'fa-check text-success';
+    } else {
+      $simbol = 'fa-close text-danger';
+    }
+    $icon = '<i class="fa '.$simbol.' font-'.$fontSize.'"></i>';
+    return $icon;
+
+  } else {
+    return '';
+  }
+
+}

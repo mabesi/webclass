@@ -40,13 +40,33 @@
 
     <h2 class="p-2 bg-light mt-3"><i class="fa fa-clipboard"></i> Avaliação</h2>
     <ul class="list-group">
-      <li class="list-group-item d-flex list-group-item-action justify-content-between align-items-center">
+      <li class="list-group-item list-group-item-action ">
         @if (isset($unity->examination->id))
-        <span>
-          <b><a href="{{ url('examination/'.$unity->examination->id) }}" >
-            Avaliação {{ $unity->examination->sequence }}</a></b>
-        </span>
-        <span>{!! getItemAdminIcons($unity->examination,'examination','False') !!}</span>
+        <div class="row">
+          <div class="col-sm-8">
+            <span class="font-xl font-weight-bold">
+              @if ($unity->examination->grade(getUserId())==Null)
+              <a href="{{ url('examination/'.$unity->examination->id) }}" >
+                Avaliação {{ $unity->examination->sequence }}</a>
+                @else
+                <i class="fa fa-check text-success"></i> Avaliação {{ $unity->examination->sequence }}
+                <span class="badge bg-{{ $unity->examination->grade(getUserId())>=70?'success':'red' }} text-white font-xl my-1">
+                  Nota: {{ $unity->examination->grade(getUserId()) }}
+                </span>
+                @endif
+              </span>
+          </div>
+          <div class="col-sm-4">
+            <span class="float-right">
+              @if ($unity->examination->grade(getUserId())!=Null)
+              <a href="{{ url('examination/'.$unity->examination->id.'/verification') }}" class="btn btn-info my-1" >Verificar Respostas</a>
+              <a href="{{ url('examination/'.$unity->examination->id.'/retry') }}" class="btn btn-warning confirm-link my-1"
+                data-message="Deseja refazer a avaliação?\n\nA avaliação atual será perdida." >Nova Tentativa</a>
+              @endif
+              {!! getItemAdminIcons($unity->examination,'examination','False') !!}
+            </span>
+          </div>
+        </div>
         @else
         <span>Esta unidade ainda não possui avaliação.</span>
         @endif

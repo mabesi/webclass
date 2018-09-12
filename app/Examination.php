@@ -22,4 +22,14 @@ class Examination extends Model
     return $this->belongsToMany('App\User')->withPivot('result','grade');
   }
 
+  public function grade($userId)
+  {
+    $user = $this->users()->where('id',$userId)->first();
+    if (!$user==Null){
+      return $user->pivot->grade;
+    } else {
+      return Null;
+    }
+  }
+
 }

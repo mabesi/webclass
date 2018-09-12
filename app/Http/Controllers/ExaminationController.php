@@ -10,8 +10,8 @@ class ExaminationController extends Controller
 {
     public function __construct()
     {
-      $this->middleware('OnlyAdmin')->except('show','attempt');
-      $this->middleware('OnlyRegistered')->only('show','attempt');
+      $this->middleware('OnlyAdmin')->except('show','attempt','verification','retry');
+      $this->middleware('OnlyRegistered')->only('show','attempt','verification','retry');
     }
 
     /**
@@ -26,7 +26,71 @@ class ExaminationController extends Controller
 
     public function attempt(Request $request, $examinationId)
     {
-      dd($request);
+      $examination = Examination::find($examinationId);
+
+      $examination->users()->detach(getUserId());
+
+      $answer = $request->question;
+
+      $totalQuestions = $examination->questions()->count();
+      $totalHits = 0;
+      $test = Array();
+
+      foreach ($examination->questions as $question){
+        if ($question->right_answer == $answer[$question->id]){
+          $totalHits++;
+        }
+      }
+
+      $grade = (int) ((100 / $totalQuestions) * $totalHits);
+
+      $result = getQueryLink($answer,':',';',' ');
+
+      $examination->users()->attach(getUserId(),['grade' => $grade, 'result' => $result]);
+
+      //$user = $examination->users()->where('id',getUserId())->first();
+
+      //dd($examination->users()->where('id',getUserId())->first()->pivot);
+
+      return redirect('examination/'.$examination->id.'/verification')
+                    ->with('informations',['A avaliação foi enviada com sucesso. Confira as respostas e a sua nota!']);
+
+    }
+
+    public function retry($examinationId)
+    {
+      $examination = Examination::find($examinationId);
+      $examination->users()->detach(getUserId());
+      return redirect('examination/'.$examination->id);
+    }
+
+    public function verification($examinationId)
+    {
+      $examination = Examination::find($examinationId);
+
+      if ($examination->users()->where('id',getUserId())->first()==Null){
+        return redirect('examination/'.$examination->id)->with('problems',['Esta avaliação ainda não foi respondida!']);
+      }
+
+      $unity = $examination->unity;
+      $breadcrumbs = [
+        'Cursos' => 'course',
+        $unity->course->title => 'course/'.$unity->course->id,
+        $unity->title => 'unity/'.$unity->id,
+        'Avaliação '.$examination->sequence => '#',
+      ];
+
+      $pivot = $examination->users()->where('id',getUserId())->first()->pivot;
+
+      $result = $pivot->result;
+      $result = explode(';',$result);
+      $answer = Array();
+      foreach($result as $item){
+        $item = explode(':',$item);
+        $answer[$item[0]] = $item[1];
+      }
+
+      return view('backend.examination.verification',compact('examination','pivot','answer','breadcrumbs'));
     }
 
     /**
