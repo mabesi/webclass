@@ -12,7 +12,7 @@
     </span>
     @elseif(!$course->registered(getUserId()))
     <span class="float-right">
-      <a href="{{ url('course/') }}" class="btn btn-primary btn-lg confirm-link"
+      <a href="{{ url('course/'.$course->id.'/register') }}" class="btn btn-primary btn-lg confirm-link"
          data-message="Confirma a inscrição no curso?">Inscreva-se</a>
     </span>
     @endif
