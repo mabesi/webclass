@@ -60,3 +60,29 @@ div.progress-50{
 .super-icon {
   font-size: 10em;
 }
+
+.certificate {
+  background-image: url('../img/moldura01.png');
+  background-repeat: no-repeat;
+
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+
+  width: 800px;
+  height: 500px;
+  background-position: 50% 50%;
+  padding: 4px;
+}
+
+.certi {
+  width: 800px;
+  height: 500px;
+  background-image: url('../img/moldura01.png');
+  -webkit-background-size: 100% 100%;
+  -moz-background-size: 100% 100%;
+  -o-background-size: 100% 100%;
+  background-size: 100% 100%;
+  background-position: 50% 50%;
+}

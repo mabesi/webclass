@@ -13,7 +13,8 @@ class CourseController extends Controller
 
   public function __construct()
   {
-    $this->middleware('OnlyAdmin')->except('index','show','register','myCourses');
+    $this->middleware('OnlyAdmin')->except('index','show','register','myCourses','certificate');
+    $this->middleware('OnlyRegistered')->only('certificate');
   }
 
   /**
@@ -71,6 +72,19 @@ class CourseController extends Controller
                   'path',
                   'queryLink',
                   'breadcrumbs'));
+  }
+
+  public function certificate($courseId)
+  {
+    $course = Course::find($courseId);
+
+    $breadcrumbs = [
+      'Cursos' => 'course',
+      $course->title => 'course/'.$course->id,
+      'Certificado' => '#'
+    ];
+
+    return view('backend.course.certificate',compact('course','breadcrumbs'));
   }
 
   public function register($courseId)
@@ -151,8 +165,6 @@ class CourseController extends Controller
   */
   public function show(Course $course)
   {
-
-    //dd(url()->current());
     $userRating = $course->ratings()->where('user_id',getUserId())->first();
     $progress = $course->progress();
     $average = $course->average();

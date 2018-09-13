@@ -57,6 +57,7 @@ Route::middleware(['auth'])->group(function(){
   Route::get('/course/{id}/courseware/create','CoursewareController@create');
   Route::get('/course/{id}/ratings','RatingController@course');
   Route::get('/course/{id}/register','CourseController@register');
+  Route::get('/course/{id}/certificate','CourseController@certificate');
   Route::get('/rating/{id}/remove','RatingController@remove');
   Route::get('/unity/{id}/lesson/create','LessonController@create');
   Route::get('/unity/{id}/examination/create','ExaminationController@create');
