@@ -154,13 +154,15 @@ class CourseController extends Controller
 
     //dd(url()->current());
     $userRating = $course->ratings()->where('user_id',getUserId())->first();
+    $progress = $course->progress();
+    $average = $course->average();
 
     $breadcrumbs = [
       'Cursos' => 'course',
       $course->title => '#'
     ];
 
-    return view('backend.course.course',compact('course','breadcrumbs','userRating'));
+    return view('backend.course.course',compact('course','breadcrumbs','userRating','progress','average'));
   }
 
   /**

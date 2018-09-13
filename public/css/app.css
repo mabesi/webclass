@@ -28,6 +28,18 @@ form label {
   color: gray;
 }
 
+div.progress-20{
+  height: 20px;
+}
+
+div.progress-30{
+  height: 30px;
+}
+
+div.progress-50{
+  height: 50px;
+}
+
 .stars input[type=radio]{
   display: none;
 }
@@ -35,7 +47,7 @@ form label {
 .stars label i.fa:before{
   content: '\f005';
   color: #FFC107;
-  font-size: 3em;
+  font-size: 2.5em;
   margin: 0 5px;
   cursor: pointer;
 }

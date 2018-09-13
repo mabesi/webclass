@@ -61,4 +61,51 @@ class Course extends Model
     return ($user != Null);
   }
 
+  public function progress($userId=Null)
+  {
+    if ($userId==Null){
+      $userId = getUserId();
+    }
+
+    $totalUnities = 0;
+    $totalProgress = 0;
+
+    $unities = $this->unities;
+
+    foreach($unities as $unity){
+      $totalUnities++;
+      $totalProgress = $totalProgress + $unity->progress();
+    }
+
+    $progress = (int) (($totalProgress/($totalUnities*100))*100);
+
+    return $progress;
+  }
+
+  public function average($userId=Null)
+  {
+    if ($userId==Null){
+      $userId = getUserId();
+    }
+
+    $totalExaminations = 0;
+    $totalGrade = 0;
+
+    $unities = $this->unities;
+
+    foreach($unities as $unity){
+      if ($unity->examination!=Null){
+        if ($unity->examination->grade(getUserId())!=Null){
+          $totalGrade = $totalGrade + $unity->examination->grade(getUserId());
+        } else {
+          return 0;
+        }
+      }
+    }
+
+    $average = round($totalGrade / ($totalExaminations*100),2);
+
+    return $average;
+  }
+
 }

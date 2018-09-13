@@ -19,6 +19,14 @@
         Unidade: <a href="{{ url('unity/'.$examination->unity->id) }}">{{$examination->unity->title}}</a>
       </div>
     </div>
+    <div class="row mt-2">
+      <div class="col-sm-12 ">
+        <p class="text-justify my-1">Esta avaliação vale um total de 100 pontos, divididos igualmente entre cada uma das questões. A nota será exibida imediatamente após o envio das respostas.</p>
+        <p class="text-justify my-1">A média final para obtenção do certificado do curso será de 70 pontos, no mínimo.</p>
+        <p class="text-justify my-1">A prova pode ser refeita quantas vezes o aluno desejar.</p>
+        <p class="text-justify my-1">Boa prova!</p>
+      </div>
+    </div>
   </div>
 
   <div class="card-body">

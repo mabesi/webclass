@@ -10,8 +10,8 @@ class LessonController extends Controller
 {
     public function __construct()
     {
-      $this->middleware('OnlyAdmin')->except('show','modal','completed');
-      $this->middleware('OnlyRegistered')->only('show','modal','completed');
+      $this->middleware('OnlyAdmin')->except('show','modal','watched');
+      $this->middleware('OnlyRegistered')->only('show','modal','watched');
     }
 
     /**
@@ -24,7 +24,7 @@ class LessonController extends Controller
 
     }
 
-    public function completed($lessonId)
+    public function watched($lessonId)
     {
       $lesson = Lesson::find($lessonId);
       $lesson->users()->attach(getUserId());

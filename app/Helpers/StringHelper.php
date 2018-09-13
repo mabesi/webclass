@@ -77,3 +77,25 @@ function nbsp($qtd)
   }
   return $spaces;
 }
+
+function getRandMessage()
+{
+  $messages = [
+    '"Uma vida não questionada não merece ser vivida." (Platão)',
+    '"O livro é um mestre que fala mas que não responde." (Platão)',
+    '"A coisa mais indispensável a um homem é reconhecer o uso que deve fazer do seu próprio conhecimento." (Platão)',
+    '"A parte que ignoramos é muito maior que tudo quanto sabemos." (Platão)',
+    '"O ignorante afirma, o sábio duvida, o sensato reflete." (Aristóteles)',
+    '"Eu não procuro saber as respostas, procuro compreender as perguntas." (Confúcio)',
+    '"O sábio nunca diz tudo o que pensa, mas pensa sempre tudo o que diz." (Aristóteles)',
+    '"O saber é saber que nada se sabe. Esta é a definição do verdadeiro conhecimento." (Confúcio)',
+    '"Não basta conquistar a sabedoria, é preciso usá-la." (Cícero)',
+    '"Muitas palavras não indicam necessariamente muita sabedoria." (Tales de Mileto)',
+    '"É fazendo que se aprende a fazer aquilo que se deve aprender a fazer." (Aristóteles)',
+    '"Só sei que nada sei." (Sócrates)',
+  ];
+
+  $i = array_rand($messages);
+
+  return $messages[$i];
+}
