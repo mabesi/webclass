@@ -60,15 +60,16 @@
            aria-valuenow="{{ $progress }}" aria-valuemin="0" aria-valuemax="100"><b>{{ $progress }}%</b>
           </div>
         </div>
-        <div class="p-3 font-weight-bold text-center">
+        <div class="font-weight-bold text-center mt-3">
+          <a href="{{ url('course/'.$course->id.'/certificate') }}" target="_blank" class="btn btn-primary btn-block">Meu Certificado</a>
           @if ($progress==100)
           <span class="badge bg-{{ $average>=70?'success':'red' }} text-white p-3 font-4xl">
             Média Final: {{ $average }}
           </span>
           @else
-          <em class="text-muted">
+          <p class="text-muted mt-2">
             {{ getRandMessage() }}
-          </em>
+          </p>
           @endif
         </div>
       </div>

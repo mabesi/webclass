@@ -61,28 +61,33 @@ div.progress-50{
   font-size: 10em;
 }
 
-.certificate {
-  background-image: url('../img/moldura01.png');
-  background-repeat: no-repeat;
-
-  -webkit-background-size: cover;
-  -moz-background-size: cover;
-  -o-background-size: cover;
-  background-size: cover;
-
-  width: 800px;
-  height: 500px;
-  background-position: 50% 50%;
-  padding: 4px;
+.size-2{
+  height: 20px;
+}
+.size-3{
+  height: 30px;
+}
+.size-4{
+  height: 40px;
+}
+.size-5{
+  height: 50px;
+}
+.size-8{
+  height: 80px;
+}
+.size-10{
+  height: 100px;
 }
 
-.certi {
-  width: 800px;
-  height: 500px;
-  background-image: url('../img/moldura01.png');
+.certificate {
+  width: 1200px;
+  background-image: url('../img/moldura05.png');
   -webkit-background-size: 100% 100%;
   -moz-background-size: 100% 100%;
   -o-background-size: 100% 100%;
   background-size: 100% 100%;
   background-position: 50% 50%;
+  font-family: URW Chancery L, cursive;
+  color: #5F7280;
 }

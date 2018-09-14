@@ -254,6 +254,13 @@ function getBRDate()
   return date('d/m/Y');
 }
 
+function getCompleteDate()
+{
+  setlocale(LC_TIME, 'pt_BR', 'pt_BR.utf-8', 'pt_BR.utf-8', 'portuguese');
+  date_default_timezone_set('America/Sao_Paulo');
+  return strftime('%d de %B de %Y', strtotime('today'));
+}
+
 function getMysqlDate()
 {
   //date_default_timezone_set('America/Sao_Paulo');

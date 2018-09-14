@@ -77,14 +77,15 @@ class CourseController extends Controller
   public function certificate($courseId)
   {
     $course = Course::find($courseId);
+    $user = getUser();
 
     $breadcrumbs = [
       'Cursos' => 'course',
       $course->title => 'course/'.$course->id,
-      'Certificado' => '#'
+      'Meu Certificado' => '#'
     ];
 
-    return view('backend.course.certificate',compact('course','breadcrumbs'));
+    return view('backend.course.certificate',compact('course','breadcrumbs','user'));
   }
 
   public function register($courseId)
