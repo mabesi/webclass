@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use PDF;
 use App\Course;
 use App\User;
 use App\Category;
@@ -13,8 +14,8 @@ class CourseController extends Controller
 
   public function __construct()
   {
-    $this->middleware('OnlyAdmin')->except('index','show','register','myCourses','certificate');
-    $this->middleware('OnlyRegistered')->only('certificate');
+    $this->middleware('OnlyAdmin')->except('index','show','register','myCourses','certificate','pdfCertificate');
+    $this->middleware('OnlyRegistered')->only('certificate','pdfCertificate');
   }
 
   /**
@@ -86,6 +87,18 @@ class CourseController extends Controller
     ];
 
     return view('backend.course.certificate',compact('course','breadcrumbs','user'));
+  }
+
+  public function pdfCertificate($courseId)
+  {
+    $course = Course::find($courseId);
+    $user = getUser();
+
+    //PDF::setOptions(['dpi' => 150, 'defaultFont' => 'sans-serif']);
+
+    $pdf = PDF::loadView('backend.course.certificate',compact('course','user'));
+
+    return $pdf->setPaper('a4', 'landscape')->setWarnings(false)->download('certificado.pdf');
   }
 
   public function register($courseId)

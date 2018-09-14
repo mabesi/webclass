@@ -79,15 +79,3 @@ div.progress-50{
 .size-10{
   height: 100px;
 }
-
-.certificate {
-  width: 1200px;
-  background-image: url('../img/moldura05.png');
-  -webkit-background-size: 100% 100%;
-  -moz-background-size: 100% 100%;
-  -o-background-size: 100% 100%;
-  background-size: 100% 100%;
-  background-position: 50% 50%;
-  font-family: URW Chancery L, cursive;
-  color: #5F7280;
-}
