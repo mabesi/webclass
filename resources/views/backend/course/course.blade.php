@@ -61,13 +61,13 @@
           </div>
         </div>
         <div class="font-weight-bold text-center mt-3">
-          <a href="{{ url('course/'.$course->id.'/certificate') }}" target="_blank" class="btn btn-primary btn-block">Meu Certificado</a>
           @if ($progress==100)
-          <span class="badge bg-{{ $average>=70?'success':'red' }} text-white p-3 font-4xl">
+          <span class="badge bg-{{ $average>=70?'success':'red' }} text-white p-3 font-xl mb-2">
             Média Final: {{ $average }}
-          </span>
+          </span><br>
+          <a href="{{ url('course/'.$course->id.'/certificate') }}" target="_blank" class="btn btn-primary">Meu Certificado</a>
           @else
-          <p class="text-muted mt-2">
+          <p class="text-muted mt-3">
             {{ getRandMessage() }}
           </p>
           @endif

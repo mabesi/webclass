@@ -78,27 +78,32 @@ class CourseController extends Controller
   public function certificate($courseId)
   {
     $course = Course::find($courseId);
-    $user = getUser();
-    $downloadButton = True;
 
-    $breadcrumbs = [
-      'Cursos' => 'course',
-      $course->title => 'course/'.$course->id,
-      'Meu Certificado' => '#'
-    ];
-
-    return view('backend.course.certificate',compact('course','breadcrumbs','user','downloadButton'));
+    if ($course->progress()==100 && $course->average()>=70){
+      $user = getUser();
+      $downloadButton = True;
+      $breadcrumbs = [
+        'Cursos' => 'course',
+        $course->title => 'course/'.$course->id,
+        'Meu Certificado' => '#'
+      ];
+      return view('backend.course.certificate',compact('course','breadcrumbs','user','downloadButton'));
+    } else {
+      return back()->with('warnings',['Para obter o certificado você deve concluir o curso, com média mínima de 70.']);
+    }
   }
 
   public function pdfCertificate($courseId)
   {
     $course = Course::find($courseId);
-    $user = getUser();
-    $downloadButton = False;
-
-    $pdf = PDF::loadView('backend.course.certificate',compact('course','user','downloadButton'));
-
-    return $pdf->setPaper('a4', 'landscape')->setWarnings(false)->download('certificado.pdf');
+    if ($course->progress()==100 && $course->average()>=70){
+      $user = getUser();
+      $downloadButton = False;
+      $pdf = PDF::loadView('backend.course.certificate',compact('course','user','downloadButton'));
+      return $pdf->setPaper('a4', 'landscape')->setWarnings(false)->download('certificado.pdf');
+    } else {
+      return back()->with('warnings',['Para obter o certificado você deve concluir o curso, com média mínima de 70.']);
+    }
   }
 
   public function register($courseId)
