@@ -17,10 +17,11 @@
     @include('backend.layouts.sidemenu')
 
     <main class="main">
-      
+
       @include('backend.layouts.messages')
 
-      @include('backend.layouts.breadcrumbs')
+      <div class="mb-3">
+      </div>
 
       <div class="container-fluid">
         <div class="animated fadeIn">
@@ -30,8 +31,6 @@
         </div>
       </div>
     </main>
-
-    @include('backend.layouts.tabpanel')
 
   </div><!-- End of app-body -->
 

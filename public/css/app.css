@@ -79,3 +79,10 @@ div.progress-50{
 .size-10{
   height: 100px;
 }
+
+.bread{
+  list-style: none;
+}
+.bread li{
+  display: inline;
+}
