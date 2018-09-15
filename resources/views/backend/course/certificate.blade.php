@@ -9,17 +9,23 @@
     <link href="{{ asset("coreui/css/style.css") }}" rel="stylesheet">
     <link href="{{ asset("coreui/vendors/pace-progress/css/pace.min.css") }}" rel="stylesheet">
 
+    <link href="https://fonts.googleapis.com/css?family=Lobster+Two" rel="stylesheet">
+
     <!-- App CSS -->
     <link type="text/css" href="{{ asset('css/app.css') }}" rel="stylesheet">
     <style>
 
-      body{
-        background-color: #fff;
-        color: #5F7280;
+      @font-face {
+        font-family: 'times',sans-serif;
       }
 
       @page{
         margin: 1.2em;
+      }
+
+      body{
+        background-color: #fff;
+        color: #5F7280;
       }
 
       .cbox{
@@ -29,8 +35,8 @@
 
       .certificate{
         border: 10px #4D4D4D double;
-        font-family: URW Chancery L, cursive;
         color: #5F7280;
+        font-family: 'times', sans-serif;
         background-color: #fff;
       }
 
@@ -38,6 +44,15 @@
   </head>
 
 <body>
+
+  @if ($downloadButton)
+  <div class="row text-center my-1">
+    <div class="col-sm-12">
+      <a href="{{ url('course/'.$course->id.'/pdf-certificate') }}" title="Clique para baixar seu certificado em PDF."
+         class="btn btn-primary">Baixar Certificado em PDF</a>
+    </div>
+  </div>
+  @endif
 
   <div class="cbox">
 
@@ -51,7 +66,7 @@
             <img src="{{ asset('img/logo-text.png') }}" width="240px" />
           </td>
           <td width="70%">
-            <p class="display-3 font-weight-bold">CERTIFICADO</p>
+            <p class="display-2 font-weight-bold">CERTIFICADO</p>
           </td>
         </tr>
       </table>

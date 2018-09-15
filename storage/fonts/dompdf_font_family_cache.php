@@ -77,13 +77,7 @@
     'italic' => $rootDir . '/lib/fonts/DejaVuSerif-Italic',
     'normal' => $rootDir . '/lib/fonts/DejaVuSerif',
   ),
-  'coreui-icons-linear-free' => array(
-    'normal' => $fontDir . '/f5166b667046b5f7de311b873e6b9bb9',
-  ),
-  'fontawesome' => array(
-    'normal' => $fontDir . '/01612dd27d0e3f569ea41d34209b0013',
-  ),
-  'simple-line-icons' => array(
-    'normal' => $fontDir . '/5251e7dbfff92955eb30d8df049637ac',
+  'lobster two' => array(
+    'normal' => $fontDir . '/9552491b0250d885735f8db2e9ef4704',
   ),
 ) ?>

@@ -79,6 +79,7 @@ class CourseController extends Controller
   {
     $course = Course::find($courseId);
     $user = getUser();
+    $downloadButton = True;
 
     $breadcrumbs = [
       'Cursos' => 'course',
@@ -86,17 +87,16 @@ class CourseController extends Controller
       'Meu Certificado' => '#'
     ];
 
-    return view('backend.course.certificate',compact('course','breadcrumbs','user'));
+    return view('backend.course.certificate',compact('course','breadcrumbs','user','downloadButton'));
   }
 
   public function pdfCertificate($courseId)
   {
     $course = Course::find($courseId);
     $user = getUser();
+    $downloadButton = False;
 
-    //PDF::setOptions(['dpi' => 150, 'defaultFont' => 'sans-serif']);
-
-    $pdf = PDF::loadView('backend.course.certificate',compact('course','user'));
+    $pdf = PDF::loadView('backend.course.certificate',compact('course','user','downloadButton'));
 
     return $pdf->setPaper('a4', 'landscape')->setWarnings(false)->download('certificado.pdf');
   }
