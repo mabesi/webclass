@@ -68,5 +68,7 @@ Route::middleware(['auth'])->group(function(){
   Route::get('/examination/{id}/retry','ExaminationController@retry');
   Route::post('/trail/{id}/course/include','TrailController@includeCourse');
   Route::delete('/trail/{trailId}/course/{courseId}/remove','TrailController@removeCourse');
+  Route::get('change-password', 'UserController@editPassword');
+  Route::post('change-password', 'UserController@changePassword');
 
 });

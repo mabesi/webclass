@@ -11,7 +11,7 @@ class UserController extends Controller
 {
     public function __construct()
     {
-      $this->middleware('OnlyAdmin');
+      $this->middleware('OnlyAdmin')->except('editPassword','changePassword');
     }
 
     /**
@@ -146,44 +146,14 @@ class UserController extends Controller
       return response()->json($message);
     }
 
-    public function changePassword(Request $request,$id)
+    public function editPassword()
     {
-      //$request->validate([
-      //  'newpassword' => 'required|confirmed|min:8',
-      //]);
+      $user = getUser();
 
-      $user = User::find($id);
-
-      if ($request->password==Null || $request->newpassword==Null || $request->newpassword_confirmation==Null){
-        return back()->with('warnings', ['Por favor preencha todos os campos!']);
-      } else {
-
-        $password = $request->password;
-
-        if (!Hash::check($password,Auth::user()->password)){
-          return back()->with('problems', ['Senha atual incorreta!']);
-        }
-
-        $newpassword = $request->newpassword;
-        $newpassword_confirmation = $request->newpassword_confirmation;
-
-        if ($newpassword == $newpassword_confirmation){
-
-          $user->password = Hash::make($newpassword);
-
-          if (isAdmin() || $user->id == getUserId()){
-
-            $user->save();
-            return back()->with('informations', ['A senha foi alterada com sucesso!']);
-
-          } else {
-            return back()->with('problems', ['Falha ao alterar a senha. Acesso proibido!']);
-          }
-
-        } else {
-          return back()->with('problems', ['A nova senha não confere com a confirmação!']);
-        }
-      }
+      $breadcrumbs = [
+        $user->name.' / Alterar Senha' => '#',
+      ];
+      return view('backend.user.edit-password', compact('user','breadcrumbs'));
     }
 
     public function changePassword(Request $request)

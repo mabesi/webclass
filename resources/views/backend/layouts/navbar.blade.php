@@ -26,7 +26,7 @@
         </div>
 
         <div class="divider"></div>
-        <a class="dropdown-item" href="{{ url('user/change-password') }}">
+        <a class="dropdown-item" href="{{ url('change-password') }}">
           <i class="fa fa-shield"></i> Alterar Senha</a>
 
         <a href="{{ route('logout') }}" class="dropdown-item"

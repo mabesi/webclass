@@ -35,14 +35,15 @@
             <a class="nav-link bg-gray-700" href="{{ url('course') }}">
               <i class="nav-icon icon-list ml-2"></i> Lista de Cursos</a>
           </li>
-          <li class="nav-item">
-            <a class="nav-link bg-gray-700" href="{{ url('mycourses') }}">
-              <i class="nav-icon icon-menu ml-2"></i> Meus Cursos</a>
-          </li>
           @if(isAdmin())
           <li class="nav-item">
             <a class="nav-link bg-gray-700" href="{{ url('course/create') }}">
               <i class="nav-icon icon-plus ml-2"></i> Novo Curso</a>
+          </li>
+          @else
+          <li class="nav-item">
+            <a class="nav-link bg-gray-700" href="{{ url('mycourses') }}">
+              <i class="nav-icon icon-menu ml-2"></i> Meus Cursos</a>
           </li>
           @endif
         </ul>
