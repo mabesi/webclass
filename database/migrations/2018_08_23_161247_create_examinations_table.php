@@ -15,7 +15,7 @@ class CreateExaminationsTable extends Migration
     {
         Schema::create('examinations', function (Blueprint $table) {
           $table->increments('id');
-          $table->tinyInteger('sequence')->unsigned(); //UNSIGNED TINYINTEGER: 1 A 255
+          $table->tinyInteger('sequence')->unsigned();
           $table->integer('unity_id')->unsigned()->unique();
           $table->foreign('unity_id')->references('id')->on('unities')->onDelete('cascade');
           $table->timestamps();

@@ -18,7 +18,7 @@
     <div class="card-body">
       <div class="row">
 
-        <div class="col-sm-6">
+        <div class="col-sm-5">
           <div class="form-group">
             <label for="title">Título</label>
             <input class="form-control" id="title" type="text" name="title"
@@ -26,7 +26,7 @@
           </div>
         </div>
 
-        <div class="col-sm-6">
+        <div class="col-sm-4">
           <div class="form-group">
             <label for="name">Categoria</label>
 
@@ -39,6 +39,25 @@
                  {{ $category->name }}
                </option>
               @endforeach
+            </select>
+
+          </div>
+        </div>
+
+        <div class="col-sm-3">
+          <div class="form-group">
+            <label for="name">Status</label>
+
+            <select class="form-control" name="status">
+              <option value="N"
+                 {{ ("N"==(old('status',isset($course->status)?$course->status:''))?'selected':'') }} >Novo
+               </option>
+              <option value="E"
+                 {{ ("E"==(old('status',isset($course->status)?$course->status:''))?'selected':'') }} >Em Elaboração
+               </option>
+              <option value="C"
+                 {{ ("C"==(old('status',isset($course->status)?$course->status:''))?'selected':'') }} >Completo
+               </option>
             </select>
 
           </div>

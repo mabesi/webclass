@@ -140,6 +140,24 @@ function getCourseStarIcon($course,$includeLink=True,$color="",$title="Avalia√ß√
   return $stars;
 }
 
+function getStatusBadge($status)
+{
+  $color = "";
+  switch ($status) {
+    case 'N':
+      $color = "secondary";
+      break;
+    case 'E':
+      $color = "warning";
+      break;
+    case 'C':
+      $color = "success";
+      break;
+  }
+
+  return '<span class="badge bg-'.$color.'">'.$status.'</span>';
+}
+
 function getAnswerIcon($currentAnswer,$userAnswer,$rightAnswer,$fontSize='xl')
 {
 

@@ -33,7 +33,11 @@ class CourseController extends Controller
 
     $queryLink = getQueryLink($request->except('sort','dir'));
 
-    $courses = Course::query();
+    if (isAdmin()){
+      $courses = Course::query();
+    } else {
+      $courses = Course::where('status','C');
+    }
 
     if ($search!=Null){
 
@@ -122,6 +126,7 @@ class CourseController extends Controller
   {
     $user = getUser();
     $courses = $user->courses()
+                    ->where('status','C')
                     ->orderBy("title")
                     ->paginate(16);
 
@@ -232,6 +237,7 @@ class CourseController extends Controller
     $course->category_id = $request->category_id;
     $course->instructor_id = $request->instructor_id;
     $course->keywords = $request->keywords;
+    $course->status = $request->status;
 
     if ($course->save()){
       return redirect('course')->with('informations',['Os dados do curso foram alterados com sucesso!']);
