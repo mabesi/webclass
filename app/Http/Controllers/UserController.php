@@ -22,7 +22,7 @@ class UserController extends Controller
     public function index()
     {
         $users = User::where('type','<>','A')
-                      ->orderBy('id')
+                      ->orderBy('name')
                       ->paginate(10);
 
         $breadcrumbs = [

@@ -22,7 +22,7 @@ class Unity extends Model
     return $this->hasOne('App\Examination');
   }
 
-  public function progress($userId=Null)
+  public function progress($userId=Null,$onlyVideos=False)
   {
     if ($userId==Null){
       $userId = getUserId();
@@ -35,15 +35,17 @@ class Unity extends Model
 
     foreach($lessons as $lesson){
       $totalItems++;
-      if ($lesson->completed()){
+      if ($lesson->completed($userId)){
         $completedItems++;
       }
     }
 
-    if (!$this->examination==Null){
-      $totalItems++;
-      if ($this->examination->grade($userId)!=Null){
-        $completedItems++;
+    if(!$onlyVideos){
+      if (!$this->examination==Null){
+        $totalItems++;
+        if ($this->examination->grade($userId)!=Null){
+          $completedItems++;
+        }
       }
     }
 

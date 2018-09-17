@@ -158,6 +158,26 @@ function getStatusBadge($status)
   return '<span class="badge bg-'.$color.'">'.$status.'</span>';
 }
 
+function getGradeBadge($grade,$text="",$class='')
+{
+  if ($grade<70){
+    $color = 'red';
+  } else {
+    $color = 'success';
+  }
+  if ($text!=''){
+    $text = $text.' ';
+  }
+  if ($color!=''){
+    $class = ' '.$class;
+  }
+  $badge = '<span class="badge bg-'.$color.$class.'">';
+  $badge .= $text.$grade;
+  $badge .= '</span>';
+
+  return $badge;
+}
+
 function getAnswerIcon($currentAnswer,$userAnswer,$rightAnswer,$fontSize='xl')
 {
 

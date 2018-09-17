@@ -5,7 +5,7 @@
 <div class="card">
   <div class="card-header">
     <h1>
-      <i class="fa fa-clipboard"></i> Avaliação {{ $examination->sequence }}
+      <i class="fa fa-clipboard"></i> Exame {{ $examination->sequence }}
       <span class="badge bg-{{ $pivot->grade>=70?'success':'red' }} text-white float-right">
         Nota: {{ $pivot->grade }}
       </span>

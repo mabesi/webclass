@@ -61,7 +61,7 @@ class Course extends Model
     return ($user != Null);
   }
 
-  public function progress($userId=Null)
+  public function progress($userId=Null,$onlyVideos=False)
   {
     if ($userId==Null){
       $userId = getUserId();
@@ -74,7 +74,7 @@ class Course extends Model
 
     foreach($unities as $unity){
       $totalUnities++;
-      $totalProgress = $totalProgress + $unity->progress();
+      $totalProgress = $totalProgress + $unity->progress($userId,$onlyVideos);
     }
 
     $progress = (int) (($totalProgress/($totalUnities*100))*100);
@@ -95,15 +95,18 @@ class Course extends Model
 
     foreach($unities as $unity){
       if ($unity->examination!=Null){
-        if ($unity->examination->grade(getUserId())!=Null){
-          $totalGrade = $totalGrade + $unity->examination->grade(getUserId());
+        $totalExaminations++;
+        if ($unity->examination->grade($userId)!=Null){
+          $totalGrade = $totalGrade + $unity->examination->grade($userId);
         } else {
           return 0;
         }
       }
     }
 
-    $average = round($totalGrade / ($totalExaminations*100),2);
+    //dd($totalGrade);
+
+    $average = round($totalGrade / $totalExaminations,2);
 
     return $average;
   }

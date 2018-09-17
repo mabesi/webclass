@@ -10,7 +10,7 @@
       {!! getItemAdminIcons($examination,'examination','True') !!}
     </span>
     @endif
-    <h1><i class="fa fa-clipboard"></i> Avaliação {{ $examination->sequence }}</h1>
+    <h1><i class="fa fa-clipboard"></i> Exame {{ $examination->sequence }}</h1>
     <div class="row">
       <div class="col-sm-6">
         Curso: <a href="{{ url('course/'.$examination->unity->course->id) }}">{{$examination->unity->course->title}}</a>

@@ -38,7 +38,7 @@
       @endforeach
     </ul>
 
-    <h2 class="p-2 bg-light mt-3"><i class="fa fa-clipboard"></i> Avaliação</h2>
+    <h2 class="p-2 bg-light mt-3"><i class="fa fa-clipboard"></i> Exame</h2>
     <ul class="list-group">
       <li class="list-group-item list-group-item-action ">
         @if (isset($unity->examination->id))
@@ -47,9 +47,9 @@
             <span class="font-xl font-weight-bold">
               @if ($unity->examination->grade(getUserId())==Null)
               <a href="{{ url('examination/'.$unity->examination->id) }}" >
-                Avaliação {{ $unity->examination->sequence }}</a>
+                Exame {{ $unity->examination->sequence }}</a>
                 @else
-                <i class="fa fa-check text-success"></i> Avaliação {{ $unity->examination->sequence }}
+                <i class="fa fa-check text-success"></i> Exame {{ $unity->examination->sequence }}
                 <span class="badge bg-{{ $unity->examination->grade(getUserId())>=70?'success':'red' }} text-white font-xl my-1">
                   Nota: {{ $unity->examination->grade(getUserId()) }}
                 </span>

@@ -62,14 +62,15 @@
         </div>
         <div class="font-weight-bold text-center mt-3">
           @if ($progress==100)
-          <span class="badge bg-{{ $average>=70?'success':'red' }} text-white p-3 font-xl mb-2">
-            Média Final: {{ $average }}
-          </span><br>
-          <a href="{{ url('course/'.$course->id.'/certificate') }}" target="_blank" class="btn btn-primary">Meu Certificado</a>
+            {!! getGradeBadge($average,'Média Final:','text-white p-2 font-xl mb-2') !!}
+            @if ($average>=70)
+            <br>
+            <a href="{{ url('course/'.$course->id.'/certificate') }}" target="_blank" class="btn btn-primary">Meu Certificado</a>
+            @endif
           @else
-          <p class="text-muted mt-3">
-            {{ getRandMessage() }}
-          </p>
+            <p class="text-muted mt-3">
+              {{ getRandMessage() }}
+            </p>
           @endif
         </div>
       </div>
@@ -173,13 +174,11 @@
               <small>
 
                 @if ($unity->examination->grade(getUserId())!=Null)
-                <i class="fa fa-check text-success"></i> Avaliação {{ $unity->examination->sequence }}
-                <span class="badge bg-{{ $unity->examination->grade(getUserId())>=70?'success':'red' }} text-white font-xs">
-                  Nota: {{ $unity->examination->grade(getUserId()) }}
-                </span>
+                <i class="fa fa-check text-success"></i> Exame {{ $unity->examination->sequence }}
+                {!! getGradeBadge($unity->examination->grade(getUserId()),'Nota:','text-white font-xs') !!}
                 <a href="{{ url('examination/'.$unity->examination->id.'/verification') }}" class="" >Verificar Respostas</a>
                 @else
-                 <a href="{{ url('examination/'.$unity->examination->id) }}" ><i class="fa fa-caret-right ml-2"></i> Avaliação {{ $unity->examination->sequence }}</a>
+                 <a href="{{ url('examination/'.$unity->examination->id) }}" ><i class="fa fa-caret-right ml-2"></i> Exame {{ $unity->examination->sequence }}</a>
                  @endif
                </small>
               @endif

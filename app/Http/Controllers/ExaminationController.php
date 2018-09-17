@@ -48,10 +48,6 @@ class ExaminationController extends Controller
 
       $examination->users()->attach(getUserId(),['grade' => $grade, 'result' => $result]);
 
-      //$user = $examination->users()->where('id',getUserId())->first();
-
-      //dd($examination->users()->where('id',getUserId())->first()->pivot);
-
       return redirect('examination/'.$examination->id.'/verification')
                     ->with('informations',['A avaliação foi enviada com sucesso. Confira as respostas e a sua nota!']);
 
