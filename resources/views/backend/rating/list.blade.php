@@ -21,7 +21,7 @@
   <div class="card-body">
 
       <div class="list-group">
-      @foreach ($course->ratings()->orderBy('created_at')->get() as $rating)
+      @foreach ($course->ratings()->orderBy('created_at','desc')->get() as $rating)
 
         <div class="list-group-item flex-column align-items-start">
           <div class="d-flex w-100 justify-content-between">
