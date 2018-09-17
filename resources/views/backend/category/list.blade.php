@@ -16,15 +16,15 @@
         <tr>
           <th>Categoria</th>
           <th>Cursos</th>
-          <th>Ação</th>
+          <th></th>
         </tr>
       </thead>
       <tbody>
         @foreach ($categories as $category)
         <tr>
-          <td class="col-sm-5"><a href="{{ url('category/'.$category->id) }}">{{ $category->name }}</a></td>
-          <td class="col-sm-5">{{ $category->courses->count() }}</td>
-          <td class="col-sm-2">{!! getItemAdminIcons($category,'category','False') !!}</td>
+          <td><a href="{{ url('category/'.$category->id) }}">{{ $category->name }}</a></td>
+          <td>{{ $category->courses->count() }}</td>
+          <td class="text-right">{!! getItemAdminIcons($category,'category','False') !!}</td>
         </tr>
         @endforeach
       </tbody>

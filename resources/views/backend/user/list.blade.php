@@ -14,7 +14,7 @@
           <th>ID</th>
           <th>Nome</th>
           <th>E-mail</th>
-          <th>Ação</th>
+          <th></th>
         </tr>
       </thead>
       <tbody>
@@ -23,7 +23,7 @@
           <td>{{ $user->id }}</td>
           <td>{{ $user->name }}</td>
           <td>{{ $user->email }}</td>
-          <td>{!! getItemAdminIcons($user,'user','False') !!}<td>
+          <td class="text-right">{!! getItemAdminIcons($user,'user','False') !!}<td>
         </tr>
         @endforeach
       </tbody>

@@ -16,15 +16,15 @@
         <tr>
           <th>Curso</th>
           <th>Instrutor</th>
-          <th>Ação</th>
+          <th></th>
         </tr>
       </thead>
       <tbody>
         @foreach ($category->courses as $course)
         <tr>
-          <td class="col-sm-6"><a href="{{ url('course/'.$course->id) }}">{{ $course->title }}</a> {!! getCourseStarIcon($course,True,'warning') !!}</td>
-          <td class="col-sm-5"><a href="{{ url('instructor/'.$course->instructor_id) }}">{{ $course->instructor->name }}</a></td>
-          <td class="col-sm-1">
+          <td><a href="{{ url('course/'.$course->id) }}">{{ $course->title }}</a> {!! getCourseStarIcon($course,True,'warning') !!}</td>
+          <td><a href="{{ url('instructor/'.$course->instructor_id) }}">{{ $course->instructor->name }}</a></td>
+          <td class="text-right">
             @if (isAdmin())
               {!! getItemAdminIcons($course,'course','False') !!}
             @else

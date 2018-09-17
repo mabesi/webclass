@@ -26,7 +26,7 @@
           </div>
         </div>
 
-        <div class="col-sm-4">
+        <div class="col-sm-5">
           <div class="form-group">
             <label for="name">Categoria</label>
 
@@ -44,11 +44,11 @@
           </div>
         </div>
 
-        <div class="col-sm-3">
+        <div class="col-sm-2">
           <div class="form-group">
             <label for="name">Status</label>
 
-            <select class="form-control" name="status">
+            <select class="form-control" name="status" {{ isset($course)?'':'disabled' }}>
               <option value="N"
                  {{ ("N"==(old('status',isset($course->status)?$course->status:''))?'selected':'') }} >Novo
                </option>

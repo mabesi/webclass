@@ -148,7 +148,7 @@ function getStatusBadge($status)
       $color = "secondary";
       break;
     case 'E':
-      $color = "warning";
+      $color = "danger";
       break;
     case 'C':
       $color = "success";

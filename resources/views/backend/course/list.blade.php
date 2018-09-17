@@ -48,21 +48,21 @@
           <th>Categoria</th>
           <th>Instrutor</th>
           <th>Palavras Chave</th>
-          <th>Ação</th>
+          <th></th>
         </tr>
       </thead>
       <tbody>
         @foreach ($courses as $course)
         <tr>
-          <td class="col-sm-4">
+          <td>
             @if(isAdmin())
             {!! getStatusBadge($course->status) !!}
             @endif
             <a href="{{ url('course/'.$course->id) }}">{{ $course->title }}</a><br>{!! getCourseStarIcon($course,'warning') !!}</td>
-          <td class="col-sm-2"><a href="{{ url('category/'.$course->category_id) }}">{{ $course->category->name }}</a></td>
-          <td class="col-sm-2"><a href="{{ url('instructor/'.$course->instructor_id) }}">{{ $course->instructor->name }}</a></td>
-          <td class="col-sm-2">{!! getKeywordsLinks($course->keywords) !!}</td>
-          <td class="col-sm-1">
+          <td><a href="{{ url('category/'.$course->category_id) }}">{{ $course->category->name }}</a></td>
+          <td><a href="{{ url('instructor/'.$course->instructor_id) }}">{{ $course->instructor->name }}</a></td>
+          <td>{!! getKeywordsLinks($course->keywords) !!}</td>
+          <td class="text-right">
             @if (isAdmin())
               {!! getItemAdminIcons($course,'course','False') !!}
             @else
