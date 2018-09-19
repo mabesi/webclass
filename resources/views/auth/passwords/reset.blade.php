@@ -19,8 +19,8 @@
 
             <div class="card-body p-4">
 
-              <h1>New Password</h1>
-              <p class="text-muted">Enter your email and your new password</p>
+              <h1>Nova Senha</h1>
+              <p class="text-muted">Informe seu e-mail e a nova senha</p>
 
               {{ csrf_field() }}
 
@@ -28,7 +28,7 @@
                 <div class="input-group-prepend">
                   <span class="input-group-text">@</span>
                 </div>
-                <input class="form-control" id="email" type="email" name="email" value="{{ $email or old('email') }}" placeholder="Email" required>
+                <input class="form-control" id="email" type="email" name="email" value="{{ $email or old('email') }}" placeholder="E-mail" required>
                 @if ($errors->has('email'))
                 <span class="invalid-feedback">
                   <strong>{{ $errors->first('email') }}</strong>
@@ -40,7 +40,7 @@
                 <div class="input-group-prepend">
                   <span class="input-group-text"><i class="icon-lock"></i></span>
                 </div>
-                <input class="form-control" id="password" type="password" name="password" placeholder="New password" required>
+                <input class="form-control" id="password" type="password" name="password" placeholder="Nova senha" required>
                 @if ($errors->has('password'))
                 <span class="invalid-feedback">
                   <strong>{{ $errors->first('password') }}</strong>
@@ -52,7 +52,7 @@
                 <div class="input-group-prepend">
                   <span class="input-group-text"><i class="icon-lock"></i></span>
                 </div>
-                <input class="form-control" id="password_confirm" type="password" name="password_confirmation" placeholder="Repeat new password" required>
+                <input class="form-control" id="password_confirm" type="password" name="password_confirmation" placeholder="Confirme a nova senha" required>
                 @if ($errors->has('password_confirmation'))
                 <span class="invalid-feedback">
                   <strong>{{ $errors->first('password_confirm') }}</strong>
@@ -63,7 +63,7 @@
             </div>
 
             <div class="card-footer p-4">
-              <button class="btn btn-block btn-primary" type="submit">Reset Password</button>
+              <button class="btn btn-block btn-primary" type="submit">Gravar Nova Senha</button>
             </div>
 
           </form>

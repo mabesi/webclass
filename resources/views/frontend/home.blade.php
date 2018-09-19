@@ -12,7 +12,7 @@
   <div class="container">
     <div class="row">
       <div class="col-lg-12">
-        <h1 class="display-3 text-center text-danger mt-4">Sistema de Treinamento Online</h1>
+
       </div>
     </div>
   </div>
@@ -21,68 +21,33 @@
 <!-- Page Content -->
 <div class="container">
 
-  <div class="row">
-    <div class="col-sm-8">
-      <h2 class="mt-4">What We Do</h2>
-      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. A deserunt neque tempore recusandae animi soluta quasi? Asperiores rem dolore eaque vel, porro, soluta unde debitis aliquam laboriosam. Repellat explicabo, maiores!</p>
-      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Omnis optio neque consectetur consequatur magni in nisi, natus beatae quidem quam odit commodi ducimus totam eum, alias, adipisci nesciunt voluptate. Voluptatum.</p>
-      <p>
-        <a class="btn btn-primary btn-lg" href="#">Call to Action &raquo;</a>
-      </p>
-    </div>
-    <div class="col-sm-4">
-      <h2 class="mt-4">Contact Us</h2>
-      <address>
-        <strong>Start Bootstrap</strong>
-        <br>3481 Melrose Place
-        <br>Beverly Hills, CA 90210
-        <br>
-      </address>
-      <address>
-        <abbr title="Phone">P:</abbr>
-        (123) 456-7890
-        <br>
-        <abbr title="Email">E:</abbr>
-        <a href="mailto:#">name@example.com</a>
-      </address>
-    </div>
-  </div>
-  <!-- /.row -->
+  <h1 class="display-4 text-center text-dark mt-4">Sistema de Treinamento Online</h1>
 
   <div class="row">
     <div class="col-sm-4 my-4">
       <div class="card">
-        <img class="card-img-top" src="http://placehold.it/300x200" alt="">
+        <img class="card-img-top" src="{{ asset('img/trilhas.jpg') }}" alt="">
         <div class="card-body">
-          <h4 class="card-title">Card title</h4>
-          <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sapiente esse necessitatibus neque sequi doloribus.</p>
-        </div>
-        <div class="card-footer">
-          <a href="#" class="btn btn-primary">Find Out More!</a>
+          <h4 class="card-title">Conheça as Trilhas de Formação</h4>
+          <p class="card-text">O WebClass possui trilhas de formação para ajudar a direcioná-lo, sugerindo cursos que se complementam de tal forma que seus estudos se concentrem em determinada área de especialização.</p>
         </div>
       </div>
     </div>
     <div class="col-sm-4 my-4">
       <div class="card">
-        <img class="card-img-top" src="http://placehold.it/300x200" alt="">
+        <img class="card-img-top" src="{{ asset('img/cursos.jpg') }}" alt="">
         <div class="card-body">
-          <h4 class="card-title">Card title</h4>
-          <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sapiente esse necessitatibus neque sequi doloribus totam ut praesentium aut.</p>
-        </div>
-        <div class="card-footer">
-          <a href="#" class="btn btn-primary">Find Out More!</a>
+          <h4 class="card-title">Faça os Cursos</h4>
+          <p class="card-text">Cada curso possui o conteúdo dividido em unidades de estudo, e estas são dividias em videoaulas e exames com questões de múltipla escolha.</p>
         </div>
       </div>
     </div>
     <div class="col-sm-4 my-4">
       <div class="card">
-        <img class="card-img-top" src="http://placehold.it/300x200" alt="">
+        <img class="card-img-top" src="{{ asset('img/certificado.jpg') }}" alt="">
         <div class="card-body">
-          <h4 class="card-title">Card title</h4>
-          <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sapiente esse necessitatibus neque.</p>
-        </div>
-        <div class="card-footer">
-          <a href="#" class="btn btn-primary">Find Out More!</a>
+          <h4 class="card-title">Obtenha o Certificado</h4>
+          <p class="card-text">Assista às videoaulas e realize os exames. Assim que forem concluídas as aulas e você obter média igual ou maior que 70% nos exames poderá solicitar seu certificado.</p>
         </div>
       </div>
     </div>

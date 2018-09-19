@@ -19,8 +19,8 @@
 
             <div class="card-body p-4">
 
-              <h1>Password Reset</h1>
-              <p class="text-muted">Enter an email address to receive the password recovery link</p>
+              <h1>Recuperação de Senha</h1>
+              <p class="text-muted">Informe um e-mail para receber o link de recuperação de senha:</p>
 
               {{ csrf_field() }}
 
@@ -28,7 +28,7 @@
                 <div class="input-group-prepend">
                   <span class="input-group-text">@</span>
                 </div>
-                <input class="form-control" type="email" name="email" value="{{ old('email') }}" placeholder="Email" required>
+                <input class="form-control" type="email" name="email" value="{{ old('email') }}" placeholder="E-mail" required>
                 @if ($errors->has('email'))
                 <span class="invalid-feedback">
                   <strong>{{ $errors->first('email') }}</strong>
@@ -39,7 +39,7 @@
             </div>
 
             <div class="card-footer p-4">
-              <button class="btn btn-block btn-primary" type="submit">Send Recovery Link</button>
+              <button class="btn btn-block btn-primary" type="submit">Enviar Link</button>
             </div>
 
           </form>
