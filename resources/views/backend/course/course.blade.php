@@ -19,10 +19,6 @@
     @endif
     <h1>
       <i class="fa fa-dot-circle-o"></i> {{ $course->title }} {!! getCourseStarIcon($course,True,'warning') !!}
-      @if(!$course->registered(getUserId()))
-      <a tabindex="0" role="button" data-toggle="popover" data-trigger="focus" title="Avaliação do Curso"
-       data-content="Clique nas estrelas para ver os comentários e avaliações!"></a>
-      @endif
     </h1>
   </div>
 
@@ -211,13 +207,4 @@
 @endsection
 
 @push('scripts')
-<script src="{{ asset("coreui/js/popovers.js") }}"></script>
-<script type="text/javascript">
-  $(document).ready(function(){
-      $('[data-toggle="popover"]').popover('show');
-      setTimeout(function(){
-        $('[data-toggle="popover"]').popover('hide');
-      },8000);
-  });
-</script>
 @endpush
