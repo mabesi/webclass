@@ -31,6 +31,17 @@
 </div>
 @endif
 
+@if (session('events'))
+<div class="alert alert-warning alert-dismissible fade show mb-1" role="alert">
+  @foreach (session('events') as $event)
+  <div class="my-1"><i class="fa fa-exclamation-triangle"></i> {{ $event }}</div>
+  @endforeach
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+    <span aria-hidden="true">×</span>
+  </button>
+</div>
+@endif
+
 @if (session('informations'))
 <div class="alert alert-success alert-dismissible fade show mb-1" role="alert">
   @foreach (session('informations') as $information)

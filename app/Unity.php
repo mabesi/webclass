@@ -49,7 +49,11 @@ class Unity extends Model
       }
     }
 
-    $progress = (int) (($completedItems/$totalItems)*100);
+    if ($totalItems==0){
+      $progress = 0;  
+    } else {
+      $progress = (int) (($completedItems/$totalItems)*100);
+    }
 
     return $progress;
   }

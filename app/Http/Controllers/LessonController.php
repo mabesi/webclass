@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Unity;
 use App\Lesson;
 use Illuminate\Http\Request;
+use App\Events\CourseContentChanged;
 
 class LessonController extends Controller
 {

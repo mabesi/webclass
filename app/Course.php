@@ -77,7 +77,11 @@ class Course extends Model
       $totalProgress = $totalProgress + $unity->progress($userId,$onlyVideos);
     }
 
-    $progress = (int) (($totalProgress/($totalUnities*100))*100);
+    if ($totalUnities==0){
+        $progress = 0;
+    } else {
+      $progress = (int) (($totalProgress/($totalUnities*100))*100);
+    }
 
     return $progress;
   }
@@ -104,9 +108,11 @@ class Course extends Model
       }
     }
 
-    //dd($totalGrade);
-
-    $average = round($totalGrade / $totalExaminations,2);
+    if ($totalExaminations==0){
+      $average = 0;
+    } else {
+      $average = round($totalGrade / $totalExaminations,2);
+    }
 
     return $average;
   }

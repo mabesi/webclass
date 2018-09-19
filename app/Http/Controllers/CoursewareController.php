@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Courseware;
 use App\Course;
 use Illuminate\Http\Request;
+use App\Events\CourseContentChanged;
 
 class CoursewareController extends Controller
 {
@@ -67,6 +68,7 @@ class CoursewareController extends Controller
       }
 
       if ($courseware->save()){
+        event(new CourseContentChanged($courseware->course));
         return redirect('course/'.$courseware->course_id)->with('informations',['Os dados do arquivo foram salvos com sucesso!']);
       } else {
         return back()->with('problems',['Ocorreu um erro ao salvar os dados do arquivo!']);
@@ -120,11 +122,14 @@ class CoursewareController extends Controller
       $courseware->course_id = $request->course_id;
 
       if ($request->has('courseware')){
+
         if ($request->courseware->getError()!=0){
           return back()->with('problems',['Ocorreu um erro ao carregar o arquivo!','Erro: '.$request->courseware->getErrorMessage()]);
         }
+
         $courseDir = 'courseware/'.$request->course_id;
         $fileName = saveFile($request,'courseware',$courseDir,Null,$courseware->name);
+
         if ($fileName==False){
           return back()->with('problems',['Ocorreu um erro ao carregar o arquivo!']);
         } else {
@@ -133,6 +138,7 @@ class CoursewareController extends Controller
       }
 
       if ($courseware->save()){
+        event(new CourseContentChanged($courseware->course));
         return redirect('course/'.$courseware->course_id)->with('informations',['Os dados do arquivo foram salvos com sucesso!']);
       } else {
         return back()->with('problems',['Ocorreu um erro ao salvar os dados do arquivo!']);
@@ -147,10 +153,15 @@ class CoursewareController extends Controller
      */
     public function destroy(Courseware $courseware)
     {
+      $course = $courseware->course;
+
       if (isAdmin()){
+
+        $courseDir = 'courseware/'.$courseware->course_id;
+        $file = $courseDir.'/'.$courseware->name;
+
         if ($courseware->delete()){
-          $courseDir = 'courseware/'.$courseware->course_id;
-          $file = $courseDir.'/'.$courseware->name;
+          event(new CourseContentChanged($course));
           deleteLocalFile($file);
           $message = getMsgDeleteSuccess();
         } else {

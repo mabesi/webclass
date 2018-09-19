@@ -9,6 +9,7 @@
       <a href="{{ url('course/'.$course->id.'/unity/create') }}" class="btn btn-primary btn-sm mr-1" >Incluir Unidade</a>
       <a href="{{ url('course/'.$course->id.'/courseware/create') }}" class="btn btn-primary btn-sm mr-1" >Incluir Arquivo</a>
       {!! getItemAdminIcons($course,'course','True') !!}
+      {!! getStatusBadge($course->status,'font-xl') !!}
     </span>
     @elseif(!$course->registered(getUserId()))
     <span class="float-right">
@@ -210,7 +211,7 @@
 @endsection
 
 @push('scripts')
-<script src="{{ asset("coreui/js/popover.js") }}"></script>
+<script src="{{ asset("coreui/js/popovers.js") }}"></script>
 <script type="text/javascript">
   $(document).ready(function(){
       $('[data-toggle="popover"]').popover('show');

@@ -140,22 +140,25 @@ function getCourseStarIcon($course,$includeLink=True,$color="",$title="Avaliaç�
   return $stars;
 }
 
-function getStatusBadge($status)
+function getStatusBadge($status,$class='')
 {
   $color = "";
   switch ($status) {
     case 'N':
       $color = "secondary";
+      $title = "Novo";
       break;
     case 'E':
       $color = "danger";
+      $title = "Em Elaboração";
       break;
     case 'C':
       $color = "success";
+      $title = "Completo";
       break;
   }
 
-  return '<span class="badge bg-'.$color.'">'.$status.'</span>';
+  return '<span class="badge bg-'.$color.' '.$class.'" title="'.$title.'">'.$status.'</span>';
 }
 
 function getGradeBadge($grade,$text="",$class='')

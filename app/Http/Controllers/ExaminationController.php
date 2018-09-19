@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Examination;
 use App\Unity;
 use Illuminate\Http\Request;
+use App\Events\CourseContentChanged;
 
 class ExaminationController extends Controller
 {

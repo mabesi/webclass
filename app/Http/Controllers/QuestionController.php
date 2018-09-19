@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Question;
 use App\Examination;
 use Illuminate\Http\Request;
+use App\Events\CourseContentChanged;
 
 class QuestionController extends Controller
 {

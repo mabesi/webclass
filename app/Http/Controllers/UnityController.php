@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Unity;
 use App\Course;
 use Illuminate\Http\Request;
+use App\Events\CourseContentChanged;
 
 class UnityController extends Controller
 {
@@ -56,6 +57,7 @@ class UnityController extends Controller
       $unity->sequence = $request->sequence;
 
       if ($unity->save()){
+        event(new CourseContentChanged($unity->course));
         return redirect('course/'.$unity->course_id)->with('informations',['Os dados da unidade foram salvos com sucesso!']);
       } else {
         return back()->with('problems',['Ocorreu um erro ao salvar os dados da unidade!']);
@@ -116,6 +118,7 @@ class UnityController extends Controller
       $unity->sequence = $request->sequence;
 
       if ($unity->save()){
+        event(new CourseContentChanged($unity->course));
         return redirect('course/'.$unity->course_id)->with('informations',['Os dados da unidade foram salvos com sucesso!']);
       } else {
         return back()->with('problems',['Ocorreu um erro ao salvar os dados da unidade!']);
@@ -130,11 +133,13 @@ class UnityController extends Controller
      */
     public function destroy(Unity $unity)
     {
+      $course = $unity->course;
       if ($unity->lessons->count()>0){
         $message = getMsgDeleteErrorVinculated();
       } else {
         if (isAdmin()){
           if ($unity->delete()){
+            event(new CourseContentChanged($course));
             $message = getMsgDeleteSuccess();
           } else {
             $message = getMsgDeleteError();

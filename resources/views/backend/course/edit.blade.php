@@ -50,7 +50,7 @@
 
             <select class="form-control" name="status" {{ isset($course)?'':'disabled' }}>
               <option value="N"
-                 {{ ("N"==(old('status',isset($course->status)?$course->status:''))?'selected':'') }} >Novo
+                 {{ ("N"==(old('status',isset($course->status)?$course->status:''))?'selected':'') }} disabled>Novo
                </option>
               <option value="E"
                  {{ ("E"==(old('status',isset($course->status)?$course->status:''))?'selected':'') }} >Em Elaboração
