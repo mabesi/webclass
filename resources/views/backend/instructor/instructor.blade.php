@@ -18,15 +18,15 @@
         <tr>
           <th>Curso</th>
           <th>Categoria</th>
-          <th>Ação</th>
+          <th></th>
         </tr>
       </thead>
       <tbody>
         @foreach ($instructor->courses as $course)
         <tr>
-          <td class="col-sm-6"><a href="{{ url('course/'.$course->id) }}">{{ $course->title }}</a></td>
-          <td class="col-sm-5"><a href="{{ url('category/'.$course->category_id) }}">{{ $course->category->name }}</a></td>
-          <td class="col-sm-1">{!! getItemAdminIcons($course,'course','False') !!}</td>
+          <td><a href="{{ url('course/'.$course->id) }}">{{ $course->title }}</a></td>
+          <td><a href="{{ url('category/'.$course->category_id) }}">{{ $course->category->name }}</a></td>
+          <td class="text-right">{!! getItemAdminIcons($course,'course','False') !!}</td>
         </tr>
         @endforeach
       </tbody>

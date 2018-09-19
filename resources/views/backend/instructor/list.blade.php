@@ -4,7 +4,9 @@
 
 <div class="card">
   <div class="card-header">
+    @if(isAdmin())
     <a href="{{ url('instructor/create') }}" class="btn btn-primary float-right" >Novo Instrutor</a>
+    @endif
     <h1><i class="fa fa-graduation-cap"></i> Instrutores</h1>
   </div>
   <div class="card-body">

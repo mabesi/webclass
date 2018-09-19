@@ -8,7 +8,7 @@
     <span class="float-right">
       <a href="{{ url('unity/'.$unity->id.'/lesson/create') }}" class="btn btn-primary btn-sm mr-1" >Incluir Videoaula</a>
       @if ($unity->examination==Null)
-      <a href="{{ url('unity/'.$unity->id.'/examination/create') }}" class="btn btn-primary btn-sm mr-1" >Incluir Avaliação</a>
+      <a href="{{ url('unity/'.$unity->id.'/examination/create') }}" class="btn btn-primary btn-sm mr-1" >Incluir Exame</a>
       @endif
       {!! getItemAdminIcons($unity,'unity','True') !!}
     </span>

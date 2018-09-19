@@ -4,7 +4,7 @@
 
 <div class="card">
   <div class="card-header">
-    <strong>{{ isset($examination)?'Editar Avaliação':'Nova Avaliação' }}</strong>
+    <strong>{{ isset($examination)?'Editar Exame':'Novo Exame' }}</strong>
   </div>
 
   <form action="{{ url('/examination'.(isset($examination->id)?'/'.$examination->id:'')) }}" method="POST" >

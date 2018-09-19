@@ -70,6 +70,17 @@ class RatingController extends Controller
       }
     }
 
+    public function remove($ratingId)
+    {
+      $rating = Rating::find($ratingId);
+
+      if ($rating->delete()){
+        return back()->with('informations',['A avaliação foi excluída com sucesso!']);
+      } else {
+        return back()->with('problems',['Ocorreu um erro ao excluir a avaliação!']);
+      }
+    }
+
     /**
      * Display the specified resource.
      *
