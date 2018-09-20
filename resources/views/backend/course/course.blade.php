@@ -9,7 +9,7 @@
       <a href="{{ url('course/'.$course->id.'/unity/create') }}" class="btn btn-primary btn-sm mr-1" >Incluir Unidade</a>
       <a href="{{ url('course/'.$course->id.'/courseware/create') }}" class="btn btn-primary btn-sm mr-1" >Incluir Arquivo</a>
       {!! getItemAdminIcons($course,'course','True') !!}
-      {!! getStatusBadge($course->status,'font-xl') !!}
+      {!! getStatusBadge($course->status,'font-2xl') !!}
     </span>
     @elseif(!$course->registered(getUserId()))
     <span class="float-right">
