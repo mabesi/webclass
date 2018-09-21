@@ -11,7 +11,7 @@
 <div class="row">
 
 
-  <div class="col-sm-6">
+  <div class="col-lg-6">
     <div class="card">
       <div class="card-body p-0 d-flex align-items-center">
         <a href="{{ url('user') }}" >
@@ -27,7 +27,7 @@
     </div>
   </div>
 
-  <div class="col-sm-6">
+  <div class="col-lg-6">
     <div class="card">
       <div class="card-body p-0 d-flex align-items-center">
         <a href="{{ url('course') }}" >

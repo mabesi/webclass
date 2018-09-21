@@ -10,8 +10,6 @@
     <span class="navbar-toggler-icon"></span>
   </button>
 
-  @include('backend.layouts.breadcrumbs')
-
   <ul class="nav navbar-nav ml-auto">
 
     <li class="nav-item dropdown">

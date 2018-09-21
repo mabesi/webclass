@@ -9,7 +9,7 @@
 @section('content')
 
 <div class="row">
-  <div class="col-sm-12">
+  <div class="col-lg-12">
     <h2 class="text-muted">Pesquisar Cursos</h2>
   </div>
 </div>
@@ -18,12 +18,12 @@
 
   <div class="form-group row mb-4">
 
-    <div class="input-group col-sm-9 mb-1">
+    <div class="input-group col-lg-9 col-md-7 mb-1">
       <input id="search" name="search" class="form-control font-3xl" type="text"
         value="{{ isset($search)?$search:Null }}" >
     </div>
 
-    <div class="col-sm-3 mb-1">
+    <div class="col-lg-3 col-md-5 mb-1">
       <span class="input-group-append">
         <button type="submit" class="btn btn-primary form-control font-3xl">
           <i class="fa fa-search"></i> Pesquisar
@@ -37,7 +37,7 @@
 
 <div class="row">
 
-  <div class="col-sm-3">
+  <div class="col-lg-3 col-md-6">
     <div class="card">
       <div class="card-body bg-primary text-center">
         <i class="fa fa-tasks super-icon"></i>
@@ -48,7 +48,7 @@
     </div>
   </div>
 
-  <div class="col-sm-3">
+  <div class="col-lg-3 col-md-6">
     <div class="card">
       <div class="card-body bg-danger text-center">
         <i class="fa fa-list super-icon"></i>
@@ -59,7 +59,7 @@
     </div>
   </div>
 
-  <div class="col-sm-3">
+  <div class="col-lg-3 col-md-6">
     <div class="card">
       <div class="card-body bg-warning text-center">
         <i class="fa fa-th-large super-icon"></i>
@@ -70,7 +70,7 @@
     </div>
   </div>
 
-  <div class="col-sm-3">
+  <div class="col-lg-3 col-md-6">
     <div class="card">
       <div class="card-body bg-dark text-center">
         <i class="fa fa-map super-icon"></i>

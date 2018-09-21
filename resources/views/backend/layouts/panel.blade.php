@@ -19,6 +19,7 @@
     <main class="main">
 
       @include('backend.layouts.messages')
+      @include('backend.layouts.breadcrumbs')
 
       <div class="mb-3">
       </div>
