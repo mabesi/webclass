@@ -22,8 +22,15 @@ class UsersTableSeeder extends Seeder
       ]);
 
       DB::table('users')->insert([
-          'name' => 'Aluno Exemplo',
-          'email' => 'aluno@gmail.com',
+          'name' => 'Liza Barral',
+          'email' => 'liza@gmail.com',
+          'type' => 'U',
+          'password' => bcrypt('webclass'),
+      ]);
+
+      DB::table('users')->insert([
+          'name' => 'José da Silva',
+          'email' => 'jose@gmail.com',
           'type' => 'U',
           'password' => bcrypt('webclass'),
       ]);
