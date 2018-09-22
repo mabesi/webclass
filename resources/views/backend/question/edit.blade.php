@@ -27,15 +27,15 @@
 
         <div class="col-sm-7">
           <div class="form-group">
-            <label for="course">Unidade</label>
-            <span class="form-control bg-light" id="course">{{ $examination->unity->title }}</span>
+            <label for="unity">Unidade</label>
+            <span class="form-control bg-light" id="unity">{{ $examination->unity->title }}</span>
           </div>
         </div>
 
         <div class="col-sm-2">
           <div class="form-group">
-            <label for="category">Avaliação</label>
-            <span class="form-control bg-light" id="category">{{ $examination->sequence }}</span>
+            <label for="examination">Exame</label>
+            <span class="form-control bg-light" id="examination">{{ $examination->sequence }}</span>
           </div>
         </div>
 

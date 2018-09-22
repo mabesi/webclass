@@ -31,7 +31,11 @@
 
   <div class="card-body">
 
+    @if (isAdmin())
+    <form action="#">
+    @else
     <form action="{{ url('/examination/'.$examination->id.'/attempt') }}" method="POST" class="confirm-submition" data-message="Confirma o envio da avaliação?" >
+    @endif
 
       {{ csrf_field() }}
 
@@ -44,22 +48,30 @@
         <table class="table-responsive-sm table-sm mb-2">
           <tbody>
             <tr>
+              @if (isNotAdmin())
               <td class="align-top"><input value="1" id="answer-1-{{ $question->id }}" name="question[{{ $question->id }}]" type="radio" required></td>
+              @endif
               <td class="align-top">A)</td>
               <td>{!! $question->answer1 !!}</td>
             </tr>
             <tr>
+              @if (isNotAdmin())
               <td class="align-top"><input value="2" id="answer-2-{{ $question->id }}" name="question[{{ $question->id }}]" type="radio"></td>
+              @endif
               <td class="align-top">B)</td>
               <td>{!! $question->answer2 !!}</td>
             </tr>
             <tr>
+              @if (isNotAdmin())
               <td class="align-top"><input value="3" id="answer-3-{{ $question->id }}" name="question[{{ $question->id }}]" type="radio"></td>
+              @endif
               <td class="align-top">C)</td>
               <td>{!! $question->answer3 !!}</td>
             </tr>
             <tr>
+              @if (isNotAdmin())
               <td class="align-top"><input value="4" id="answer-4-{{ $question->id }}" name="question[{{ $question->id }}]" type="radio"></td>
+              @endif
               <td class="align-top">D)</td>
               <td>{!! $question->answer4 !!}</td>
             </tr>
@@ -75,11 +87,13 @@
 
 
 </div>
+@if (isNotAdmin())
 <div class="card-footer">
   <div class="">
     <input type="submit" class="btn btn-primary" value="Enviar Respostas">
   </div>
 </div>
+@endif
 
 </form>
 
