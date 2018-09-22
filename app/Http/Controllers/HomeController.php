@@ -22,7 +22,7 @@ class HomeController extends Controller
       if (Auth::check()){
 
         $totalPupil = User::where('type','U')->count();
-        $totalCourses = User::count();
+        $totalCourses = Course::count();
         $totalCategories = Category::count();
         $totalInstructors = Instructor::count();
         $totalInstructors = Instructor::count();

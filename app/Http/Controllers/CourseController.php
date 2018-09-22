@@ -29,8 +29,6 @@ class CourseController extends Controller
 
     $search = $request->query('search');
 
-    //dd($search);
-
     $queryLink = getQueryLink($request->except('sort','dir'));
 
     if (isAdmin()){
@@ -40,8 +38,6 @@ class CourseController extends Controller
     }
 
     if ($search!=Null){
-
-      //dd($search);
 
       $categoriesId = Category::getCategoriesId($search);
       $instructorsId = Instructor::getInstructorsId($search);
