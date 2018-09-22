@@ -4,7 +4,7 @@
 
 <div class="card">
   <div class="card-header">
-    <h1><i class="fa fa-graduation-cap"></i> {{ $course->title }} {!! getCourseStarIcon($course,False,'warning') !!}</h1>
+    <h1><i class="fa fa-dot-circle-o"></i> {{ $course->title }} {!! getCourseStarIcon($course,False,'warning') !!}</h1>
     <div class="row">
       <div class="col-sm-3">
         Categoria: <a href="{{ url('category/'.$course->category_id) }}">{{ $course->category->name }}</a>

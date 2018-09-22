@@ -12,7 +12,7 @@
       <span class="float-right">
         @if ($lesson->completed())
           <span class='badge badge-success font-sm'>Assistida</span>
-        @else
+        @elseif(isNotAdmin())
           <a href="{{ url('lesson/'.$lesson->id.'/watched') }}" title="Clique para marcar a aula como Assistida"
             class="btn btn-primary btn-sm confirm-link" data-message="Deseja marcar a aula como Assistida?">Finalizar Aula</a>
         @endif
