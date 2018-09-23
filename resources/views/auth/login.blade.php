@@ -16,6 +16,11 @@
 
         <div class="card-group">
           <div class="card p-4">
+            @if (session('status'))
+              <div class="alert alert-success">
+                  {{ session('status') }}
+              </div>
+            @endif            
 
             <div class="card-body">
               <h1>Login</h1>
