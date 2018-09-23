@@ -19,6 +19,7 @@ class UsersTableSeeder extends Seeder
           'email' => 'admin@gmail.com',
           'type' => 'A',
           'password' => bcrypt('webclass'),
+          'remember_token' => str_random(10),
       ]);
 
       DB::table('users')->insert([
@@ -26,13 +27,15 @@ class UsersTableSeeder extends Seeder
           'email' => 'liza@gmail.com',
           'type' => 'U',
           'password' => bcrypt('webclass'),
+          'remember_token' => str_random(10),
       ]);
 
       DB::table('users')->insert([
-          'name' => 'José da Silva',
-          'email' => 'jose@gmail.com',
+          'name' => 'Plinio Mabesi',
+          'email' => 'pliniomabesi@gmail.com',
           'type' => 'U',
           'password' => bcrypt('webclass'),
+          'remember_token' => str_random(10),
       ]);
 
       factory(App\User::class, 25)->create();
