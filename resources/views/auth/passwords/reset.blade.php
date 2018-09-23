@@ -15,8 +15,16 @@
       <div class="col-md-6">
         <div class="card mx-4">
           @if (session('status'))
-            <div class="alert alert-success">
+            <div class="alert alert-info">
                 {{ session('status') }}
+            </div>
+          @elseif (session('success'))
+            <div class="alert alert-success">
+                {{ session('success') }}
+            </div>
+          @elseif (session('error'))
+            <div class="alert alert-danger">
+                {{ session('error') }}
             </div>
           @endif
 
