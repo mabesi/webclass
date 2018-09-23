@@ -14,6 +14,11 @@
     <div class="row justify-content-center">
       <div class="col-md-6">
         <div class="card mx-4">
+          @if (session('status'))
+            <div class="alert alert-success">
+                {{ session('status') }}
+            </div>
+          @endif
 
           <form method="POST" action="{{ route('password.request') }}">
 
