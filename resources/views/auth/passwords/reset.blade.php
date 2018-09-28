@@ -37,6 +37,8 @@
 
               {{ csrf_field() }}
 
+              <input type="hidden" name="token" value="{{ $token }}">
+
               <div class="input-group mb-2{{ $errors->has('email') ? ' was-validated' : '' }}">
                 <div class="input-group-prepend">
                   <span class="input-group-text">@</span>

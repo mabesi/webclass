@@ -33,7 +33,7 @@
                 <div class="input-group-prepend">
                   <span class="input-group-text">@</span>
                 </div>
-                <input class="form-control" type="email" name="email" value="{{ old('email') }}" placeholder="E-mail" required>
+                <input class="form-control" type="email" name="email" value="{{ old('email') }}" placeholder="E-mail" id="email" required>
                 @if ($errors->has('email'))
                 <span class="invalid-feedback">
                   <strong>{{ $errors->first('email') }}</strong>
