@@ -5,14 +5,17 @@
 <div class="row">
 
   @foreach ($courses as $course)
-  <div class="col-sm-3">
+  <div class="col-sm-4">
     <div class="card">
-      <div class="card-body bg-cyan text-white">
+      <div class="card-body bg-{{ $course->progress()==100?'green':'cyan' }} text-white">
         <span class="font-2xl" >{{ $course->title }}</span><br>
         {{ $course->category->name }}
       </div>
-      <div class="card-footer text-right">
-        <a href="{{ url('course/'.$course->id) }}" class="btn btn-primary" title="Entrar">Entrar <i class="fa fa-arrow-circle-right "></i></a>
+      <div class="card-footer">
+        <span class="font-xl text-primary">{{ $course->progress() }}%</span>
+        <span class="float-right">
+          <a href="{{ url('course/'.$course->id) }}" class="btn btn-primary" title="Entrar">Entrar <i class="fa fa-arrow-circle-right "></i></a>
+        </span>
       </div>
     </div>
   </div>
