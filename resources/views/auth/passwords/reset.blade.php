@@ -67,10 +67,10 @@
                 <div class="input-group-prepend">
                   <span class="input-group-text"><i class="icon-lock"></i></span>
                 </div>
-                <input class="form-control{{ $errors->has('password_confirm') ? ' is-invalid' : '' }}" id="password_confirm" type="password" name="password_confirmation" placeholder="Confirme a nova senha" required>
+                <input class="form-control{{ $errors->has('password_confirmation') ? ' is-invalid' : '' }}" id="password_confirm" type="password" name="password_confirmation" placeholder="Confirme a nova senha" required>
                 @if ($errors->has('password_confirmation'))
                 <span class="invalid-feedback">
-                  <strong>{{ $errors->first('password_confirm') }}</strong>
+                  <strong>{{ $errors->first('password_confirmation') }}</strong>
                 </span>
                 @endif
               </div>

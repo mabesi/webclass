@@ -16,22 +16,22 @@
 
         <div class="col-sm-4">
           <div class="form-group">
-            <label for="password">Senha Atual</label>
-            <input class="form-control" id="password" type="password" name="password" required>
+            <label for="password">Senha Atual *</label>
+            <input class="form-control{{ $errors->has('password')?' is-invalid':'' }}" id="password" type="password" name="password" required>
           </div>
         </div>
 
         <div class="col-sm-4">
           <div class="form-group">
-            <label for="newPassword">Nova Senha</label>
-            <input class="form-control" id="newPassword" type="password" name="newpassword" required>
+            <label for="newPassword">Nova Senha *</label>
+            <input class="form-control{{ $errors->has('newpassword')?' is-invalid':'' }}" id="newPassword" type="password" name="newpassword" required>
           </div>
         </div>
 
         <div class="col-sm-4">
           <div class="form-group">
-            <label for="confirmPassword">Confirme a Senha</label>
-            <input class="form-control" id="confirmPassword" type="password" name="newpassword_confirmation" required>
+            <label for="confirmPassword">Confirme a Nova Senha *</label>
+            <input class="form-control{{ $errors->has('newpassword_confirmation')?' is-invalid':'' }}" id="confirmPassword" type="password" name="newpassword_confirmation" required>
           </div>
         </div>
 

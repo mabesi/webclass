@@ -158,11 +158,9 @@ class UserController extends Controller
 
     public function changePassword(Request $request)
     {
-      //$request->validate([
-      //  'newpassword' => 'required|confirmed|min:8',
-      //]);
-
       $user = getUser();
+
+      $request->validate($user->passwordRules,$user->passwordMessages);
 
       if ($request->password==Null || $request->newpassword==Null || $request->newpassword_confirmation==Null){
         return back()->with('warnings', ['Por favor preencha todos os campos!']);

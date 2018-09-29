@@ -50,6 +50,26 @@ class User extends Authenticatable
       'password.regex' => 'A senha deve conter letras e números.',
     ];
 
+    public $passwordRules = [
+      'password' => 'required',
+      'newpassword_confirmation' => 'required',
+      'newpassword' => [
+        'required',
+        'confirmed',
+        'min:8',
+        'regex:/^([a-zA-Z]+\d+)|(\d+[a-zA-Z]+)$/'
+      ],
+    ];
+
+    public $passwordMessages = [
+      'password.required' => 'O campo Senha é obrigatório.',
+      'newpassword.required' => 'O campo Nova Senha é obrigatório.',
+      'newpassword.min' => 'A senha deve conter pelo menos 8 caracteres.',
+      'newpassword.confirmed' => 'A confirmação de senha deve ser igual à nova senha.',
+      'newpassword.regex' => 'A senha deve conter letras e números.',
+      'newpassword_confirmation.required' => 'O campo Confirme a Nova Senha é obrigatório.',
+    ];
+
     public function ratings()
     {
       return $this->hasMany('App\Rating');

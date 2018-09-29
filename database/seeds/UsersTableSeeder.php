@@ -18,7 +18,7 @@ class UsersTableSeeder extends Seeder
           'name' => 'Administrador',
           'email' => 'admin@gmail.com',
           'type' => 'A',
-          'password' => bcrypt('webclass'),
+          'password' => bcrypt('webclass2018'),
           'remember_token' => str_random(10),
       ]);
 
@@ -26,15 +26,15 @@ class UsersTableSeeder extends Seeder
         'name' => 'Plinio Mabesi',
         'email' => 'pliniomabesi@gmail.com',
         'type' => 'U',
-        'password' => bcrypt('webclass'),
+        'password' => bcrypt('webclass2018'),
         'remember_token' => str_random(10),
       ]);
 
       DB::table('users')->insert([
           'name' => 'Liza Barral',
-          'email' => 'liza@gmail.com',
+          'email' => 'liza.barral@gmail.com',
           'type' => 'U',
-          'password' => bcrypt('webclass'),
+          'password' => bcrypt('webclass2018'),
           'remember_token' => str_random(10),
       ]);
 
