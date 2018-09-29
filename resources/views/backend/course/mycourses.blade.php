@@ -7,7 +7,7 @@
   @foreach ($courses as $course)
   <div class="col-sm-4">
     <div class="card">
-      <div class="card-body bg-{{ $course->progress()==100?'green':'cyan' }} text-white">
+      <div class="card-body bg-{{ $course->progress()==100?'green':($course->progress()==0?'gray-500':'cyan') }} text-white">
         <span class="font-2xl" >{{ $course->title }}</span><br>
         {{ $course->category->name }}
       </div>
