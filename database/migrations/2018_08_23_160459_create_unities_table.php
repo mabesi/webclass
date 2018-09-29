@@ -16,7 +16,7 @@ class CreateUnitiesTable extends Migration
         Schema::create('unities', function (Blueprint $table) {
             $table->increments('id');
             $table->string('title',100);
-            $table->tinyInteger('sequence')->unsigned(); //UNSIGNED TINYINTEGER: 1 A 255
+            $table->tinyInteger('sequence')->unsigned();
             $table->integer('course_id')->unsigned();
             $table->foreign('course_id')->references('id')->on('courses')->onDelete('cascade');
             $table->timestamps();

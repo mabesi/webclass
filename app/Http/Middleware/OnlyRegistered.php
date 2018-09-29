@@ -54,10 +54,14 @@ class OnlyRegistered
               break;
           }
 
-          $registered = $course->registered(getUserid());
+          if ($course==Null){
+            return redirect('course');            
+          } else {
+            $registered = $course->registered(getUserid());
 
-          if (!$registered && isNotAdmin()){
-            return redirect('course/'.$course->id)->with('warnings', ['Acesso restrito aos inscritos no curso!']);
+            if (!$registered && isNotAdmin()){
+              return redirect('course/'.$course->id)->with('warnings', ['Acesso restrito aos inscritos no curso!']);
+            }
           }
 
         }

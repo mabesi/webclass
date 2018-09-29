@@ -45,7 +45,11 @@ function deleteItem(e) {
             if (response.success){
               alert(response.msg);
               if (resource){
-                $(location).attr('href',previous);
+                if (response.redirect!=0){
+                  $(location).attr('href','/'+response.redirect);
+                } else {
+                  $(location).attr('href',previous);
+                }
               } else {
                 location.reload();
               }

@@ -135,20 +135,18 @@ class UnityController extends Controller
     public function destroy(Unity $unity)
     {
       $course = $unity->course;
-      if ($unity->lessons->count()>0){
-        $message = getMsgDeleteErrorVinculated();
-      } else {
-        if (isAdmin()){
-          if ($unity->delete()){
-            event(new CourseContentChanged($course));
-            $message = getMsgDeleteSuccess();
-          } else {
-            $message = getMsgDeleteError();
-          }
+
+      if (isAdmin()){
+        if ($unity->delete()){
+          event(new CourseContentChanged($course));
+          $message = getMsgDeleteSuccess('course/'.$course->id);
         } else {
-          $message = getMsgDeleteAccessForbidden();
+          $message = getMsgDeleteError();
         }
+      } else {
+        $message = getMsgDeleteAccessForbidden();
       }
+
       return response()->json($message);
     }
 }

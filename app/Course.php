@@ -36,6 +36,18 @@ class Course extends Model
     'instructor_id.required' => 'O campo Instrutor é obrigatório.',
   ];
 
+  public function delete()
+  {
+    $this->trails()->detach();
+    $this->ratings()->delete();
+    foreach ($this->unities as $unity){
+      $unity->delete();
+    };
+    $this->coursewares()->delete();
+
+    return parent::delete();
+  }
+
   public function category()
   {
     return $this->belongsTo('App\Category');

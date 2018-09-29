@@ -15,6 +15,14 @@ class Examination extends Model
     'sequence.between' => 'O campo Sequência deve estar entre 1 e 255.',
   ];
 
+  public function delete()
+  {
+    $this->questions()->delete();
+    $this->users()->detach();
+
+    return parent::delete();
+  }
+
   public function unity()
   {
     return $this->belongsTo('App\Unity');

@@ -134,7 +134,10 @@ class UserController extends Controller
      */
     public function destroy(User $user)
     {
-      if (isAdmin()){
+      if ($user->courses->count()>0){
+        $message = getMsgDeleteErrorVinculated('Cursos');
+      } elseif (isAdmin()){
+
         if ($user->delete()){
           $message = getMsgDeleteSuccess();
         } else {

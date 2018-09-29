@@ -138,11 +138,11 @@ class CategoryController extends Controller
     public function destroy(Category $category)
     {
       if ($category->courses->count()>0){
-        $message = getMsgDeleteErrorVinculated();
+        $message = getMsgDeleteErrorVinculated('Cursos');
       } else {
         if (isAdmin()){
           if ($category->delete()){
-            $message = getMsgDeleteSuccess();
+            $message = getMsgDeleteSuccess('category');
           } else {
             $message = getMsgDeleteError();
           }

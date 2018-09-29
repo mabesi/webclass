@@ -157,19 +157,15 @@ class QuestionController extends Controller
      */
     public function destroy(Question $question)
     {
-      //if ($question->attempts->count()>0){
-      //  $message = getMsgDeleteErrorVinculated();
-      //} else {
-        if (isAdmin()){
-          if ($question->delete()){
-            $message = getMsgDeleteSuccess();
-          } else {
-            $message = getMsgDeleteError();
-          }
+      if (isAdmin()){
+        if ($question->delete()){
+          $message = getMsgDeleteSuccess();
         } else {
-          $message = getMsgDeleteAccessForbidden();
+          $message = getMsgDeleteError();
         }
-      //}
+      } else {
+        $message = getMsgDeleteAccessForbidden();
+      }
       return response()->json($message);
     }
 }

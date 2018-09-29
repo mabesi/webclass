@@ -125,11 +125,11 @@ class InstructorController extends Controller
     public function destroy(Instructor $instructor)
     {
       if ($instructor->courses->count()>0){
-        $message = getMsgDeleteErrorVinculated();
+        $message = getMsgDeleteErrorVinculated('Cursos');
       } else {
         if (isAdmin()){
           if ($instructor->delete()){
-            $message = getMsgDeleteSuccess();
+            $message = getMsgDeleteSuccess('instructor');
           } else {
             $message = getMsgDeleteError();
           }

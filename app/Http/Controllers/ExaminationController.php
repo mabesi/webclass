@@ -15,16 +15,6 @@ class ExaminationController extends Controller
       $this->middleware('OnlyRegistered')->only('show','attempt','verification','retry');
     }
 
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index()
-    {
-        //
-    }
-
     public function attempt(Request $request, $examinationId)
     {
       $examination = Examination::find($examinationId);
@@ -187,7 +177,7 @@ class ExaminationController extends Controller
     public function update(Request $request, Examination $examination)
     {
       $request->validate($examination->rules,$examination->messages);
-      
+
       $course = $examination->unity->course;
 
       foreach($course->unities as $unity){
@@ -216,19 +206,18 @@ class ExaminationController extends Controller
      */
     public function destroy(Examination $examination)
     {
-      if ($examination->questions->count()>0){
-        $message = getMsgDeleteErrorVinculated('Questões');
-      } else {
-        if (isAdmin()){
-          if ($examination->delete()){
-            $message = getMsgDeleteSuccess();
-          } else {
-            $message = getMsgDeleteError();
-          }
+      $unity = $examination->unity;
+
+      if (isAdmin()){
+        if ($examination->delete()){
+          $message = getMsgDeleteSuccess('unity/'.$unity->id);
         } else {
-          $message = getMsgDeleteAccessForbidden();
+          $message = getMsgDeleteError();
         }
+      } else {
+        $message = getMsgDeleteAccessForbidden();
       }
+
       return response()->json($message);
     }
 }

@@ -29,6 +29,14 @@ class Lesson extends Model
     'link.regex' => 'O campo Link deve conter um endereço de vídeo do Youtube válido.',
   ];
 
+  public function delete()
+  {
+    $this->users()->detach();
+
+    return parent::delete();
+  }
+
+
   public function unity()
   {
     return $this->belongsTo('App\Unity');

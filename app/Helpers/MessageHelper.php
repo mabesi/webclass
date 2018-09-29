@@ -63,11 +63,12 @@ function getMsgDeleteErrorLocked()
   return $data;
 }
 
-function getMsgDeleteSuccess()
+function getMsgDeleteSuccess($redirect=0)
 {
   $data = [
     'success' => true,
     'msg' => 'O recurso foi deletado com sucesso.',
+    'redirect' => $redirect,
   ];
 
   return $data;

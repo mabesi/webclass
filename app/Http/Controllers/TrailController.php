@@ -178,7 +178,7 @@ class TrailController extends Controller
       $trail->courses()->detach($courseId);
 
       if ($trail->courses()->find($courseId)==Null){
-        $message = getMsgRemoveSuccess();
+        $message = getMsgRemoveSuccess('trail');
       } else {
         $message = getMsgRemoveError();
       }

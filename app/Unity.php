@@ -19,6 +19,16 @@ class Unity extends Model
     'sequence.between' => 'O campo Sequência deve estar entre 1 e 255.',
   ];
 
+  public function delete()
+  {
+    foreach ($this->lessons as $lesson){
+      $lesson->delete();
+    };
+    $this->examination()->delete();
+
+    return parent::delete();
+  }
+
   public function course()
   {
     return $this->belongsTo('App\Course');

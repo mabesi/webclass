@@ -176,9 +176,11 @@ class LessonController extends Controller
      */
     public function destroy(Lesson $lesson)
     {
+      $unity = $lesson->unity;
+
       if (isAdmin()){
         if ($lesson->delete()){
-          $message = getMsgDeleteSuccess();
+          $message = getMsgDeleteSuccess('unity/'.$unity->id);
         } else {
           $message = getMsgDeleteError();
         }
