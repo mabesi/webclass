@@ -13,6 +13,7 @@
         <tr>
           <th>ID</th>
           <th>Nome</th>
+          <th>Cursos</th>
           <th>E-mail</th>
           <th></th>
         </tr>
@@ -22,6 +23,7 @@
         <tr>
           <td>{{ $user->id }}</td>
           <td><a href="{{ url('user/'.$user->id) }}">{{ $user->name }}</a></td>
+          <td>{{ $user->courses()->count() }}</td>
           <td>{{ $user->email }}</td>
           <td class="text-right">{!! getItemAdminIcons($user,'user','False') !!}<td>
         </tr>
