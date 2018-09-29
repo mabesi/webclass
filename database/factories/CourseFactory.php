@@ -10,6 +10,6 @@ $factory->define(App\Course::class, function (Faker $faker) {
         'category_id' => rand(1,15),
         'keywords' => $faker->word.",".$faker->word.",".$faker->word,
         'instructor_id' => rand(1,15),
-        'status' => $faker->randomElement(['N','E','C']),
+        'status' => $faker->randomElement(['C','C','N','C','C','E','C','C']),
     ];
 });
