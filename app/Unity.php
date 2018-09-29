@@ -6,6 +6,18 @@ use Illuminate\Database\Eloquent\Model;
 
 class Unity extends Model
 {
+  public $rules = [
+    'title' => 'required|string|between:4,60',
+    'sequence' => 'required|integer|between:1,255',
+  ];
+
+  public $messages = [
+    'title.required' => 'O campo Título é obrigatório.',
+    'title.string' => 'O campo Título dever ser somente texto.',
+    'title.between' => 'O campo Título deve ter entre 4 e 60 caracteres.',
+    'sequence.required' => 'O campo Sequência é obrigatório.',
+    'sequence.between' => 'O campo Sequência deve estar entre 1 e 255.',
+  ];
 
   public function course()
   {
@@ -50,7 +62,7 @@ class Unity extends Model
     }
 
     if ($totalItems==0){
-      $progress = 0;  
+      $progress = 0;
     } else {
       $progress = (int) (($completedItems/$totalItems)*100);
     }

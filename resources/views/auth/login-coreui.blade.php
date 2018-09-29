@@ -30,11 +30,11 @@
 
                 {{ csrf_field() }}
 
-                <div class="input-group mb-3">
+                <div class="input-group mb-3{{ $errors->has('email')?' was-validated' : '' }}">
                   <div class="input-group-prepend">
                     <span class="input-group-text"><i class="icon-user"></i></span>
                   </div>
-                  <input class="form-control {{ $errors->has('email')?' is-invalid':'' }}" type="email" name="email" value="{{ old('email') }}" placeholder="E-mail" required>
+                  <input class="form-control" type="email" name="email" value="{{ old('email') }}" placeholder="E-mail" required>
                   @if ($errors->has('email'))
                   <span class="invalid-feedback">
                     <strong>{{ $errors->first('email') }}</strong>
@@ -42,12 +42,13 @@
                   @endif
                 </div>
 
-                <div class="input-group mb-4">
+                <div class="input-group mb-4{{ $errors->has('password') ? ' was-validated' : '' }}">
                   <div class="input-group-prepend">
                     <span class="input-group-text"><i class="icon-lock"></i></span>
                   </div>
-                  <input class="form-control {{ $errors->has('password') ? ' is-invalid' : '' }}" type="password" name="password" placeholder="Senha" required>
+                  <input class="form-control" type="password" name="password" placeholder="Senha" required>
                   @if ($errors->has('password'))
+                  <span>{{ $errors->first('password') }}</span>
                   <span class="invalid-feedback">
                     <strong>{{ $errors->first('password') }}</strong>
                   </span>

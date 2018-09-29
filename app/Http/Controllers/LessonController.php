@@ -58,7 +58,8 @@ class LessonController extends Controller
     public function store(Request $request)
     {
       $lesson = new Lesson;
-      //$request->validate($user->rules,$user->messages);
+
+      $request->validate($lesson->rules,$lesson->messages);
 
       $id = getYoutubeId($request->link);
 
@@ -139,7 +140,7 @@ class LessonController extends Controller
      */
     public function update(Request $request, Lesson $lesson)
     {
-      //$request->validate($user->rules,$user->messages);
+      $request->validate($lesson->rules,$lesson->messages);
 
       $unity = $lesson->unity;
 

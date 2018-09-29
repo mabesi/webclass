@@ -35,23 +35,27 @@
 
         <div class="col-sm-12">
           <div class="form-group">
-            <label for="title">Título</label>
-            <input class="form-control" id="title" type="text" name="title"
+            <label for="title">Título *</label>
+            <input class="form-control{{ $errors->has('title')?' is-invalid':'' }}" id="title" type="text" name="title"
             value="{{ old('title',isset($courseware->title)?$courseware->title:Null) }}" required>
           </div>
         </div>
 
       </div>
       <div class="row">
-
         <div class="col-sm-12">
-          <div class="form-group">
-            <label for="courseware">Arquivo</label>
 
-            <input class="form-control-file" id="courseware" name="courseware" type="file">
-            <small class="text-muted">{{ isset($courseware->name)?'Arquivo atual: '.getDownloadName($courseware->name):Null }}</small>
+          <div class="{{ $errors->has('courseware')?' error-field p-2':'' }}">
+            <div class="form-group">
 
+              <label for="courseware">Arquivo{{ isset($courseware)?'':' *' }}</label>
+
+              <input class="form-control-file" id="courseware" name="courseware" type="file">
+              <small class="text-muted">{{ isset($courseware->name)?'Arquivo atual: '.getDownloadName($courseware->name):Null }}</small>
+
+            </div>
           </div>
+
         </div>
       </div>
 

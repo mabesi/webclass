@@ -15,6 +15,27 @@ class Course extends Model
       'title', 'category_id', 'keywords', 'instructor_id'
   ];
 
+  public $rules = [
+    'title' => 'required|string|between:4,60',
+    'category_id' => 'required|integer',
+    'status' => 'required_with:_method|in:N,E,C',
+    'instructor_id' => 'required|integer',
+    'keywords' => 'required|string|min:3',
+  ];
+
+  public $messages = [
+    'title.required' => 'O campo Título é obrigatório.',
+    'title.string' => 'O campo Título dever ser somente texto.',
+    'title.between' => 'O campo Título deve ter entre 4 e 60 caracteres.',
+    'category_id.required' => 'O campo Categoria é obrigatório.',
+    'status.required_with' => 'O campo Status é obrigatório.',
+    'status.in' => 'O campo Status deve ser uma das opções: Novo / Em Elaboração / Completo.',
+    'keywords.required' => 'O campo Palavras-chave é obrigatório.',
+    'keywords.string' => 'O campo Palavras-chave deve ser texto.',
+    'keywords.min' => 'O campo Palavras-chave deve conter pelo menos 3 caracteres.',
+    'instructor_id.required' => 'O campo Instrutor é obrigatório.',
+  ];
+
   public function category()
   {
     return $this->belongsTo('App\Category');

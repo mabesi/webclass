@@ -50,7 +50,8 @@ class UnityController extends Controller
     public function store(Request $request)
     {
       $unity = new Unity;
-      //$request->validate($user->rules,$user->messages);
+
+      $request->validate($unity->rules,$unity->messages);
 
       $unity->title = $request->title;
       $unity->course_id = $request->course_id;
@@ -111,7 +112,7 @@ class UnityController extends Controller
      */
     public function update(Request $request, Unity $unity)
     {
-      //$request->validate($user->rules,$user->messages);
+      $request->validate($unity->rules,$unity->messages);
 
       $unity->title = $request->title;
       $unity->course_id = $request->course_id;

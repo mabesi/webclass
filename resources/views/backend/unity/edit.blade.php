@@ -39,9 +39,9 @@
 
         <div class="col-sm-2">
           <div class="form-group">
-            <label for="sequence">Sequência</label>
+            <label for="sequence">Sequência *</label>
 
-            <input class="form-control" id="sequence" type="number" name="sequence"
+            <input class="form-control{{ $errors->has('sequence')?' is-invalid':'' }}" id="sequence" type="number" name="sequence"
             value="{{ old('sequence',isset($unity->sequence)?$unity->sequence:Null) }}"
             min="1" max="255" step="1" required>
 
@@ -50,8 +50,8 @@
 
         <div class="col-sm-10">
           <div class="form-group">
-            <label for="title">Título</label>
-            <input class="form-control" id="title" type="text" name="title"
+            <label for="title">Título *</label>
+            <input class="form-control{{ $errors->has('title')?' is-invalid':'' }}" id="title" type="text" name="title"
             value="{{ old('title',isset($unity->title)?$unity->title:Null) }}" required>
           </div>
         </div>

@@ -56,7 +56,7 @@ class UserController extends Controller
     {
         $user = new User;
 
-        //$request->validate($user->rules,$user->messages);
+        $request->validate($user->rules,$user->messages);
 
         $user->name = $request->name;
         $user->email = $request->email;
@@ -110,7 +110,7 @@ class UserController extends Controller
      */
     public function update(Request $request, User $user)
     {
-      //$request->validate($user->rules,$user->messages);
+      $request->validate($user->rules,$user->messages);
 
       $user->name = $request->name;
       $user->email = $request->email;

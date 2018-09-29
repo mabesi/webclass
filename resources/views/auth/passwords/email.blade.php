@@ -29,11 +29,11 @@
 
               {{ csrf_field() }}
 
-              <div class="input-group mb-2{{ $errors->has('email') ? ' was-validated' : '' }}">
+              <div class="input-group mb-2">
                 <div class="input-group-prepend">
                   <span class="input-group-text">@</span>
                 </div>
-                <input class="form-control" type="email" name="email" value="{{ old('email') }}" placeholder="E-mail" id="email" required>
+                <input class="form-control{{ $errors->has('email') ? ' is-invalid' : '' }}" type="email" name="email" value="{{ old('email') }}" placeholder="E-mail" id="email" required>
                 @if ($errors->has('email'))
                 <span class="invalid-feedback">
                   <strong>{{ $errors->first('email') }}</strong>

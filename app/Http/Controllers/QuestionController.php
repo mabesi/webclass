@@ -55,7 +55,7 @@ class QuestionController extends Controller
     {
       $question = new Question;
 
-      //$request->validate($user->rules,$user->messages);
+      $request->validate($question->rules,$question->messages);
 
       $examination = Examination::find($request->examination_id);
 
@@ -123,7 +123,7 @@ class QuestionController extends Controller
      */
     public function update(Request $request, Question $question)
     {
-      //$request->validate($user->rules,$user->messages);
+      $request->validate($question->rules,$question->messages);
 
       $examination = $question->examination;
 

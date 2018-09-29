@@ -78,9 +78,7 @@
           </tbody>
         </table>
 
-      @if(isAdmin())
-      <p class="text-muted">Resposta correta: {{$question->right_answer}}</p>
-      @endif
+      <p class="text-muted">Resposta correta: {{$question->right_answer}} <small>Obs: Resposta exibida para facilitar os testes envolvendo nota.</small></p>
     </div>
     @endforeach
 

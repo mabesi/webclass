@@ -20,17 +20,17 @@
 
         <div class="col-sm-5">
           <div class="form-group">
-            <label for="title">Título</label>
-            <input class="form-control" id="title" type="text" name="title"
-              value="{{ old('name',isset($course->title)?$course->title:Null) }}">
+            <label for="title">Título *</label>
+            <input class="form-control{{ $errors->has('title')?' is-invalid':'' }}" id="title" type="text" name="title"
+              value="{{ old('title',isset($course->title)?$course->title:Null) }}">
           </div>
         </div>
 
         <div class="col-sm-5">
           <div class="form-group">
-            <label for="name">Categoria</label>
+            <label for="category">Categoria *</label>
 
-            <select class="form-control" name="category_id">
+            <select id="category" class="form-control{{ $errors->has('category_id')?' is-invalid':'' }}" name="category_id">
               <option value=""></option>
               @foreach ($categories as $category)
               <option
@@ -46,12 +46,15 @@
 
         <div class="col-sm-2">
           <div class="form-group">
-            <label for="name">Status</label>
+            @if (isset($course))
+            <label for="status">Status *</label>
 
-            <select class="form-control" name="status" {{ isset($course)?'':'disabled' }}>
+            <select class="form-control{{ $errors->has('status')?' is-invalid':'' }}" id="status" name="status" {{ isset($course)?'':'disabled' }}>
+              @if($course->status=='N')
               <option value="N"
-                 {{ ("N"==(old('status',isset($course->status)?$course->status:''))?'selected':'') }} disabled>Novo
+                 {{ ("N"==(old('status',isset($course->status)?$course->status:''))?'selected':'') }} >Novo
                </option>
+              @endif
               <option value="E"
                  {{ ("E"==(old('status',isset($course->status)?$course->status:''))?'selected':'') }} >Em Elaboração
                </option>
@@ -59,7 +62,10 @@
                  {{ ("C"==(old('status',isset($course->status)?$course->status:''))?'selected':'') }} >Completo
                </option>
             </select>
-
+            @else
+            <label for="name">Status</label><br>
+            <span id="status" class="badge bg-secondary font-xl">Novo</span>
+            @endif
           </div>
         </div>
 
@@ -69,9 +75,9 @@
 
         <div class="col-sm-6">
           <div class="form-group">
-            <label for="name">Instrutor</label>
+            <label for="instructor">Instrutor *</label>
 
-            <select class="form-control" name="instructor_id">
+            <select id="instructor" class="form-control{{ $errors->has('instructor_id')?' is-invalid':'' }}" name="instructor_id">
               <option value=""></option>
               @foreach ($instructors as $instructor)
               <option
@@ -87,8 +93,8 @@
 
         <div class="col-sm-6">
           <div class="form-group">
-            <label for="keywords">Palavras-chave</label>
-            <input class="form-control" id="keywords" type="text" name="keywords"
+            <label for="keywords">Palavras-chave * <small>(Separadas por vírgula)</small></label>
+            <input class="form-control{{ $errors->has('keywords')?' is-invalid':'' }}" id="keywords" type="text" name="keywords"
               value="{{ old('keywords',isset($course->keywords)?$course->keywords:Null) }}" >
           </div>
         </div>

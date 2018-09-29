@@ -29,16 +29,25 @@ class User extends Authenticatable
 
     public $rules = [
       'name' => 'required|string|between:4,60',
-      'email' => 'required|email',
-      'password' => 'nullable|string|min:6',
+      'email' => 'required|email|unique:users',
+      'password' => [
+        'required_without:_method',
+        'nullable',
+        'min:8',
+        'regex:/^([a-zA-Z]+\d+)|(\d+[a-zA-Z]+)$/'
+        ],
     ];
 
-    public $mymessages = [
-      'name.required' => 'O campo Título é obrigatório.',
-      'name.string' => 'O campo Título dever ser somente texto.',
-      'name.between' => 'O campo Título deve ter no mínimo 5 caracteres.',
-      'email.required' => 'O campo Conteúdo é obrigatório.',
-      'email.string' => 'O campo Conteúdo deve ser somente texto.',
+    public $messages = [
+      'name.required' => 'O campo Nome é obrigatório.',
+      'name.string' => 'O campo Nome dever ser somente texto.',
+      'name.between' => 'O campo Nome deve ter entre 4 e 60 caracteres.',
+      'email.required' => 'O campo E-mail é obrigatório.',
+      'email.email' => 'O campo E-mail deve conter um e-mail válido.',
+      'email.unique' => 'Este e-mail já está sendo utilizado por outro usuário.',
+      'password.required_without' => 'O campo Senha é obrigatório para novos usuários.',
+      'password.min' => 'A senha deve conter pelo menos 8 caracteres.',
+      'password.regex' => 'A senha deve conter letras e números.',
     ];
 
     public function ratings()

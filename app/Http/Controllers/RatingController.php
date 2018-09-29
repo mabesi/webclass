@@ -14,16 +14,6 @@ class RatingController extends Controller
       $this->middleware('OnlyRegistered')->only('store');
     }
 
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index()
-    {
-        //
-    }
-
     public function course($courseId)
     {
       $course = Course::find($courseId);
@@ -38,16 +28,6 @@ class RatingController extends Controller
     }
 
     /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
      * Store a newly created resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
@@ -56,7 +36,8 @@ class RatingController extends Controller
     public function store(Request $request)
     {
       $rating = new Rating;
-      //$request->validate($user->rules,$user->messages);
+
+      $request->validate($rating->rules,$rating->messages);
 
       $rating->comment = $request->comment;
       $rating->rate = $request->rate;
@@ -81,48 +62,4 @@ class RatingController extends Controller
       }
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Rating  $rating
-     * @return \Illuminate\Http\Response
-     */
-    public function show(Rating $rating)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Rating  $rating
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(Rating $rating)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Rating  $rating
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, Rating $rating)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Rating  $rating
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy(Rating $rating)
-    {
-        //
-    }
 }

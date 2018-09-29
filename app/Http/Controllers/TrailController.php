@@ -54,7 +54,8 @@ class TrailController extends Controller
     public function store(Request $request)
     {
       $trail = new Trail;
-      //$request->validate($user->rules,$user->messages);
+
+      $request->validate($trail->rules,$trail->messages);
 
       $trail->title = $request->title;
       $trail->description = $request->description;
@@ -110,7 +111,7 @@ class TrailController extends Controller
      */
     public function update(Request $request, Trail $trail)
     {
-      //$request->validate($user->rules,$user->messages);
+      $request->validate($trail->rules,$trail->messages);
 
       $trail->title = $request->title;
       $trail->description = $request->description;

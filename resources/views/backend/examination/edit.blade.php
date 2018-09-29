@@ -42,7 +42,7 @@
           <div class="form-group">
             <label for="sequence">Sequência</label>
 
-            <input class="form-control" id="sequence" type="number" name="sequence"
+            <input class="form-control{{ $errors->has('sequence')?' is-invalid':'' }}" id="sequence" type="number" name="sequence"
             value="{{ old('sequence',isset($examination->sequence)?$examination->sequence:Null) }}"
             min="1" max="255" step="1" required>
 

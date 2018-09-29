@@ -6,6 +6,14 @@ use Illuminate\Database\Eloquent\Model;
 
 class Examination extends Model
 {
+  public $rules = [
+    'sequence' => 'required|integer|between:1,255',
+  ];
+
+  public $messages = [
+    'sequence.required' => 'O campo Sequência é obrigatório.',
+    'sequence.between' => 'O campo Sequência deve estar entre 1 e 255.',
+  ];
 
   public function unity()
   {

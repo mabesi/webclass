@@ -51,6 +51,8 @@ class CoursewareController extends Controller
     {
       $courseware = new Courseware;
 
+      $request->validate($courseware->rules,$courseware->messages);
+
       if ($request->courseware->getError()!=0){
         return back()->with('problems',['Ocorreu um erro ao carregar o arquivo!','Erro: '.$request->courseware->getErrorMessage()]);
       }
@@ -118,6 +120,8 @@ class CoursewareController extends Controller
      */
     public function update(Request $request, Courseware $courseware)
     {
+      $request->validate($courseware->rules,$courseware->messages);
+      
       $courseware->title = $request->title;
       $courseware->course_id = $request->course_id;
 

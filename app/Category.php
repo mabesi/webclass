@@ -15,6 +15,16 @@ class Category extends Model
       'name'
   ];
 
+  public $rules = [
+    'name' => 'required|string|between:4,60',
+  ];
+
+  public $messages = [
+    'name.required' => 'O campo Nome é obrigatório.',
+    'name.string' => 'O campo Nome dever ser somente texto.',
+    'name.between' => 'O campo Nome deve ter entre 4 e 60 caracteres.',
+  ];  
+
   public function courses()
   {
     return $this->hasMany('App\Course');

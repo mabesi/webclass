@@ -99,32 +99,34 @@
             <div class="col-sm-8">
               <div class="form-group">
                 <label for="comment">Comentário</label>
-                <textarea class="form-control" id="comment" rows="3" name="comment" required/></textarea>
+                <textarea class="form-control{{ $errors->has('comment')?' is-invalid':'' }}" id="comment" rows="3" name="comment"
+                required/>{{ old('comment') }}</textarea>
               </div>
             </div>
 
             <div class="col-sm-4">
+              <div class="{{ $errors->has('rate')?'error-field p-2 mb-1':'' }}">
+                <div class="form-group">
 
-              <div class="form-group">
+                  <label>Classificação</label>
 
-                <label>Classificação</label>
-
-                <div class="stars">
-                  <div class="form-check form-check-inline">
-                    <input class="form-check-input" id="star0" value="" name="rate" type="radio" checked>
-                    <label class="form-check-label" for="star1"><i class="fa"></i></label>
-                    <input class="form-check-input" id="star1" value="1" name="rate" type="radio" >
-                    <label class="form-check-label" for="star2"><i class="fa"></i></label>
-                    <input class="form-check-input" id="star2" value="2" name="rate" type="radio" >
-                    <label class="form-check-label" for="star3"><i class="fa"></i></label>
-                    <input class="form-check-input" id="star3" value="3" name="rate" type="radio" >
-                    <label class="form-check-label" for="star4"><i class="fa"></i></label>
-                    <input class="form-check-input" id="star4" value="4" name="rate" type="radio" >
-                    <label class="form-check-label" for="star5"><i class="fa"></i></label>
-                    <input class="form-check-input" id="star5" value="5" name="rate" type="radio" >
+                  <div class="stars">
+                    <div class="form-check form-check-inline">
+                      <input class="form-check-input" id="star0" value="" name="rate" type="radio" checked>
+                      <label class="form-check-label" for="star1"><i class="fa"></i></label>
+                      <input class="form-check-input" id="star1" value="1" name="rate" type="radio" >
+                      <label class="form-check-label" for="star2"><i class="fa"></i></label>
+                      <input class="form-check-input" id="star2" value="2" name="rate" type="radio" >
+                      <label class="form-check-label" for="star3"><i class="fa"></i></label>
+                      <input class="form-check-input" id="star3" value="3" name="rate" type="radio" >
+                      <label class="form-check-label" for="star4"><i class="fa"></i></label>
+                      <input class="form-check-input" id="star4" value="4" name="rate" type="radio" >
+                      <label class="form-check-label" for="star5"><i class="fa"></i></label>
+                      <input class="form-check-input" id="star5" value="5" name="rate" type="radio" >
+                    </div>
                   </div>
-                </div>
 
+                </div>
               </div>
 
               <button type="submit" class="btn btn-primary form-control">Enviar</button>

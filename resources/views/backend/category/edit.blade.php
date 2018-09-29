@@ -20,8 +20,8 @@
 
         <div class="col-sm-4">
           <div class="form-group">
-            <label for="name">Nome</label>
-            <input class="form-control" id="name" type="text" name="name"
+            <label for="name">Nome *</label>
+            <input class="form-control{{ $errors->has('name')?' is-invalid':'' }}" id="name" type="text" name="name"
               value="{{ old('name',isset($category->name)?$category->name:Null) }}">
           </div>
         </div>

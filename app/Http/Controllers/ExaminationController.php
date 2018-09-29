@@ -117,6 +117,8 @@ class ExaminationController extends Controller
     {
       $examination = new Examination;
 
+      $request->validate($examination->rules,$examination->messages);
+
       $unity = Unity::find($request->unity_id);
       $course = $unity->course;
 
@@ -184,6 +186,8 @@ class ExaminationController extends Controller
      */
     public function update(Request $request, Examination $examination)
     {
+      $request->validate($examination->rules,$examination->messages);
+      
       $course = $examination->unity->course;
 
       foreach($course->unities as $unity){

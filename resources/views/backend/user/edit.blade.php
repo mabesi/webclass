@@ -20,24 +20,24 @@
 
         <div class="col-sm-4">
           <div class="form-group">
-            <label for="name">Nome</label>
-            <input class="form-control" id="name" type="text" name="name"
+            <label for="name">Nome *</label>
+            <input class="form-control{{ $errors->has('name')?' is-invalid':'' }}" id="name" type="text" name="name"
               value="{{ old('name',isset($user->name)?$user->name:Null) }}">
           </div>
         </div>
 
         <div class="col-sm-4">
           <div class="form-group">
-            <label for="ccnumber">E-mail</label>
-            <input class="form-control" id="ccnumber" type="email" name="email"
+            <label for="ccnumber">E-mail *</label>
+            <input class="form-control{{ $errors->has('email')?' is-invalid':'' }}" id="ccnumber" type="email" name="email"
               value="{{ old('email',isset($user->email)?$user->email:Null) }}" >
           </div>
         </div>
 
         <div class="col-sm-4">
           <div class="form-group">
-            <label for="ccnumber">Senha</label>
-            <input class="form-control" id="password" type="password" name="password">
+            <label for="ccnumber">Senha{{ isset($user)?'':' *' }}</label>
+            <input class="form-control{{ $errors->has('password')?' is-invalid':'' }}" id="password" type="password" name="password">
           </div>
         </div>
 

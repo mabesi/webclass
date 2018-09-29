@@ -53,7 +53,7 @@ class InstructorController extends Controller
     {
       $instructor = new Instructor;
 
-      //$request->validate($user->rules,$user->messages);
+      $request->validate($instructor->rules,$instructor->messages);
 
       $instructor->name = $request->name;
 
@@ -105,7 +105,7 @@ class InstructorController extends Controller
      */
     public function update(Request $request, Instructor $instructor)
     {
-      //$request->validate($user->rules,$user->messages);
+      $request->validate($instructor->rules,$instructor->messages);
 
       $instructor->name = $request->name;
 

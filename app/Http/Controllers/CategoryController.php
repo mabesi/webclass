@@ -62,9 +62,9 @@ class CategoryController extends Controller
      */
     public function store(Request $request)
     {
-      $category = new Instructor;
+      $category = new Category;
 
-      //$request->validate($user->rules,$user->messages);
+      $request->validate($category->rules,$category->messages);
 
       $category->name = $request->name;
 
@@ -118,7 +118,7 @@ class CategoryController extends Controller
      */
     public function update(Request $request, Category $category)
     {
-      //$request->validate($user->rules,$user->messages);
+      $request->validate($category->rules,$category->messages);
 
       $category->name = $request->name;
 

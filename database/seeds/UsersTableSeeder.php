@@ -23,16 +23,16 @@ class UsersTableSeeder extends Seeder
       ]);
 
       DB::table('users')->insert([
-          'name' => 'Liza Barral',
-          'email' => 'liza@gmail.com',
-          'type' => 'U',
-          'password' => bcrypt('webclass'),
-          'remember_token' => str_random(10),
+        'name' => 'Plinio Mabesi',
+        'email' => 'pliniomabesi@gmail.com',
+        'type' => 'U',
+        'password' => bcrypt('webclass'),
+        'remember_token' => str_random(10),
       ]);
 
       DB::table('users')->insert([
-          'name' => 'Plinio Mabesi',
-          'email' => 'pliniomabesi@gmail.com',
+          'name' => 'Liza Barral',
+          'email' => 'liza@gmail.com',
           'type' => 'U',
           'password' => bcrypt('webclass'),
           'remember_token' => str_random(10),

@@ -24,8 +24,8 @@
       <div class="row">
         <div class="col-sm-12">
           <div class="form-group">
-            <label for="title">Título</label>
-            <input class="form-control" id="title" type="text" name="title"
+            <label for="title">Título *</label>
+            <input class="form-control{{ $errors->has('title')?' is-invalid':'' }}" id="title" type="text" name="title"
             value="{{ old('title',isset($trail->title)?$trail->title:Null) }}" required>
           </div>
         </div>
@@ -33,11 +33,13 @@
 
       <div class="row">
         <div class="col-sm-12">
-          <div class="form-group">
-            <label for="description">Descrição</label>
-            <textarea class="form-control summernote-large" id="description" name="description" rows="4"
-            required>{{ old('description',isset($trail->description)?$trail->description:'') }}</textarea>
+          <div class="{{ $errors->has('description')?'error-field p-2':'' }}">
+            <div class="form-group">
+              <label for="description">Descrição *</label>
+              <textarea class="form-control summernote-large" id="description" name="description" rows="4"
+              required>{{ old('description',isset($trail->description)?$trail->description:'') }}</textarea>
 
+            </div>
           </div>
         </div>
       </div>

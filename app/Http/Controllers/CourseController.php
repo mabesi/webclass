@@ -163,7 +163,8 @@ class CourseController extends Controller
   public function store(Request $request)
   {
     $course = new Course;
-    //$request->validate($user->rules,$user->messages);
+
+    $request->validate($course->rules,$course->messages);
 
     $course->title = $request->title;
     $course->category_id = $request->category_id;
@@ -227,7 +228,13 @@ class CourseController extends Controller
   */
   public function update(Request $request, Course $course)
   {
-    //$request->validate($user->rules,$user->messages);
+    $request->validate($course->rules,$course->messages);
+
+    if ($course->status=='E' || $course->status=='C'){
+      if ($request->status=='N'){
+        return back()->with('problems',['Um curso Completo ou Em Elaboração não pode retornar para o status Novo!']);
+      }
+    }
 
     $course->title = $request->title;
     $course->category_id = $request->category_id;
