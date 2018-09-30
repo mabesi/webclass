@@ -38,7 +38,7 @@
           <div class="form-group">
             <label for="ccnumber">Senha{{ isset($user)?'':' *' }} </label>
             <input class="form-control{{ $errors->has('password')?' is-invalid':'' }}" id="password" type="password" name="password">
-            <small class="text-muted">Preencha somente quando quiser resetar a senha do usuário</small>
+            <small class="text-muted">Preencha somente quando quiser alterar a senha do usuário</small>
           </div>
         </div>
 

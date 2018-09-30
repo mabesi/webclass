@@ -58,7 +58,7 @@ class TrailController extends Controller
       $request->validate($trail->rules,$trail->messages);
 
       $trail->title = $request->title;
-      $trail->description = $request->description;
+      $trail->description = clean($request->description);
 
       if ($trail->save()){
         return redirect('trail/'.$trail->id)->with('informations',['Os dados da trilha foram salvos com sucesso!']);
@@ -114,7 +114,7 @@ class TrailController extends Controller
       $request->validate($trail->rules,$trail->messages);
 
       $trail->title = $request->title;
-      $trail->description = $request->description;
+      $trail->description = clean($request->description);
 
       if ($trail->save()){
         return redirect('trail/'.$trail->id)->with('informations',['Os dados da trilha foram salvos com sucesso!']);

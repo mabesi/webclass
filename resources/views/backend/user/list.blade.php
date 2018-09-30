@@ -22,7 +22,12 @@
       @foreach ($users as $user)
         <tr>
           <td>{{ $user->id }}</td>
-          <td><a href="{{ url('user/'.$user->id) }}">{{ $user->name }}</a></td>
+          <td>
+            {{ $user->name }}
+            @if ($user->courses()->count()>0)
+            <a href="{{ url('user/'.$user->id) }}" class="btn btn-sm btn-primary ml-2">Ver Relatório</a>
+            @endif
+          </td>
           <td>{{ $user->courses()->count() }}</td>
           <td>{{ $user->email }}</td>
           <td class="text-right">{!! getItemAdminIcons($user,'user','False') !!}<td>

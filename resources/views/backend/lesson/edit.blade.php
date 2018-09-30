@@ -5,6 +5,9 @@
 <div class="card">
   <div class="card-header">
     <strong>{{ isset($lesson)?'Editar Videoaula':'Nova Videoaula' }}</strong>
+    <a href="https://www.youtube.com" target="_blank" class="btn btn-danger btn-sm float-right">
+      <i class="fa fa-youtube-play"></i> Acessar Youtube
+    </a>
   </div>
 
   <form action="{{ url('/lesson'.(isset($lesson->id)?'/'.$lesson->id:'')) }}" method="POST" >
@@ -40,10 +43,10 @@
 
         <div class="col-sm-2">
           <div class="form-group">
-            <label for="sequence">Sequência *</label>
+            <label for="sequence">Número da Videoaula *</label>
 
             <input class="form-control{{ $errors->has('sequence')?' is-invalid':'' }}" id="sequence" type="number" name="sequence"
-            value="{{ old('sequence',isset($lesson->sequence)?$lesson->sequence:Null) }}"
+            value="{{ old('sequence',isset($lesson->sequence)?$lesson->sequence:($unity->lessons()->count()+1)) }}"
             min="1" max="255" step="1" required>
 
           </div>

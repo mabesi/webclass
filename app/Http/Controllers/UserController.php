@@ -110,7 +110,18 @@ class UserController extends Controller
      */
     public function update(Request $request, User $user)
     {
-      $request->validate($user->rules,$user->messages);
+      $rules = [
+        'name' => 'required|string|between:4,60',
+        'email' => 'required|email|unique:users,email,'.$user->id,
+        'password' => [
+          'required_without:_method',
+          'nullable',
+          'min:8',
+          'regex:/^([a-zA-Z]+\d+)|(\d+[a-zA-Z]+)$/'
+          ],
+      ];
+
+      $request->validate($rules,$user->messages);
 
       $user->name = $request->name;
       $user->email = $request->email;

@@ -122,7 +122,13 @@ class CategoryController extends Controller
      */
     public function update(Request $request, Category $category)
     {
-      $request->validate($category->rules,$category->messages);
+      $rules = ['name' =>
+                  'required',
+                  'string',
+                  'between:4,60',
+                  'unique:categories,name,'.$category->id];
+
+      $request->validate($rules,$category->messages);
 
       $category->name = $request->name;
 

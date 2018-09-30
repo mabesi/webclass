@@ -170,6 +170,7 @@ class CourseController extends Controller
     $course->category_id = $request->category_id;
     $course->instructor_id = $request->instructor_id;
     $course->keywords = $request->keywords;
+    $course->description = clean($request->description);
 
     if ($course->save()){
       return redirect('course')->with('informations',['Os dados do curso foram salvos com sucesso!']);
@@ -241,6 +242,7 @@ class CourseController extends Controller
     $course->instructor_id = $request->instructor_id;
     $course->keywords = $request->keywords;
     $course->status = $request->status;
+    $course->description = clean($request->description);
 
     if ($course->save()){
       return redirect('course')->with('informations',['Os dados do curso foram alterados com sucesso!']);

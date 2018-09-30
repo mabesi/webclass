@@ -1,5 +1,9 @@
 @extends('backend.layouts.panel')
 
+@push('css')
+  <link href="{{ asset('summernote/summernote-bs4.css') }}" rel="stylesheet">
+@endpush
+
 @section('content')
 
 <div class="card">
@@ -101,6 +105,19 @@
 
       </div>
 
+      <div class="row">
+        <div class="col-sm-12">
+          <div class="{{ $errors->has('description')?'error-field p-2':'' }}">
+            <div class="form-group">
+              <label for="description">Descrição *</label>
+              <textarea class="form-control summernote-large" id="description" name="description" rows="4"
+              required>{{ old('description',isset($course->description)?$course->description:'') }}</textarea>
+
+            </div>
+          </div>
+        </div>
+      </div>
+
     </div>
     <div class="card-footer">
       <button type="submit" class="btn btn-primary">Salvar</button>
@@ -113,3 +130,7 @@
 </div>
 
 @endsection
+
+@push('scripts')
+  @include('backend.layouts.editor-scripts')
+@endpush

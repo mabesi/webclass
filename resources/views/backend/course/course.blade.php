@@ -18,15 +18,16 @@
     </span>
     @endif
     <h1>
-      <i class="fa fa-dot-circle-o"></i> {{ $course->title }} {!! getCourseStarIcon($course,True,'warning') !!}
+      <i class="fa fa-dot-circle-o"></i> {{ $course->title }}
     </h1>
+    <span class="font-4xl">{!! getCourseStarIcon($course,True,'warning') !!}</span>
   </div>
 
   <div class="card-body">
 
     <div class="row">
       <div class="col-sm-12">
-        <p class="text-justify">{{ $course->description }}</p>
+        <p class="text-justify">{!! $course->description !!}</p>
       </div>
     </div>
     <div class="row">

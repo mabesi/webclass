@@ -14,6 +14,7 @@
     </span>
     @endif
     <h1><i class="fa fa-dot-circle-o"></i> {{ $unity->title }}</h1>
+    <span class="font-xl font-weight-bold text-muted">Unidade {{ $unity->sequence }} - Curso: <a href="{{ url('course/'.$unity->course->id) }}">{{ $unity->course->title }}</a></span>
   </div>
 
   <div class="card-body">
@@ -32,7 +33,7 @@
           @if ($lesson->completed())
             <span class='badge badge-success font-sm'>Assistida</span>
           @endif
-          {!! getItemAdminIcons($lesson,'lesson',False) !!}
+          {!! getItemAdminIcons($lesson,'lesson',False,"Assistir Videoaula") !!}
         </span>
       </li>
       @endforeach

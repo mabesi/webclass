@@ -27,7 +27,7 @@
 <div class="card">
   <div class="card-body">
 
-    <h2 class="p-2 bg-light"><i class="fa fa-graduation-cap"></i> Cursos Integrantes da Trilha</h2>
+    <h2 class="p-2 bg-light"><i class="fa fa-graduation-cap"></i> Cursos Associados à Trilha</h2>
 
     @if (isAdmin())
     <form action="{{ url('/trail/'.$trail->id.'/course/include') }}" method="POST" >
@@ -62,7 +62,7 @@
 
         <div class="col-sm-2">
           <div class="form-group">
-            <button type="submit" class="btn btn-primary form-control mt-3">Incluir</button>
+            <button type="submit" class="btn btn-primary form-control mt-3">Associar Curso</button>
           </div>
         </div>
 
@@ -81,7 +81,7 @@
         </span>
         <span>
           @if (isAdmin())
-            <a class="btn btn-sm delete-button btn-outline-danger" title="Remover Curso da Trilha"
+            <a class="btn btn-sm delete-button btn-outline-danger" title="Dissociar Curso da Trilha"
               href="{{ url('trail/'.$trail->id.'/course/'.$course->id.'/remove') }}"
               data-token="{{ csrf_token() }}" data-resource="False" data-previous="{{ URL::previous() }}">
               <i class="fa fa-minus-square"></i>

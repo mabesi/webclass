@@ -105,7 +105,13 @@ class InstructorController extends Controller
      */
     public function update(Request $request, Instructor $instructor)
     {
-      $request->validate($instructor->rules,$instructor->messages);
+      $rules = ['name' =>
+                  'required',
+                  'string',
+                  'between:4,60',
+                  'unique:categories,name,'.$instructor->id];
+
+      $request->validate($rules,$instructor->messages);
 
       $instructor->name = $request->name;
 

@@ -1,6 +1,6 @@
 <?php
 
-function getItemAdminIcons($item,$itemType,$resource)
+function getItemAdminIcons($item,$itemType,$resource,$title='')
 {
   $icons = '';
 
@@ -11,7 +11,7 @@ function getItemAdminIcons($item,$itemType,$resource)
                 "' data-token='".csrf_token()."' data-resource='".$resource."' data-previous='".URL::previous()."'>
               <i class='fa fa-trash'></i></a>";
   } elseif (!$resource) {
-    $icons .= "<a title='Ver Recurso' class='btn btn-outline-success btn-sm' href='".url($itemType.'/'.$item->id)."'>
+    $icons .= "<a title='$title' class='btn btn-outline-success btn-sm' href='".url($itemType.'/'.$item->id)."'>
     <i class='fa fa-arrow-circle-right'></i></a>";
   }
 

@@ -44,7 +44,7 @@
             <label for="sequence">Número da Questão</label>
 
             <input class="form-control{{ $errors->has('sequence')?' is-invalid':'' }}" id="sequence" type="number" name="sequence"
-            value="{{ old('sequence',isset($question->sequence)?$question->sequence:Null) }}"
+            value="{{ old('sequence',isset($question->sequence)?$question->sequence:($examination->questions()->count()+1)) }}"
             min="1" max="255" step="1" required>
 
           </div>

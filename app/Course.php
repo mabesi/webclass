@@ -21,6 +21,7 @@ class Course extends Model
     'status' => 'required_with:_method|in:N,E,C',
     'instructor_id' => 'required|integer',
     'keywords' => 'required|string|min:3',
+    'description' => 'required|string|min:21',
   ];
 
   public $messages = [
@@ -34,6 +35,9 @@ class Course extends Model
     'keywords.string' => 'O campo Palavras-chave deve ser texto.',
     'keywords.min' => 'O campo Palavras-chave deve conter pelo menos 3 caracteres.',
     'instructor_id.required' => 'O campo Instrutor é obrigatório.',
+    'description.required' => 'O campo Descrição é obrigatório.',
+    'description.string' => 'O campo Descrição dever ser somente texto.',
+    'description.min' => 'O campo Descrição deve ter pelo menos 10 caracteres.',
   ];
 
   public function delete()

@@ -39,10 +39,10 @@
 
         <div class="col-sm-2">
           <div class="form-group">
-            <label for="sequence">Sequência *</label>
+            <label for="sequence">Número da Unidade *</label>
 
             <input class="form-control{{ $errors->has('sequence')?' is-invalid':'' }}" id="sequence" type="number" name="sequence"
-            value="{{ old('sequence',isset($unity->sequence)?$unity->sequence:Null) }}"
+            value="{{ old('sequence',isset($unity->sequence)?$unity->sequence:($course->unities()->count()+1)) }}"
             min="1" max="255" step="1" required>
 
           </div>

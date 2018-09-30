@@ -23,8 +23,8 @@ class Lesson extends Model
     'title.required' => 'O campo Título é obrigatório.',
     'title.string' => 'O campo Título dever ser somente texto.',
     'title.between' => 'O campo Título deve ter entre 4 e 60 caracteres.',
-    'sequence.required' => 'O campo Sequência é obrigatório.',
-    'sequence.between' => 'O campo Sequência deve estar entre 1 e 255.',
+    'sequence.required' => 'O campo Número da Videoaula é obrigatório.',
+    'sequence.between' => 'O campo Número da Videoaula deve estar entre 1 e 255.',
     'link.required' => 'O campo Link é obrigatório.',
     'link.regex' => 'O campo Link deve conter um endereço de vídeo do Youtube válido.',
   ];
