@@ -19,17 +19,19 @@ class CategoryController extends Controller
      */
     public function index()
     {
+      $categories = Category::query();
+
       if (isAdmin()){
         $paginate = 10;
         $view = 'backend.category.list';
       }else{
         $paginate = 12;
         $view = 'backend.category.categories';
+        $categories->has('courses');
       }
 
-      $categories = Category::has('courses')
-                    ->orderBy('name')
-                    ->paginate($paginate);
+      $categories = $categories->orderBy('name')
+                                ->paginate($paginate);
 
       $breadcrumbs = [
         'Categorias' => '#',
@@ -67,6 +69,8 @@ class CategoryController extends Controller
       $request->validate($category->rules,$category->messages);
 
       $category->name = $request->name;
+
+      //dd($category);
 
       if ($category->save()){
         return redirect('category')->with('informations',['Os dados da categoria foram salvos com sucesso!']);
