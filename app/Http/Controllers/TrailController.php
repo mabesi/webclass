@@ -164,7 +164,7 @@ class TrailController extends Controller
 
       $trail->courses()->attach($courseId, ['sequence' => $sequence]);
 
-      if ($trail->courses()->find($courseId)->count()>0){
+      if ($trail->courses()->find($courseId)!=Null){
         return back()->with('informations',['O curso foi incluído com sucesso!']);
       } else {
         return back()->with('problems',['Ocorreu um erro ao incluir o curso!']);
