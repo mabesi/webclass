@@ -1,3 +1,4 @@
 *
 !public/
+!courseware/fake
 !.gitignore
