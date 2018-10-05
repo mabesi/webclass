@@ -82,6 +82,18 @@ function downloadLocalFile($file,$name=Null,$headers=Array())
   return Storage::disk('local')->download($file,$name,$headers);
 }
 
+function downloadFakeFile($file,$name=Null,$headers=Array())
+{
+  if ($name==Null){
+    $name = getDownloadName($file);
+  }
+
+  $extension = getExtension($name);
+  $file = 'courseware/fake/exemplo.'.$extension;
+
+  return Storage::disk('local')->download($file,$name,$headers);
+}
+
 function getDownloadName($file)
 {
   $name = $file;
@@ -111,7 +123,8 @@ function deleteLocalDir($dir)
 
 function getExtension($fileName)
 {
-  return end(explode(".",$fileName));
+  $arrayName = explode(".",$fileName);
+  return end($arrayName);
 }
 
 function getFileIcon($fileName,$color=Null,$size=Null)

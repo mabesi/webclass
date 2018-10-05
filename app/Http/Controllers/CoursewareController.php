@@ -90,7 +90,8 @@ class CoursewareController extends Controller
       if (fileExists($file)){
         return downloadLocalFile($file);
       } else {
-        return back()->with('problems',['Ocorreu um erro ao baixar o arquivo!']);
+        return downloadFakeFile($file);
+        //return back()->with('problems',['Ocorreu um erro ao baixar o arquivo!']);
       }
     }
 
@@ -121,7 +122,7 @@ class CoursewareController extends Controller
     public function update(Request $request, Courseware $courseware)
     {
       $request->validate($courseware->rules,$courseware->messages);
-      
+
       $courseware->title = $request->title;
       $courseware->course_id = $request->course_id;
 
