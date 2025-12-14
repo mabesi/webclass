@@ -1,0 +1,482 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description"
+        content="WebClass System Overview - Complete online course management system built with Laravel">
+    <meta name="keywords" content="webclass, online courses, laravel, education, e-learning, lms">
+    <title>WebClass - System Overview</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary-gradient: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            --dark-bg: #0f0f23;
+            --card-bg: rgba(255, 255, 255, 0.05);
+            --card-border: rgba(255, 255, 255, 0.1);
+            --text-primary: #ffffff;
+            --text-secondary: #a0a0b8;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            background: var(--dark-bg);
+            color: var(--text-primary);
+            line-height: 1.7;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        header {
+            text-align: center;
+            padding: 3rem 0 2rem;
+            border-bottom: 1px solid var(--card-border);
+            margin-bottom: 3rem;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            background: var(--primary-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 1rem;
+        }
+
+        .subtitle {
+            color: var(--text-secondary);
+            font-size: 1.1rem;
+        }
+
+        .nav-links {
+            margin-top: 1.5rem;
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .nav-links a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            padding: 0.5rem 1rem;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+            border: 1px solid var(--card-border);
+        }
+
+        .nav-links a:hover {
+            color: var(--text-primary);
+            background: var(--card-bg);
+        }
+
+        h2 {
+            font-size: 2rem;
+            margin: 3rem 0 1.5rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid var(--card-border);
+        }
+
+        h3 {
+            font-size: 1.5rem;
+            margin: 2rem 0 1rem;
+            color: #a78bfa;
+        }
+
+        h4 {
+            font-size: 1.2rem;
+            margin: 1.5rem 0 0.75rem;
+            color: var(--text-secondary);
+        }
+
+        p {
+            margin-bottom: 1rem;
+            color: var(--text-secondary);
+        }
+
+        hr {
+            border: none;
+            border-top: 1px solid var(--card-border);
+            margin: 3rem 0;
+        }
+
+        img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 12px;
+            margin: 1.5rem 0;
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.5);
+            border: 1px solid var(--card-border);
+        }
+
+        ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        ul li {
+            padding: 0.5rem 0;
+            padding-left: 1.5rem;
+            position: relative;
+        }
+
+        ul li::before {
+            content: "✅";
+            position: absolute;
+            left: 0;
+        }
+
+        .tech-stack {
+            background: var(--card-bg);
+            padding: 2rem;
+            border-radius: 12px;
+            border: 1px solid var(--card-border);
+            margin: 2rem 0;
+        }
+
+        .conclusion {
+            background: var(--card-bg);
+            padding: 2rem;
+            border-radius: 12px;
+            border: 1px solid var(--card-border);
+            margin: 2rem 0;
+            text-align: center;
+        }
+
+        footer {
+            text-align: center;
+            padding: 2rem 0;
+            margin-top: 4rem;
+            border-top: 1px solid var(--card-border);
+            color: var(--text-secondary);
+        }
+
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2rem;
+            }
+
+            h2 {
+                font-size: 1.5rem;
+            }
+
+            h3 {
+                font-size: 1.25rem;
+            }
+
+            .container {
+                padding: 1rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <header>
+            <h1>WebClass System Overview</h1>
+            <p class="subtitle">Complete online course management system built with Laravel</p>
+            <div class="nav-links">
+                <a href="index.html">🏠 Home</a>
+                <a href="OVERVIEW-PT.html">🇧🇷 Português</a>
+                <a href="https://github.com/mabesi/webclass">📦 GitHub</a>
+            </div>
+        </header>
+
+        <main>
+            <p>WebClass is a comprehensive online course management system built with Laravel. The platform provides a
+                complete learning management solution with separate environments for students and administrators.</p>
+
+            <h2>System Architecture</h2>
+            <p>The system is divided into two main environments:</p>
+            <ul>
+                <li><strong>Student Environment</strong>: Frontend interface for course browsing, enrollment, learning,
+                    and assessment</li>
+                <li><strong>Admin Environment</strong>: Backend interface for complete system management and content
+                    creation</li>
+            </ul>
+
+            <hr>
+
+            <h2>Student Environment</h2>
+            <p>The student environment provides an intuitive interface for learners to access and complete courses.</p>
+
+            <h3>Home Page</h3>
+            <p>The home page welcomes students with featured courses and easy navigation.</p>
+            <h4>Student Home</h4>
+            <img src="readme_assets/aluno/home.jpg" alt="Student Home">
+
+            <h3>Course Browsing</h3>
+            <p>Students can browse all available courses organized by categories and trails.</p>
+            <h4>All Courses</h4>
+            <img src="readme_assets/aluno/todos-cursos.jpg" alt="All Courses">
+
+            <h3>Categories</h3>
+            <p>Courses are organized into categories for easy discovery.</p>
+            <h4>Categories List</h4>
+            <img src="readme_assets/aluno/categorias.jpg" alt="Categories">
+            <h4>Category View</h4>
+            <img src="readme_assets/aluno/categoria.jpg" alt="Category View">
+
+            <h3>Learning Trails</h3>
+            <p>Learning trails group related courses into structured learning paths.</p>
+            <h4>Trails List</h4>
+            <img src="readme_assets/aluno/trilhas.png" alt="Trails">
+            <h4>Trail Details</h4>
+            <img src="readme_assets/aluno/trilha.jpg" alt="Trail Details">
+
+            <h3>My Courses</h3>
+            <p>Students can view and manage their enrolled courses.</p>
+            <h4>My Courses</h4>
+            <img src="readme_assets/aluno/meus-cursos.png" alt="My Courses">
+
+            <h3>Course States</h3>
+            <p>The system tracks different course states for each student:</p>
+            <h4>Not Enrolled</h4>
+            <img src="readme_assets/aluno/curso-naoinscrito.jpg" alt="Course Not Enrolled">
+            <h4>Recently Enrolled</h4>
+            <img src="readme_assets/aluno/curso-receminscrito.jpg" alt="Recently Enrolled">
+            <h4>Approved</h4>
+            <img src="readme_assets/aluno/curso-aprovado.jpg" alt="Course Approved">
+            <h4>Failed</h4>
+            <img src="readme_assets/aluno/curso-reprovado.jpg" alt="Course Failed">
+
+            <h3>Video Lessons</h3>
+            <p>Students can watch video lessons integrated with YouTube.</p>
+            <h4>Watching Video Lesson</h4>
+            <img src="readme_assets/aluno/assistir-videoaula.jpg" alt="Watching Video Lesson">
+
+            <h3>Unit Completion</h3>
+            <p>Track progress as units are completed.</p>
+            <h4>Completed Unit</h4>
+            <img src="readme_assets/aluno/unidade-completa.jpg" alt="Completed Unit">
+
+            <h3>Examinations</h3>
+            <p>Students take examinations to assess their learning.</p>
+            <h4>Examination Verification</h4>
+            <img src="readme_assets/aluno/verificar-exame.jpg" alt="Examination Verification">
+
+            <h3>Ratings and Reviews</h3>
+            <p>Students can rate and review courses.</p>
+            <h4>Course Ratings</h4>
+            <img src="readme_assets/aluno/avaliacoes.png" alt="Course Ratings">
+
+            <h3>Instructors</h3>
+            <p>View instructor profiles and their courses.</p>
+            <h4>Instructors List</h4>
+            <img src="readme_assets/aluno/instrutores.jpg" alt="Instructors List">
+            <h4>Instructor Profile</h4>
+            <img src="readme_assets/aluno/instrutor.jpg" alt="Instructor Profile">
+
+            <h3>User Profile</h3>
+            <p>Students can manage their profile and change password.</p>
+            <h4>User Menu</h4>
+            <img src="readme_assets/aluno/menu-usuario.jpg" alt="User Menu">
+            <h4>Change Password</h4>
+            <img src="readme_assets/aluno/alterar-senha.jpg" alt="Change Password">
+
+            <hr>
+
+            <h2>Admin Environment</h2>
+            <p>The admin environment provides comprehensive tools for managing all aspects of the learning platform.</p>
+
+            <h3>Dashboard</h3>
+            <p>The admin dashboard provides an overview of the system.</p>
+            <h4>Admin Home</h4>
+            <img src="readme_assets/admin/home.jpg" alt="Admin Home">
+
+            <h3>Course Management</h3>
+            <p>Administrators can create and manage courses with detailed information.</p>
+            <h4>Course List</h4>
+            <img src="readme_assets/admin/cursos.png" alt="Courses List">
+            <h4>Create New Course</h4>
+            <img src="readme_assets/admin/novo-curso.png" alt="New Course">
+            <h4>Edit Course</h4>
+            <img src="readme_assets/admin/editar-curso.png" alt="Edit Course">
+            <h4>Course Details</h4>
+            <img src="readme_assets/admin/curso.jpg" alt="Course Details">
+
+            <h3>Category Management</h3>
+            <p>Organize courses into categories.</p>
+            <h4>Categories List</h4>
+            <img src="readme_assets/admin/categorias.jpg" alt="Categories">
+            <h4>Create Category</h4>
+            <img src="readme_assets/admin/nova-categoria.jpg" alt="New Category">
+            <h4>Edit Category</h4>
+            <img src="readme_assets/admin/editar-categoria.jpg" alt="Edit Category">
+            <h4>Category View</h4>
+            <img src="readme_assets/admin/categoria.png" alt="Category">
+
+            <h3>Trail Management</h3>
+            <p>Create learning trails to group related courses.</p>
+            <h4>Trails List</h4>
+            <img src="readme_assets/admin/trilhas.jpg" alt="Trails">
+            <h4>Create Trail</h4>
+            <img src="readme_assets/admin/nova-trilha.jpg" alt="New Trail">
+            <h4>Edit Trail</h4>
+            <img src="readme_assets/admin/editar-trilha.jpg" alt="Edit Trail">
+            <h4>Trail Details</h4>
+            <img src="readme_assets/admin/trilha.png" alt="Trail">
+
+            <h3>Instructor Management</h3>
+            <p>Manage instructor profiles and assignments.</p>
+            <h4>Create Instructor</h4>
+            <img src="readme_assets/admin/novo-instrutor.jpg" alt="New Instructor">
+            <h4>Edit Instructor</h4>
+            <img src="readme_assets/admin/editar-instrutor.jpg" alt="Edit Instructor">
+            <h4>Instructors List</h4>
+            <img src="readme_assets/admin/instrutores.jpg" alt="Instructors">
+            <h4>Instructor Profile</h4>
+            <img src="readme_assets/admin/instrutor.png" alt="Instructor">
+
+            <h3>Student Management</h3>
+            <p>Manage student accounts and track progress.</p>
+            <h4>Students List</h4>
+            <img src="readme_assets/admin/alunos.png" alt="Students">
+            <h4>Create Student</h4>
+            <img src="readme_assets/admin/novo-aluno.jpg" alt="New Student">
+            <h4>Edit Student</h4>
+            <img src="readme_assets/admin/editar-aluno.png" alt="Edit Student">
+            <h4>Student Report</h4>
+            <img src="readme_assets/admin/relatorio-aluno.jpg" alt="Student Report">
+
+            <h3>Content Management - Units</h3>
+            <p>Organize course content into units.</p>
+            <h4>Unit View</h4>
+            <img src="readme_assets/admin/unidade.png" alt="Unit">
+            <h4>Unit Without Exam</h4>
+            <img src="readme_assets/admin/unidade-semexame.png" alt="Unit Without Exam">
+            <h4>Create Unit</h4>
+            <img src="readme_assets/admin/incluir-unidade.jpg" alt="New Unit">
+            <h4>Edit Unit</h4>
+            <img src="readme_assets/admin/editar-unidade.jpg" alt="Edit Unit">
+
+            <h3>Content Management - Video Lessons</h3>
+            <p>Add video lessons to units.</p>
+            <h4>Create Video Lesson</h4>
+            <img src="readme_assets/admin/incluir-videoaula.jpg" alt="New Video Lesson">
+            <h4>Edit Video Lesson</h4>
+            <img src="readme_assets/admin/editar-videoaula.jpg" alt="Edit Video Lesson">
+            <h4>Watch Video Lesson</h4>
+            <img src="readme_assets/admin/assistir-videoaula.png" alt="Watch Lesson">
+
+            <h3>Content Management - Course Materials</h3>
+            <p>Upload and manage course materials (PDFs, documents).</p>
+            <h4>Create Courseware</h4>
+            <img src="readme_assets/admin/incluir-arquivo.jpg" alt="New Courseware">
+            <h4>Edit Courseware</h4>
+            <img src="readme_assets/admin/editar-arquivo.jpg" alt="Edit Courseware">
+
+            <h3>Examination Management</h3>
+            <p>Create and manage examinations for units.</p>
+            <h4>Exam Overview</h4>
+            <img src="readme_assets/admin/exame.png" alt="Exam">
+            <h4>Create Exam</h4>
+            <img src="readme_assets/admin/incluir-exame.jpg" alt="New Exam">
+            <h4>Edit Exam</h4>
+            <img src="readme_assets/admin/editar-exame.jpg" alt="Edit Exam">
+            <h4>Initial Exam</h4>
+            <img src="readme_assets/admin/exame-inicial.jpg" alt="Initial Exam">
+            <h4>Final Exam</h4>
+            <img src="readme_assets/admin/exame-final.jpg" alt="Final Exam">
+
+            <h3>Question Management</h3>
+            <p>Create multiple-choice questions for examinations.</p>
+            <h4>Create Question</h4>
+            <img src="readme_assets/admin/incluir-questao.png" alt="New Question">
+            <h4>Edit Question</h4>
+            <img src="readme_assets/admin/editar-questao.png" alt="Edit Question">
+
+            <h3>Ratings Management</h3>
+            <p>View and manage course ratings from students.</p>
+            <h4>Course Ratings</h4>
+            <img src="readme_assets/admin/avaliacoes.png" alt="Course Ratings">
+
+            <h3>User Management</h3>
+            <p>Manage user accounts and permissions.</p>
+            <h4>User Menu</h4>
+            <img src="readme_assets/admin/menu-usuario.jpg" alt="User Menu">
+            <h4>Password Recovery</h4>
+            <img src="readme_assets/admin/recuperacao-senha.png" alt="Password Recovery">
+            <h4>New Password</h4>
+            <img src="readme_assets/admin/nova-senha.png" alt="New Password">
+            <h4>Login</h4>
+            <img src="readme_assets/admin/login.jpg" alt="Login">
+
+            <hr>
+
+            <h2>Key Features Summary</h2>
+
+            <h3>For Students</h3>
+            <ul>
+                <li>Browse courses by category or learning trail</li>
+                <li>Enroll in courses</li>
+                <li>Watch video lessons (YouTube integration)</li>
+                <li>Download course materials</li>
+                <li>Take initial and final examinations</li>
+                <li>Track learning progress</li>
+                <li>Obtain completion certificates (PDF)</li>
+                <li>Rate and review courses</li>
+                <li>Manage profile and password</li>
+            </ul>
+
+            <h3>For Administrators</h3>
+            <ul>
+                <li>Complete course management (CRUD)</li>
+                <li>Category and trail organization</li>
+                <li>Instructor management</li>
+                <li>Student management and reporting</li>
+                <li>Content creation (units, lessons, materials)</li>
+                <li>Examination and question management</li>
+                <li>Rating and feedback management</li>
+                <li>User authentication and authorization</li>
+                <li>PDF certificate generation</li>
+            </ul>
+
+            <hr>
+
+            <h2>Technology Stack</h2>
+            <div class="tech-stack">
+                <ul>
+                    <li><strong>Backend</strong>: Laravel 5.5 (PHP 7+)</li>
+                    <li><strong>Database</strong>: MySQL</li>
+                    <li><strong>Frontend</strong>: HTML5, CSS3, JavaScript, Bootstrap</li>
+                    <li><strong>Video Integration</strong>: YouTube</li>
+                    <li><strong>PDF Generation</strong>: DomPDF</li>
+                    <li><strong>Security</strong>: HTMLPurifier for content sanitization</li>
+                </ul>
+            </div>
+
+            <hr>
+
+            <div class="conclusion">
+                <h2>Conclusion</h2>
+                <p>WebClass provides a complete, professional solution for online course management. With its
+                    dual-environment architecture, it serves both learners seeking knowledge and administrators managing
+                    educational content effectively.</p>
+                <p>For installation and setup instructions, please refer to the <a
+                        href="https://github.com/mabesi/webclass/blob/master/README.md"
+                        style="color: #a78bfa;">README.md</a> file.</p>
+            </div>
+        </main>
+
+        <footer>
+            <p>&copy; 2025 Plinio Mabesi. Licensed under MIT License.</p>
+        </footer>
+    </div>
+</body>
+
+</html>

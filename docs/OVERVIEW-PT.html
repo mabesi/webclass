@@ -1,0 +1,485 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description"
+        content="Visão Geral do Sistema WebClass - Sistema completo de gerenciamento de cursos online desenvolvido em Laravel">
+    <meta name="keywords" content="webclass, cursos online, laravel, educação, e-learning, lms">
+    <title>WebClass - Visão Geral do Sistema</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary-gradient: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            --dark-bg: #0f0f23;
+            --card-bg: rgba(255, 255, 255, 0.05);
+            --card-border: rgba(255, 255, 255, 0.1);
+            --text-primary: #ffffff;
+            --text-secondary: #a0a0b8;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            background: var(--dark-bg);
+            color: var(--text-primary);
+            line-height: 1.7;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        header {
+            text-align: center;
+            padding: 3rem 0 2rem;
+            border-bottom: 1px solid var(--card-border);
+            margin-bottom: 3rem;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            background: var(--primary-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 1rem;
+        }
+
+        .subtitle {
+            color: var(--text-secondary);
+            font-size: 1.1rem;
+        }
+
+        .nav-links {
+            margin-top: 1.5rem;
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .nav-links a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            padding: 0.5rem 1rem;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+            border: 1px solid var(--card-border);
+        }
+
+        .nav-links a:hover {
+            color: var(--text-primary);
+            background: var(--card-bg);
+        }
+
+        h2 {
+            font-size: 2rem;
+            margin: 3rem 0 1.5rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid var(--card-border);
+        }
+
+        h3 {
+            font-size: 1.5rem;
+            margin: 2rem 0 1rem;
+            color: #a78bfa;
+        }
+
+        h4 {
+            font-size: 1.2rem;
+            margin: 1.5rem 0 0.75rem;
+            color: var(--text-secondary);
+        }
+
+        p {
+            margin-bottom: 1rem;
+            color: var(--text-secondary);
+        }
+
+        hr {
+            border: none;
+            border-top: 1px solid var(--card-border);
+            margin: 3rem 0;
+        }
+
+        img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 12px;
+            margin: 1.5rem 0;
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.5);
+            border: 1px solid var(--card-border);
+        }
+
+        ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        ul li {
+            padding: 0.5rem 0;
+            padding-left: 1.5rem;
+            position: relative;
+        }
+
+        ul li::before {
+            content: "✅";
+            position: absolute;
+            left: 0;
+        }
+
+        .tech-stack {
+            background: var(--card-bg);
+            padding: 2rem;
+            border-radius: 12px;
+            border: 1px solid var(--card-border);
+            margin: 2rem 0;
+        }
+
+        .conclusion {
+            background: var(--card-bg);
+            padding: 2rem;
+            border-radius: 12px;
+            border: 1px solid var(--card-border);
+            margin: 2rem 0;
+            text-align: center;
+        }
+
+        footer {
+            text-align: center;
+            padding: 2rem 0;
+            margin-top: 4rem;
+            border-top: 1px solid var(--card-border);
+            color: var(--text-secondary);
+        }
+
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2rem;
+            }
+
+            h2 {
+                font-size: 1.5rem;
+            }
+
+            h3 {
+                font-size: 1.25rem;
+            }
+
+            .container {
+                padding: 1rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <header>
+            <h1>Visão Geral do Sistema WebClass</h1>
+            <p class="subtitle">Sistema completo de gerenciamento de cursos online desenvolvido em Laravel</p>
+            <div class="nav-links">
+                <a href="index.html">🏠 Início</a>
+                <a href="OVERVIEW.html">🇺🇸 English</a>
+                <a href="https://github.com/mabesi/webclass">📦 GitHub</a>
+            </div>
+        </header>
+
+        <main>
+            <p>WebClass é um sistema abrangente de gerenciamento de cursos online construído com Laravel. A plataforma
+                fornece uma solução completa de gestão de aprendizagem com ambientes separados para alunos e
+                administradores.</p>
+
+            <h2>Arquitetura do Sistema</h2>
+            <p>O sistema é dividido em dois ambientes principais:</p>
+            <ul>
+                <li><strong>Ambiente do Aluno</strong>: Interface frontend para navegação, inscrição, aprendizado e
+                    avaliação de cursos</li>
+                <li><strong>Ambiente Administrativo</strong>: Interface backend para gerenciamento completo do sistema e
+                    criação de conteúdo</li>
+            </ul>
+
+            <hr>
+
+            <h2>Ambiente do Aluno</h2>
+            <p>O ambiente do aluno fornece uma interface intuitiva para os aprendizes acessarem e completarem cursos.
+            </p>
+
+            <h3>Página Inicial</h3>
+            <p>A página inicial recebe os alunos com cursos em destaque e navegação fácil.</p>
+            <h4>Página Inicial do Aluno</h4>
+            <img src="readme_assets/aluno/home.jpg" alt="Página Inicial do Aluno">
+
+            <h3>Navegação de Cursos</h3>
+            <p>Os alunos podem navegar por todos os cursos disponíveis organizados por categorias e trilhas.</p>
+            <h4>Todos os Cursos</h4>
+            <img src="readme_assets/aluno/todos-cursos.jpg" alt="Todos os Cursos">
+
+            <h3>Categorias</h3>
+            <p>Os cursos são organizados em categorias para fácil descoberta.</p>
+            <h4>Lista de Categorias</h4>
+            <img src="readme_assets/aluno/categorias.jpg" alt="Categorias">
+            <h4>Visualização de Categoria</h4>
+            <img src="readme_assets/aluno/categoria.jpg" alt="Visualização de Categoria">
+
+            <h3>Trilhas de Aprendizagem</h3>
+            <p>As trilhas de aprendizagem agrupam cursos relacionados em caminhos de aprendizado estruturados.</p>
+            <h4>Lista de Trilhas</h4>
+            <img src="readme_assets/aluno/trilhas.png" alt="Trilhas">
+            <h4>Detalhes da Trilha</h4>
+            <img src="readme_assets/aluno/trilha.jpg" alt="Detalhes da Trilha">
+
+            <h3>Meus Cursos</h3>
+            <p>Os alunos podem visualizar e gerenciar seus cursos inscritos.</p>
+            <h4>Meus Cursos</h4>
+            <img src="readme_assets/aluno/meus-cursos.png" alt="Meus Cursos">
+
+            <h3>Estados do Curso</h3>
+            <p>O sistema rastreia diferentes estados de curso para cada aluno:</p>
+            <h4>Não Inscrito</h4>
+            <img src="readme_assets/aluno/curso-naoinscrito.jpg" alt="Curso Não Inscrito">
+            <h4>Recém Inscrito</h4>
+            <img src="readme_assets/aluno/curso-receminscrito.jpg" alt="Recém Inscrito">
+            <h4>Aprovado</h4>
+            <img src="readme_assets/aluno/curso-aprovado.jpg" alt="Curso Aprovado">
+            <h4>Reprovado</h4>
+            <img src="readme_assets/aluno/curso-reprovado.jpg" alt="Curso Reprovado">
+
+            <h3>Videoaulas</h3>
+            <p>Os alunos podem assistir videoaulas integradas com YouTube.</p>
+            <h4>Assistindo Videoaula</h4>
+            <img src="readme_assets/aluno/assistir-videoaula.jpg" alt="Assistindo Videoaula">
+
+            <h3>Conclusão de Unidade</h3>
+            <p>Acompanhe o progresso conforme as unidades são concluídas.</p>
+            <h4>Unidade Completa</h4>
+            <img src="readme_assets/aluno/unidade-completa.jpg" alt="Unidade Completa">
+
+            <h3>Exames</h3>
+            <p>Os alunos fazem exames para avaliar seu aprendizado.</p>
+            <h4>Verificação de Exame</h4>
+            <img src="readme_assets/aluno/verificar-exame.jpg" alt="Verificação de Exame">
+
+            <h3>Avaliações e Comentários</h3>
+            <p>Os alunos podem avaliar e comentar sobre os cursos.</p>
+            <h4>Avaliações do Curso</h4>
+            <img src="readme_assets/aluno/avaliacoes.png" alt="Avaliações do Curso">
+
+            <h3>Instrutores</h3>
+            <p>Visualize perfis de instrutores e seus cursos.</p>
+            <h4>Lista de Instrutores</h4>
+            <img src="readme_assets/aluno/instrutores.jpg" alt="Lista de Instrutores">
+            <h4>Perfil do Instrutor</h4>
+            <img src="readme_assets/aluno/instrutor.jpg" alt="Perfil do Instrutor">
+
+            <h3>Perfil do Usuário</h3>
+            <p>Os alunos podem gerenciar seu perfil e alterar senha.</p>
+            <h4>Menu do Usuário</h4>
+            <img src="readme_assets/aluno/menu-usuario.jpg" alt="Menu do Usuário">
+            <h4>Alterar Senha</h4>
+            <img src="readme_assets/aluno/alterar-senha.jpg" alt="Alterar Senha">
+
+            <hr>
+
+            <h2>Ambiente Administrativo</h2>
+            <p>O ambiente administrativo fornece ferramentas abrangentes para gerenciar todos os aspectos da plataforma
+                de aprendizagem.</p>
+
+            <h3>Painel de Controle</h3>
+            <p>O painel administrativo fornece uma visão geral do sistema.</p>
+            <h4>Página Inicial Admin</h4>
+            <img src="readme_assets/admin/home.jpg" alt="Página Inicial Admin">
+
+            <h3>Gerenciamento de Cursos</h3>
+            <p>Os administradores podem criar e gerenciar cursos com informações detalhadas.</p>
+            <h4>Lista de Cursos</h4>
+            <img src="readme_assets/admin/cursos.png" alt="Lista de Cursos">
+            <h4>Criar Novo Curso</h4>
+            <img src="readme_assets/admin/novo-curso.png" alt="Novo Curso">
+            <h4>Editar Curso</h4>
+            <img src="readme_assets/admin/editar-curso.png" alt="Editar Curso">
+            <h4>Detalhes do Curso</h4>
+            <img src="readme_assets/admin/curso.jpg" alt="Detalhes do Curso">
+
+            <h3>Gerenciamento de Categorias</h3>
+            <p>Organize cursos em categorias.</p>
+            <h4>Lista de Categorias</h4>
+            <img src="readme_assets/admin/categorias.jpg" alt="Categorias">
+            <h4>Criar Categoria</h4>
+            <img src="readme_assets/admin/nova-categoria.jpg" alt="Nova Categoria">
+            <h4>Editar Categoria</h4>
+            <img src="readme_assets/admin/editar-categoria.jpg" alt="Editar Categoria">
+            <h4>Visualização de Categoria</h4>
+            <img src="readme_assets/admin/categoria.png" alt="Categoria">
+
+            <h3>Gerenciamento de Trilhas</h3>
+            <p>Crie trilhas de aprendizagem para agrupar cursos relacionados.</p>
+            <h4>Lista de Trilhas</h4>
+            <img src="readme_assets/admin/trilhas.jpg" alt="Trilhas">
+            <h4>Criar Trilha</h4>
+            <img src="readme_assets/admin/nova-trilha.jpg" alt="Nova Trilha">
+            <h4>Editar Trilha</h4>
+            <img src="readme_assets/admin/editar-trilha.jpg" alt="Editar Trilha">
+            <h4>Detalhes da Trilha</h4>
+            <img src="readme_assets/admin/trilha.png" alt="Trilha">
+
+            <h3>Gerenciamento de Instrutores</h3>
+            <p>Gerencie perfis de instrutores e atribuições.</p>
+            <h4>Criar Instrutor</h4>
+            <img src="readme_assets/admin/novo-instrutor.jpg" alt="Novo Instrutor">
+            <h4>Editar Instrutor</h4>
+            <img src="readme_assets/admin/editar-instrutor.jpg" alt="Editar Instrutor">
+            <h4>Lista de Instrutores</h4>
+            <img src="readme_assets/admin/instrutores.jpg" alt="Instrutores">
+            <h4>Perfil do Instrutor</h4>
+            <img src="readme_assets/admin/instrutor.png" alt="Instrutor">
+
+            <h3>Gerenciamento de Alunos</h3>
+            <p>Gerencie contas de alunos e acompanhe o progresso.</p>
+            <h4>Lista de Alunos</h4>
+            <img src="readme_assets/admin/alunos.png" alt="Alunos">
+            <h4>Criar Aluno</h4>
+            <img src="readme_assets/admin/novo-aluno.jpg" alt="Novo Aluno">
+            <h4>Editar Aluno</h4>
+            <img src="readme_assets/admin/editar-aluno.png" alt="Editar Aluno">
+            <h4>Relatório do Aluno</h4>
+            <img src="readme_assets/admin/relatorio-aluno.jpg" alt="Relatório do Aluno">
+
+            <h3>Gerenciamento de Conteúdo - Unidades</h3>
+            <p>Organize o conteúdo do curso em unidades.</p>
+            <h4>Visualização de Unidade</h4>
+            <img src="readme_assets/admin/unidade.png" alt="Unidade">
+            <h4>Unidade Sem Exame</h4>
+            <img src="readme_assets/admin/unidade-semexame.png" alt="Unidade Sem Exame">
+            <h4>Criar Unidade</h4>
+            <img src="readme_assets/admin/incluir-unidade.jpg" alt="Nova Unidade">
+            <h4>Editar Unidade</h4>
+            <img src="readme_assets/admin/editar-unidade.jpg" alt="Editar Unidade">
+
+            <h3>Gerenciamento de Conteúdo - Videoaulas</h3>
+            <p>Adicione videoaulas às unidades.</p>
+            <h4>Criar Videoaula</h4>
+            <img src="readme_assets/admin/incluir-videoaula.jpg" alt="Nova Videoaula">
+            <h4>Editar Videoaula</h4>
+            <img src="readme_assets/admin/editar-videoaula.jpg" alt="Editar Videoaula">
+            <h4>Assistir Videoaula</h4>
+            <img src="readme_assets/admin/assistir-videoaula.png" alt="Assistir Aula">
+
+            <h3>Gerenciamento de Conteúdo - Material do Curso</h3>
+            <p>Faça upload e gerencie materiais do curso (PDFs, documentos).</p>
+            <h4>Criar Material</h4>
+            <img src="readme_assets/admin/incluir-arquivo.jpg" alt="Novo Material">
+            <h4>Editar Material</h4>
+            <img src="readme_assets/admin/editar-arquivo.jpg" alt="Editar Material">
+
+            <h3>Gerenciamento de Exames</h3>
+            <p>Crie e gerencie exames para unidades.</p>
+            <h4>Visão Geral do Exame</h4>
+            <img src="readme_assets/admin/exame.png" alt="Exame">
+            <h4>Criar Exame</h4>
+            <img src="readme_assets/admin/incluir-exame.jpg" alt="Novo Exame">
+            <h4>Editar Exame</h4>
+            <img src="readme_assets/admin/editar-exame.jpg" alt="Editar Exame">
+            <h4>Exame Inicial</h4>
+            <img src="readme_assets/admin/exame-inicial.jpg" alt="Exame Inicial">
+            <h4>Exame Final</h4>
+            <img src="readme_assets/admin/exame-final.jpg" alt="Exame Final">
+
+            <h3>Gerenciamento de Questões</h3>
+            <p>Crie questões de múltipla escolha para exames.</p>
+            <h4>Criar Questão</h4>
+            <img src="readme_assets/admin/incluir-questao.png" alt="Nova Questão">
+            <h4>Editar Questão</h4>
+            <img src="readme_assets/admin/editar-questao.png" alt="Editar Questão">
+
+            <h3>Gerenciamento de Avaliações</h3>
+            <p>Visualize e gerencie avaliações de cursos dos alunos.</p>
+            <h4>Avaliações do Curso</h4>
+            <img src="readme_assets/admin/avaliacoes.png" alt="Avaliações do Curso">
+
+            <h3>Gerenciamento de Usuários</h3>
+            <p>Gerencie contas de usuários e permissões.</p>
+            <h4>Menu do Usuário</h4>
+            <img src="readme_assets/admin/menu-usuario.jpg" alt="Menu do Usuário">
+            <h4>Recuperação de Senha</h4>
+            <img src="readme_assets/admin/recuperacao-senha.png" alt="Recuperação de Senha">
+            <h4>Nova Senha</h4>
+            <img src="readme_assets/admin/nova-senha.png" alt="Nova Senha">
+            <h4>Login</h4>
+            <img src="readme_assets/admin/login.jpg" alt="Login">
+
+            <hr>
+
+            <h2>Resumo dos Principais Recursos</h2>
+
+            <h3>Para Alunos</h3>
+            <ul>
+                <li>Navegar cursos por categoria ou trilha de aprendizagem</li>
+                <li>Inscrever-se em cursos</li>
+                <li>Assistir videoaulas (integração com YouTube)</li>
+                <li>Baixar materiais do curso</li>
+                <li>Fazer exames iniciais e finais</li>
+                <li>Acompanhar progresso de aprendizagem</li>
+                <li>Obter certificados de conclusão (PDF)</li>
+                <li>Avaliar e comentar sobre cursos</li>
+                <li>Gerenciar perfil e senha</li>
+            </ul>
+
+            <h3>Para Administradores</h3>
+            <ul>
+                <li>Gerenciamento completo de cursos (CRUD)</li>
+                <li>Organização de categorias e trilhas</li>
+                <li>Gerenciamento de instrutores</li>
+                <li>Gerenciamento de alunos e relatórios</li>
+                <li>Criação de conteúdo (unidades, aulas, materiais)</li>
+                <li>Gerenciamento de exames e questões</li>
+                <li>Gerenciamento de avaliações e feedback</li>
+                <li>Autenticação e autorização de usuários</li>
+                <li>Geração de certificados em PDF</li>
+            </ul>
+
+            <hr>
+
+            <h2>Stack Tecnológica</h2>
+            <div class="tech-stack">
+                <ul>
+                    <li><strong>Backend</strong>: Laravel 5.5 (PHP 7+)</li>
+                    <li><strong>Banco de Dados</strong>: MySQL</li>
+                    <li><strong>Frontend</strong>: HTML5, CSS3, JavaScript, Bootstrap</li>
+                    <li><strong>Integração de Vídeo</strong>: YouTube</li>
+                    <li><strong>Geração de PDF</strong>: DomPDF</li>
+                    <li><strong>Segurança</strong>: HTMLPurifier para sanitização de conteúdo</li>
+                </ul>
+            </div>
+
+            <hr>
+
+            <div class="conclusion">
+                <h2>Conclusão</h2>
+                <p>WebClass fornece uma solução completa e profissional para gerenciamento de cursos online. Com sua
+                    arquitetura de ambiente duplo, atende tanto aprendizes em busca de conhecimento quanto
+                    administradores gerenciando conteúdo educacional de forma eficaz.</p>
+                <p>Para instruções de instalação e configuração, consulte o arquivo <a
+                        href="https://github.com/mabesi/webclass/blob/master/README-PT.md"
+                        style="color: #a78bfa;">README-PT.md</a>.</p>
+            </div>
+        </main>
+
+        <footer>
+            <p>&copy; 2025 Plinio Mabesi. Licenciado sob MIT License.</p>
+        </footer>
+    </div>
+</body>
+
+</html>
