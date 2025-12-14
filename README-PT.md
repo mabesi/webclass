@@ -5,14 +5,14 @@ Sistema completo de gerenciamento de cursos online desenvolvido em Laravel, com 
 > **[Read in English](README.md)** 🇺🇸
 
 <kbd>
-    <img src="./banner.png" />
+    <img src="./docs/banner.png" />
 </kbd>
 
 ## :speech_balloon: Descrição
 
 O WebClass é um sistema robusto de gerenciamento de cursos online que permite a criação, organização e distribuição de conteúdo educacional. O sistema é dividido em dois ambientes principais: **Aluno** (frontend) e **Admin** (backend), oferecendo uma experiência completa tanto para estudantes quanto para administradores de conteúdo.
 
-Para uma visão detalhada do sistema com capturas de tela e funcionalidades, consulte o [OVERVIEW-PT.md](OVERVIEW-PT.md).
+Para uma visão detalhada do sistema com capturas de tela e funcionalidades, consulte o [OVERVIEW-PT.md](docs/OVERVIEW-PT.md).
 
 ## Índice
 

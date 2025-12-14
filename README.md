@@ -5,14 +5,14 @@ A complete online course management system built with Laravel, featuring separat
 > **[Leia em Português](README-PT.md)** 🇧🇷
 
 <kbd>
-    <img src="./banner.png" />
+    <img src="./docs/banner.png" />
 </kbd>
 
 ## :speech_balloon: Description
 
 WebClass is a robust online course management system that enables the creation, organization, and distribution of educational content. The system is divided into two main environments: **Student** (frontend) and **Admin** (backend), providing a complete experience for both learners and content administrators.
 
-For a detailed system overview with screenshots and features, see the [OVERVIEW.md](OVERVIEW.md).
+For a detailed system overview with screenshots and features, see the [OVERVIEW.md](docs/OVERVIEW.md).
 
 ## Table of Contents
 
