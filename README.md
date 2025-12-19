@@ -1,5 +1,8 @@
 # WEBCLASS - Online Course Management System
 
+> [!WARNING]
+> **This project is outdated and archived.** It is no longer actively maintained and serves only as a reference for educational purposes. The technologies and dependencies used may be outdated and potentially contain security vulnerabilities.
+
 A complete online course management system built with Laravel, featuring separate environments for Students and Administrators.
 
 > **[Leia em Português](README-PT.md)** 🇧🇷

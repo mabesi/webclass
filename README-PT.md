@@ -1,5 +1,8 @@
 # WEBCLASS - Sistema de Cursos Online
 
+> [!WARNING]
+> **Este projeto está desatualizado e arquivado.** Não é mais mantido ativamente e serve apenas como referência para fins educacionais. As tecnologias e dependências utilizadas podem estar desatualizadas e potencialmente conter vulnerabilidades de segurança.
+
 Sistema completo de gerenciamento de cursos online desenvolvido em Laravel, com ambientes separados para Alunos e Administradores.
 
 > **[Read in English](README.md)** 🇺🇸
